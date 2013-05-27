@@ -29,9 +29,7 @@ body {
 }
 .block > header {
     padding: 2px 4px;
-    background-color: #FAFAFA;
-    background-image: linear-gradient(to bottom, #FFFFFF, #F2F2F2);
-    background-repeat: repeat-x;
+    background: #FAFAFA linear-gradient(to bottom, #FFFFFF, #F2F2F2) repeat-x;
     font-weight: 500;
 }
 .block > section {
