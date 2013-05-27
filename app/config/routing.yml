@@ -1,0 +1,12 @@
+pmt_issue:
+    resource: "@PMTIssueBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pmt_dashboard:
+    resource: "@PMTDashboardBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ptm_issue:
+    resource: "@PTMIssueBundle/Resources/config/routing.yml"
+    prefix:   /
+
