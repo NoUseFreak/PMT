@@ -1,0 +1,42 @@
+{% extends "PMTWebBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="row">
+
+    <ul class="actions nav nav-pills pull-right">
+        <li class="active">
+            <a href="#"><i class="icon-edit icon-plus"></i> Add gadgets</a>
+        </li>
+        <li>
+            <a href="#"><i class="icon-edit"></i> Edit layout</a>
+        </li>
+        <li>
+            <a href="#"><i class="icon-wrench"></i> Settings</a>
+        </li>
+    </ul>
+    </div>
+        <div class="row">
+            <div class="span6">
+                <div class="block">
+                    <header>Activity stream</header>
+                    <section>
+                        some content
+                    </section>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="block">
+                    <header>Assigned to me</header>
+                    <section>
+                        some content
+                    </section>
+                </div>
+                <div class="block">
+                    <header>Issues in progress</header>
+                    <section>
+                        some content
+                    </section>
+                </div>
+            </div>
+        </div>
+{% endblock %}
