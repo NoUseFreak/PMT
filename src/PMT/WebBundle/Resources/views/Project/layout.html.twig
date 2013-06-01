@@ -1,0 +1,54 @@
+{% extends "PMTWebBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="span8">
+            <h1>Project name</h1>
+        </div>
+        <div class="span4">
+            <ul class="actions nav nav-pills pull-right">
+                <li class="active">
+                    <a data-toggle="modal" href="{{ path('issue_form') }}" data-target="#myModal"><i class="icon-edit icon-plus"></i> Create issue</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <div class="tabbable tabs-left">
+                <ul class="nav nav-tabs span2">
+                    <li class="active"><a href="{{ path('project_detail') }}">Summary</a></li>
+                    <li><a href="#issues">Issues</a></li>
+                    <li><a href="#roadmap">Road Map</a></li>
+                    <li><a href="#agile">Agile</a></li>
+                    <li><a href="#people">People</a></li>
+                    <li><a href="#changelog">Change Log</a></li>
+                    <li><a href="#popular">Popular Items</a></li>
+                    <li><a href="#calendar">Calendar</a></li>
+                    <li><a href="#milestones">Milestones</a></li>
+                    <li><a href="#components">Components</a></li>
+                    <li><a href="#labels">Labels</a></li>
+                    <li><a href="#builds">Builds</a></li>
+                    <li><a href="#source">Source</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#test">Test</a></li>
+                </ul>
+                <div class="tabs-container">
+                    <div class="tab-content span10">
+                        {% block tabContent %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#<script type="text/javascript">#}
+    {#$('#myTab a').click(function (e) {#}
+    {#e.preventDefault();#}
+    {#$(this).tab('show');#}
+    {#})#}
+    {#</scrip>#}
+
+    {% include 'PMTWebBundle:Form:modalForm.html.twig' %}
+{% endblock %}

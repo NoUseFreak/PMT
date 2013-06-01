@@ -1,0 +1,34 @@
+{% extends "PMTWebBundle:Project:layout.html.twig" %}
+
+{% block tabContent %}
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="block">
+                <header>Description</header>
+                <section>
+                    The description of the project
+                </section>
+            </div>
+            <div class="block">
+                <header>Issues</header>
+                <section>
+                    The open/critical issues of the project
+                </section>
+            </div>
+        </div>
+        <div class="span6">
+            <div class="block">
+                <header>Milestones</header>
+                <section>
+                    The milestones of the project
+                </section>
+            </div>
+            <div class="block">
+                <header>Activity stream</header>
+                <section>
+                    The activity stream of the project
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
