@@ -11,10 +11,19 @@ class ProjectController extends Controller
 {
 	/**
 	 * @Template()
-	 * @Route("/project/detail", name="project_detail")
+	 * @Route("/project/summary", name="project_summary")
 	 */
-	public function detailAction()
+	public function summaryAction()
     {
         return array();
     }
+
+	/**
+	 * @Template()
+	 * @Route("/project/issues", name="project_issues")
+	 */
+	public function issuesAction()
+	{
+		return array();
+	}
 }
