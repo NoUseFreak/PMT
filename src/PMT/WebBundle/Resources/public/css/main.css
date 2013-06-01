@@ -29,3 +29,14 @@ body {
     float: left;
     padding-top: 19px;
 }
+
+.time_tracking {
+    width: 100%;
+}
+.time_tracking .progress {
+    height: 10px;
+    margin-bottom: 0;
+}
+.time_tracking td.bar {
+    width: 100px;
+}

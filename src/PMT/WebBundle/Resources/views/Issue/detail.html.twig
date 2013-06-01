@@ -123,7 +123,20 @@
                     </div>
                     <div id="accordion_people" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            Anim pariatur cliche...
+                            <table>
+                                <tr>
+                                    <td>Assignee:</td>
+                                    <td>
+                                        <a href="#">Me</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Reporter:</td>
+                                    <td>
+                                        <a href="#">Some other developer</a>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -137,7 +150,20 @@
                     </div>
                     <div id="accordion_dates" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            Anim pariatur cliche...
+                            <table>
+                                <tr>
+                                    <td>Created:</td>
+                                    <td>{{ "now"|date("d/m/Y") }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Updated:</td>
+                                    <td>{{ "now"|date("d/m/Y") }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Resolved:</td>
+                                    <td>{{ "now"|date("d/m/Y") }}</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -151,7 +177,26 @@
                     </div>
                     <div id="accordion_timetracking" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            Anim pariatur cliche...
+                            <table class="time_tracking">
+                                <tr>
+                                    <td>Estimated:</td>
+                                    <td>4h</td>
+                                    <td class="bar">
+                                        <div class="progress">
+                                            <div class="bar" style="width: 50%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Logged:</td>
+                                    <td>3h</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="bar" style="width: 75%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
