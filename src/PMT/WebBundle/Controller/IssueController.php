@@ -22,4 +22,13 @@ class IssueController extends Controller
 		    'form' => $form->createView(),
 	    );
     }
+
+	/**
+	 * @Template()
+	 * @Route("/issue/detail", name="issue_detail")
+	 */
+	public function detailAction()
+	{
+		return array();
+	}
 }

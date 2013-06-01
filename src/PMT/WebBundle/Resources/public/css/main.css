@@ -20,22 +20,6 @@ body {
     vertical-align: text-bottom;
 }
 
-/**
- * Block
- */
-.block {
-    border: 1px solid #D4D4D4;
-    margin-bottom: 20px;
-}
-.block > header {
-    padding: 2px 4px;
-    background: #FAFAFA linear-gradient(to bottom, #FFFFFF, #F2F2F2) repeat-x;
-    font-weight: 500;
-}
-.block > section {
-    padding: 2px 4px;
-}
-
 
 .tabs-left > .nav-tabs {
     margin-right: -1px;

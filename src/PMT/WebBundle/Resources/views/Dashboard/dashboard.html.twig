@@ -17,26 +17,50 @@
 
     <div class="row">
         <div class="span6">
-            <div class="block">
-                <header>Activity stream</header>
-                <section>
-                    some content
-                    <a data-toggle="modal" href="{{ path('issue_form') }}" data-target="#myModal">create issue</a>
-                </section>
+            <div class="accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" href="#accordion_stream">
+                            Activity stream
+                        </a>
+                    </div>
+                    <div id="accordion_stream" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            some content
+                            <a data-toggle="modal" href="{{ path('issue_form') }}" data-target="#myModal">create issue</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="span6">
-            <div class="block">
-                <header>Assigned to me</header>
-                <section>
-                    some content
-                </section>
+            <div class="accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" href="#accordion_myissues">
+                            Assigned to me
+                        </a>
+                    </div>
+                    <div id="accordion_myissues" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            some content
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="block">
-                <header>Issues in progress</header>
-                <section>
-                    some content
-                </section>
+            <div class="accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" href="#accordion_inprogress">
+                            Issues in progress
+                        </a>
+                    </div>
+                    <div id="accordion_inprogress" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            some content
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
