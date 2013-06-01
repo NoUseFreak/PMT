@@ -5,7 +5,10 @@ php:
   - 5.3
   - 5.4
 
+services: mysql
+
 before_script:
+  - mysql -e 'create database pmt;'
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
 
