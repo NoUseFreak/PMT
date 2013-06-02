@@ -53,7 +53,7 @@ class Issue
 	private $type;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Project\Project")
+	 * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Project\Project", inversedBy="issues")
 	 * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
 	 *
 	 * @var Project

@@ -49,10 +49,7 @@ class Project
 	private $code;
 
 	/**
-	 * TODO this is broken
-	 *
-	 * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Issue\Issue", mappedBy="id")
-	 * @ORM\JoinColumn(name="id", referencedColumnName="project_id")
+	 * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Issue\Issue", mappedBy="project")
 	 */
 	private $issues;
 
