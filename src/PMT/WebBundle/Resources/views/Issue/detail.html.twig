@@ -5,10 +5,10 @@
         <div class="span8">
             <nav>
                 <p>
-                    <a href="{{ path('project_summary') }}" rel="up">Project name</a>
+                    <a href="{{ path('project_summary', {'code': issue.project.code}) }}" rel="up">{{ issue.project.name }}</a>
                 </p>
             </nav>
-            <h1>Issue summary</h1>
+            <h1>{{ issue.summary }}</h1>
         </div>
         <div class="span4">
             <ul class="actions nav nav-pills pull-right">

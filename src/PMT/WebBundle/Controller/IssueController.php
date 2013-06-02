@@ -52,10 +52,26 @@ class IssueController extends Controller
 
 	/**
 	 * @Template()
-	 * @Route("/issue/detail", name="issue_detail")
+	 * @Route("/{project_code}/{id}", requirements={"id" = "\d+"}, name="issue_detail")
 	 */
-	public function detailAction()
+	public function detailAction($id)
 	{
-		return array();
+		$issue = $this->getIssue($id);
+
+		return array(
+			'issue' => $issue,
+		);
+	}
+
+	private function getIssue($id)
+	{
+		$issue = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Issue\Issue')
+			->find($id);
+
+		if (!$issue) {
+			throw $this->createNotFoundException('Issue could not be found.');
+		}
+
+		return $issue;
 	}
 }

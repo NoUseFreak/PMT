@@ -10,6 +10,7 @@
 
 namespace PMT\CoreBundle\Entity\Project;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\Collection;
@@ -47,6 +48,13 @@ class Project
 	 */
 	private $code;
 
+	/**
+	 * TODO this is broken
+	 *
+	 * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Issue\Issue", mappedBy="id")
+	 * @ORM\JoinColumn(name="id", referencedColumnName="project_id")
+	 */
+	private $issues;
 
 	private $creator;
 
@@ -56,6 +64,11 @@ class Project
 	 * @var string
 	 */
 	private $description;
+
+	public function __construct()
+	{
+		$this->issues = new ArrayCollection();
+	}
 
 	/**
 	 * @param int $id
@@ -135,5 +148,21 @@ class Project
 	public function getName()
 	{
 		return $this->name;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getIssues()
+	{
+		return $this->issues;
+	}
+
+	/**
+	 * @param mixed $issues
+	 */
+	public function setIssues($issues)
+	{
+		$this->issues = $issues;
 	}
 }
