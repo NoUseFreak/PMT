@@ -18,9 +18,19 @@ class IssueFormType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('project', 'text')
-			->add('type', 'text')
+			->add('project', 'entity', array(
+					'class' => 'PMT\CoreBundle\Entity\Project\Project',
+					'property' => 'name',
+					'empty_value' => 'Choose an project',
+				))
+			->add('type', 'entity', array(
+					'class' => 'PMT\CoreBundle\Entity\Issue\Type',
+					'property' => 'name',
+				))
 			->add('summary', 'text')
+			->add('description', 'textarea', array(
+					'required' => false,
+				))
 			->add(
 				'priority',
 				'choice',
@@ -28,25 +38,10 @@ class IssueFormType extends AbstractType
 					'choices' => array('1' => 'Major', '2' => 'Normal'),
 					'required' => true,
 				)
-			)->add(
-				'versions',
-				'choice',
-				array(
-					'choices' => array('1' => 'v1', '2' => 'v2'),
-					'required' => false,
-					'multiple' => true
-				)
 			)
-			->add('description', 'textarea')
-			->add('labels', 'text')
-			->add(
-				'rebuild',
-				'checkbox',
-				array(
-					'label' => 'Create another',
+			->add('tags', 'text', array(
 					'required' => false,
-				)
-			);
+				));
 	}
 
 	/**

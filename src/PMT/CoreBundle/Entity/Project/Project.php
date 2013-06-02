@@ -105,18 +105,34 @@ class Project
 	}
 
 	/**
-	 * @param string $summary
+	 * @param string $code
 	 */
-	public function setSummary($summary)
+	public function setCode($code)
 	{
-		$this->summary = $summary;
+		$this->code = $code;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getSummary()
+	public function getCode()
 	{
-		return $this->summary;
+		return $this->code;
+	}
+
+	/**
+	 * @param string $name
+	 */
+	public function setName($name)
+	{
+		$this->name = $name;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return $this->name;
 	}
 }
