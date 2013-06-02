@@ -30,7 +30,10 @@ class IssueController extends Controller
 			    $em = $this->getDoctrine()->getManager();
 			    $em->persist($issue);
 			    $em->flush();
-			    return $this->redirect($this->generateUrl('dashboard'));
+			    return $this->redirect($this->generateUrl('issue_detail', array(
+					'project_code' => $issue->getProject()->getCode(),
+					'id' => $issue->getId(),
+			    )));
 		    }
 	    }
 
