@@ -14,10 +14,9 @@
                         <div class="accordion-inner">
                             <ul>
                             {% for issue in project.issues %}
-                            <li><a href="{{ path('issue_detail', {'project_code': project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
+                                <li><a href="{{ path('issue_detail', {'project_code': project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
                             {% endfor %}
                             </ul>
-
                         </div>
                     </div>
                 </div>
