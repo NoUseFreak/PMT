@@ -1,0 +1,13 @@
+{% if view == 'advanced' %}
+<ul class="advanced">
+    {% for issue in issues %}
+        <li><a href="{{ path('issue_detail', {'project_code': issue.project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <ul>
+        {% for issue in issues %}
+            <li><a href="{{ path('issue_detail', {'project_code': issue.project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}

@@ -12,11 +12,7 @@
                     </div>
                     <div id="accordion_description" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            <ul>
-                            {% for issue in project.issues %}
-                                <li><a href="{{ path('issue_detail', {'project_code': project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
-                            {% endfor %}
-                            </ul>
+                            {% include 'PMTWebBundle:Issue:list.html.twig' with {'issues': project.issues, 'view': 'advanced'} %}
                         </div>
                     </div>
                 </div>
