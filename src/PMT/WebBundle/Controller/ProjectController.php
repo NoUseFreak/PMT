@@ -41,7 +41,7 @@ class ProjectController extends Controller
 			->findByCode($code);
 
 		if (!$project) {
-			$this->createNotFoundException('Project could not be found.');
+			throw $this->createNotFoundException('Project could not be found.');
 		}
 
 		return $project;
