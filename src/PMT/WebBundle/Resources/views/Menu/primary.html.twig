@@ -13,9 +13,9 @@
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Project <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="{{ path('project_summary') }}">Project 1 <span class="tag project">PRO</span></a></li>
-                <li><a href="{{ path('project_summary') }}">Notifier <span class="tag project">NOT</span></a></li>
-                <li><a href="{{ path('project_summary') }}">Third Project <span class="tag project">THI</span></a></li>
+                {% for project in projects %}
+                    <li><a href="{{ path('project_summary', {'code': project.code}) }}">{{ project.name }} <span class="tag project">{{ project.code }}</span></a></li>
+                {% endfor %}
                 <li class="divider"></li>
                 <li><a href="#">Create</a></li>
                 <li><a href="#">Settings</a></li>

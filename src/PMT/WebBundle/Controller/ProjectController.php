@@ -11,19 +11,39 @@ class ProjectController extends Controller
 {
 	/**
 	 * @Template()
-	 * @Route("/project/summary", name="project_summary")
+	 * @Route("/{code}/summary", name="project_summary")
 	 */
-	public function summaryAction()
+	public function summaryAction($code)
     {
-        return array();
+	    $project = $this->getProject($code);
+
+        return array(
+	        'project' => $project,
+        );
     }
 
 	/**
 	 * @Template()
-	 * @Route("/project/issues", name="project_issues")
+	 * @Route("/{code}/issues", name="project_issues")
 	 */
-	public function issuesAction()
+	public function issuesAction($code)
 	{
-		return array();
+		$project = $this->getProject($code);
+
+		return array(
+			'project' => $project,
+		);
+	}
+
+	private function getProject($code)
+	{
+		$project = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Project\Project')
+			->findByCode($code);
+
+		if (!$project) {
+			$this->createNotFoundException('Project could not be found.');
+		}
+
+		return $project;
 	}
 }

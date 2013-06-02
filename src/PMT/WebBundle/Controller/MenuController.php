@@ -14,6 +14,12 @@ class MenuController extends Controller
 	 */
 	public function primaryAction()
     {
-        return array();
+	    $projects = $this->getDoctrine()
+		    ->getRepository('PMT\CoreBundle\Entity\Project\Project')
+		    ->findAllForUser();
+
+        return array(
+	        'projects' => $projects,
+        );
     }
 }

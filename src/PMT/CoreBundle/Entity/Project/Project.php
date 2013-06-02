@@ -18,6 +18,7 @@ use Doctrine\ORM\EntityManager;
 /**
  * @ORM\Entity
  * @ORM\Table(name="projects", uniqueConstraints={@ORM\UniqueConstraint(name="code_idx", columns={"code"})})
+ * @ORM\Entity(repositoryClass="PMT\CoreBundle\Entity\Project\ProjectRepository")
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class Project

@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row">
         <div class="span8">
-            <h1>Project name</h1>
+            <h1>{{ project.name }}</h1>
         </div>
         <div class="span4">
             <ul class="actions nav nav-pills pull-right">
@@ -19,10 +19,10 @@
             <div class="tabbable tabs-left">
                 <ul class="nav nav-tabs span2">
                     <li{% if app.request.attributes.get('_route') == 'project_summary' %} class="active"{% endif %}>
-                        <a href="{{ path('project_summary') }}">Summary</a>
+                        <a href="{{ path('project_summary', {'code': project.code}) }}">Summary</a>
                     </li>
                     <li{% if app.request.attributes.get('_route') == 'project_issues' %} class="active"{% endif %}>
-                        <a href="{{ path('project_issues') }}">Issues</a>
+                        <a href="{{ path('project_issues', {'code': project.code}) }}">Issues</a>
                     </li>
                     <li>
                         <a href="#roadmap">Road Map</a>
