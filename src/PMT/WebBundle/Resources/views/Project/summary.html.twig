@@ -12,7 +12,7 @@
                     </div>
                     <div id="accordion_description" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            The description of the project
+                            {{ project.description }}
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div id="accordion_issues" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            The open/critical issues of the project
+                            {% include 'PMTWebBundle:Issue:list.html.twig' with {'issues': project.issues, 'view': 'simple'} %}
                         </div>
                     </div>
                 </div>
