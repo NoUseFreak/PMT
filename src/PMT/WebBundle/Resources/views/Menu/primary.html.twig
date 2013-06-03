@@ -5,9 +5,17 @@
 </button>
 <a class="brand" href="{{ path('dashboard') }}">PMT</a>
 <div class="nav-collapse collapse">
-    <p class="navbar-text pull-right">
-        Logged in as <a href="#" class="navbar-link">Username</a>
-    </p>
+    <ul class="nav pull-right">
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ app.user.username }} <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                <li><a href="#">Preferences</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
     <ul class="nav">
         <li{% if app.request.attributes.get('_route') == 'dashboard' %} class="active"{% endif %}><a href="{{ path('dashboard') }}">Dashboard</a></li>
         <li class="dropdown">
@@ -22,6 +30,5 @@
             </ul>
         </li>
         <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
     </ul>
 </div>
