@@ -1,3 +1,6 @@
 _pmt_web:
     resource: "@PMTWebBundle/Controller"
     type: annotation
+
+_pmt_user:
+    resource: "@PMTUserBundle/Resources/config/routing.yml"
