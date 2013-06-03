@@ -20,13 +20,15 @@
 
 <body>
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            {{ render(controller('PMTWebBundle:Menu:primary')) }}
+{% if is_granted('ROLE_USER') %}
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                {{ render(controller('PMTWebBundle:Menu:primary')) }}
+            </div>
         </div>
     </div>
-</div>
+{% endif %}
 
 <div class="container">
 
