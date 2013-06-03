@@ -27,7 +27,6 @@
                     <div id="accordion_stream" class="accordion-body collapse in">
                         <div class="accordion-inner">
                             some content
-                            <a data-toggle="modal" href="{{ path('issue_form') }}" data-target="#myModal">create issue</a>
                         </div>
                     </div>
                 </div>
@@ -57,7 +56,7 @@
                     </div>
                     <div id="accordion_inprogress" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            some content
+                            {% include 'PMTWebBundle:Issue:list.html.twig' with {'issues': issues, 'view': 'advanced'} %}
                         </div>
                     </div>
                 </div>

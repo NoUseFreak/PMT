@@ -17,8 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="issues")}
- * )
+ * @ORM\Table(name="issues")
+ * @ORM\Entity(repositoryClass="PMT\CoreBundle\Entity\Issue\IssueRepository")
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class Issue

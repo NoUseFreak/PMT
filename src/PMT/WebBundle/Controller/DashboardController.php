@@ -15,6 +15,10 @@ class DashboardController extends Controller
 	 */
 	public function dashboardAction()
     {
-        return array();
+	    $issues = $this->getDoctrine()->getRepository('PMT\\CoreBundle\\Entity\\Issue\\Issue')->findCriticalForUser();
+
+        return array(
+	        'issues' => $issues,
+        );
     }
 }
