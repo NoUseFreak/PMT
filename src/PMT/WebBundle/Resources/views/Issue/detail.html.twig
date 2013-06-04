@@ -160,6 +160,10 @@
                                     <td>{{ "now"|date("d/m/Y") }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Due:</td>
+                                    <td>{{ "now"|date("d/m/Y") }}</td>
+                                </tr>
+                                <tr>
                                     <td>Resolved:</td>
                                     <td>{{ "now"|date("d/m/Y") }}</td>
                                 </tr>
@@ -177,27 +181,53 @@
                     </div>
                     <div id="accordion_timetracking" class="accordion-body collapse in">
                         <div class="accordion-inner">
+
+                            running on time
                             <table class="time_tracking">
                                 <tr>
                                     <td>Estimated:</td>
-                                    <td>5h</td>
+                                    <td>4h</td>
                                     <td class="bar">
-                                        <div class="progress">
-                                            <div class="bar" style="width: 50%;"></div>
+                                        <div class="progress progress-striped">
+                                            <div class="bar" style="width: 100%;"></div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Logged:</td>
-                                    <td>6h</td>
+                                    <td>3h</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="bar bar-danger" style="width:60%;"></div>
+                                            <div class="bar" style="width:75%;"></div>
                                         </div>
                                     </td>
                                 </tr>
                             </table>
 
+                            running over time
+                            <table class="time_tracking">
+                                <tr>
+                                    <td>Estimated:</td>
+                                    <td>4h</td>
+                                    <td class="bar">
+                                        <div class="progress progress-striped">
+                                            <div class="bar bar-danger" style="width: 100%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Logged:</td>
+                                    <td>5h</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="bar" style="width:80%;"></div>
+                                            <div class="bar bar-danger" style="width:20%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            finished on time
                             <table class="time_tracking">
                                 <tr>
                                     <td>Estimated:</td>
@@ -213,20 +243,43 @@
                                     <td>3h</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="bar bar-success" style="width:75%;"></div>
+                                            <div class="bar bar-success" style="width:100%;"></div>
                                         </div>
                                     </td>
                                 </tr>
                             </table>
 
-
+                            finished over time
                             <table class="time_tracking">
                                 <tr>
                                     <td>Estimated:</td>
                                     <td>4h</td>
                                     <td class="bar">
                                         <div class="progress">
-                                            <div class="bar" style="width: 100%;"></div>
+                                            <div class="bar bar-success" style="width: 100%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Logged:</td>
+                                    <td>3h</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="bar bar-success" style="width:75%;"></div>
+                                            <div class="bar" style="width:25%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            finished over time
+                            <table class="time_tracking">
+                                <tr>
+                                    <td>Estimated:</td>
+                                    <td>4h</td>
+                                    <td class="bar">
+                                        <div class="progress">
+                                            <div class="bar bar-danger" style="width: 100%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -235,10 +288,8 @@
                                     <td>5h</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="bar bar-danger" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="bar bar-danger" style="width:25%;"></div>
+                                            <div class="bar" style="width: 80%;"></div>
+                                            <div class="bar bar-danger" style="width: 20%;"></div>
                                         </div>
                                     </td>
                                 </tr>
