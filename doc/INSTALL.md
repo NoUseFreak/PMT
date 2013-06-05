@@ -8,5 +8,6 @@ Installation
 5. Optionally import dummy data in the database. `mysql [dbname] < doc/dummy_data.sql`
 6. Run `app/console assets:install web` to deploy the assets on the web dir.
 7. Make a VirtualHost with DocumentRoot pointing to web/ or run `app/console server:run`
+8. Create a user using terminal: `app/console fos:user:create`
 
 You should now be able to access the site.
