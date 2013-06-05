@@ -29,7 +29,7 @@ class IssueController extends Controller
 				array(
 					'label' => 'Create another',
 					'required' => false,
-					'property_path' => false,
+					'mapped' => false,
 				)
 			)
 			->add(
@@ -37,7 +37,7 @@ class IssueController extends Controller
 				'hidden',
 				array(
 					'data' => $this->getRequest()->getPathInfo(),
-					'property_path' => false,
+					'mapped' => false,
 				)
 			);
 
