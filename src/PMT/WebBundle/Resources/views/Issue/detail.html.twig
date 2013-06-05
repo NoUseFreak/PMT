@@ -13,7 +13,7 @@
         <div class="span4">
             <ul class="actions nav nav-pills pull-right">
                 <li class="active">
-                    <a href="{{ path('issue_form') }}"><i class="icon-edit icon-plus"></i> Create issue</a>
+                    <a href="{{ path('project_issue_form', {'projectCode': issue.project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
                 </li>
             </ul>
         </div>
