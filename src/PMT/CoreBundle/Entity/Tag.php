@@ -15,8 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="tags", uniqueConstraints={@ORM\UniqueConstraint(name="name_idx", columns={"name"})})}
- * )
+ * @ORM\Table(name="tags", uniqueConstraints={@ORM\UniqueConstraint(name="name_idx", columns={"name"})})})
+ * @ORM\Entity(repositoryClass="PMT\CoreBundle\Entity\TagRepository")
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class Tag

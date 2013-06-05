@@ -3,7 +3,7 @@
 namespace PMT\WebBundle\Controller;
 
 use PMT\CoreBundle\Entity\Issue\Issue;
-use PMT\WebBundle\Form\Type\IssueFormType;
+use PMT\WebBundle\Form\Type\IssueType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,7 +20,7 @@ class IssueController extends Controller
 	{
 		$issue = new Issue();
 
-		$form = $this->createForm(new IssueFormType(), $issue);
+		$form = $this->createForm(new IssueType($this->getDoctrine()->getManager()), $issue);
 
 		$form
 			->add(

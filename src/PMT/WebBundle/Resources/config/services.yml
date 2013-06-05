@@ -1,0 +1,6 @@
+services:
+    pmt_web.type.issue_form:
+        class: PMT\WebBundle\Form\Type\IssueFormType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type, alias: issue_form }

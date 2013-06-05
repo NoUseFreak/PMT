@@ -11,6 +11,7 @@
 namespace PMT\CoreBundle\Entity\Issue;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
 use PMT\CoreBundle\Entity\Project\Project;
 use Symfony\Component\Validator\Constraints as Assert;

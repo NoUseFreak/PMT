@@ -50,7 +50,11 @@
                                     </tr>
                                     <tr>
                                         <td>Labels:</td>
-                                        <td>value</td>
+                                        <td>
+                                            {% for tag in issue.tags %}
+                                                {{ tag.name }},
+                                            {% endfor %}
+                                        </td>
                                     </tr>
                                 </table>
                             </div>

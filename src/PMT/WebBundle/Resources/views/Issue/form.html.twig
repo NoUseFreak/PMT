@@ -1,5 +1,12 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
 
+{% block head_additions %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/pmtweb/js/select2/select2.css') }}" rel="stylesheet" />
+    <script src="{{ asset('bundles/pmtweb/js/select2/select2.min.js') }}"></script>
+
+{% endblock %}
+
 {% block content %}
 
     <div class="row">
@@ -26,16 +33,18 @@
                                     <label class="control-label" for="summary">
                                         {{ form_label(form.summary) }}
                                     </label>
+
                                     <div class="controls row-fluid">
-                                        {{ form_widget(form.summary, {'attr': {'class': 'span12'}}) }}
+                                        {{ form_widget(form.summary, {'attr': {'class': 'span12' }}) }}
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="type">
                                         {{ form_label(form.description) }}
                                     </label>
+
                                     <div class="controls row-fluid">
-                                        {{ form_widget(form.description, {'attr': {'class': 'span12', 'rows': '10'}}) }}
+                                        {{ form_widget(form.description, {'attr': {'class': 'span12', 'rows': '10' }}) }}
                                     </div>
                                 </div>
 
@@ -43,6 +52,7 @@
                                     <label class="control-label" for="type">
                                         {{ form_label(form.tags) }}
                                     </label>
+
                                     <div class="controls row-fluid">
                                         {{ form_widget(form.tags, {'attr': {'class': 'span12'}}) }}
                                     </div>
@@ -67,23 +77,23 @@
                                         {{ form_label(form.project) }}
                                     </div>
                                     <div class="controls row-fluid">
-                                        {{ form_widget(form.project, {'attr': {'class': 'span12'}}) }}
+                                        {{ form_widget(form.project, {'attr': {'class': 'span12' }}) }}
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="type">
+                                    <div class="control-label">
                                         {{ form_label(form.type) }}
-                                    </label>
+                                    </div>
                                     <div class="controls row-fluid">
-                                        {{ form_widget(form.type, {'attr': {'class': 'span12'}}) }}
+                                        {{ form_widget(form.type, {'attr': {'class': 'span12' }}) }}
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="type">
+                                    <div class="control-label">
                                         {{ form_label(form.priority) }}
-                                    </label>
+                                    </div>
                                     <div class="controls row-fluid">
-                                        {{ form_widget(form.priority, {'attr': {'class': 'span12'}}) }}
+                                        {{ form_widget(form.priority, {'attr': {'class': 'span12' }}) }}
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +113,7 @@
                                     <label class="control-label" for="owner">
                                         owner
                                     </label>
+
                                     <div class="controls row-fluid">
                                         <select name="" id="owner" class="span12"></select>
                                     </div>
@@ -111,7 +122,6 @@
                         </div>
                     </div>
                 </div>
-
 
 
             </div>
@@ -126,6 +136,7 @@
                             <label class="control-label" for="rebuild">
                                 {{ form_label(form.rebuild) }}
                             </label>
+
                             <div class="controls">
                                 {{ form_widget(form.rebuild) }}
                             </div>
@@ -137,4 +148,25 @@
         </form>
 
     </div>
+{% endblock %}
+
+{% block body_scripts %}
+    <script>
+        $(function () {
+            $('select').select2();
+            $('#issue_tags').select2({
+                'tags': [],
+                query: function (query) {
+                    var data = {results: []}, i, j, s;
+                    for (i = 1; i < 5; i++) {
+                        s = "";
+                        for (j = 0; j < i; j++) {s = s + query.term;}
+                        data.results.push({id: query.term, text: s});
+                    }
+                    query.callback(data);
+                },
+                matcher: function(term, text) { return text.toUpperCase().indexOf(term.toUpperCase())>=0; }
+            });
+        });
+    </script>
 {% endblock %}

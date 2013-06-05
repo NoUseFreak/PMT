@@ -10,27 +10,53 @@
 
 namespace PMT\WebBundle\Form\Type;
 
+use Doctrine\Common\Persistence\ObjectManager;
+use PMT\CoreBundle\Form\DataTransformer\TagsTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class IssueFormType extends AbstractType
+class IssueType extends AbstractType
 {
+	protected $om;
+
+	/**
+	 * @param ObjectManager $om
+	 */
+	public function __construct(ObjectManager $om)
+	{
+		$this->om = $om;
+	}
+
+
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('project', 'entity', array(
+			->add(
+				'project',
+				'entity',
+				array(
 					'class' => 'PMT\CoreBundle\Entity\Project\Project',
 					'property' => 'name',
 					'empty_value' => 'Choose an project',
-				))
-			->add('type', 'entity', array(
+				)
+			)
+			->add(
+				'type',
+				'entity',
+				array(
 					'class' => 'PMT\CoreBundle\Entity\Issue\Type',
 					'property' => 'name',
-				))
+				)
+			)
 			->add('summary', 'text')
-			->add('description', 'textarea', array(
+			->add(
+				'description',
+				'textarea',
+				array(
 					'required' => false,
-				))
+				)
+			)
 			->add(
 				'priority',
 				'choice',
@@ -39,9 +65,10 @@ class IssueFormType extends AbstractType
 					'required' => true,
 				)
 			)
-			->add('tags', 'text', array(
-					'required' => false,
-				));
+			->add(
+				$builder->create('tags', 'text')
+					->addModelTransformer(new TagsTransformer($this->om))
+				);
 	}
 
 	/**
@@ -53,5 +80,4 @@ class IssueFormType extends AbstractType
 	{
 		return 'issue';
 	}
-
 }
