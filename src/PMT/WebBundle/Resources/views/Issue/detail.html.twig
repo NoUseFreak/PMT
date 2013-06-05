@@ -13,7 +13,7 @@
         <div class="span4">
             <ul class="actions nav nav-pills pull-right">
                 <li class="active">
-                    <a data-toggle="modal" href="{{ path('issue_form') }}" data-target="#myModal"><i class="icon-edit icon-plus"></i> Create issue</a>
+                    <a href="{{ path('issue_form') }}"><i class="icon-edit icon-plus"></i> Create issue</a>
                 </li>
             </ul>
         </div>
@@ -300,6 +300,4 @@
             </div>
         </div>
     </div>
-
-    {% include 'PMTWebBundle:Form:modalForm.html.twig' %}
 {% endblock %}
