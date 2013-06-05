@@ -40,7 +40,3 @@ body {
 .time_tracking td.bar {
     width: 100px;
 }
-
-.select2-drop {
-    margin-top: -3px;
-}
