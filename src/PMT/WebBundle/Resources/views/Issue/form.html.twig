@@ -148,19 +148,22 @@
         $(function () {
             $('select').select2();
             $('#issue_tags').select2({
-                'tags': [],
-                query: function (query) {
-                    var data = {results: []}, i, j, s;
-                    if (query.term.length) {
-                        for (i = 1; i < 5; i++) {
-                            s = "";
-                            for (j = 0; j < i; j++) {s = s + query.term;}
-                            data.results.push({id: query.term, text: s});
-                        }
+                'tags': true,
+                'multiple': true,
+                'ajax': {
+                    'url': "/ajax/tags.json",
+                    'dataType': 'json',
+                    'type': 'post',
+                    'data': function (term, page) {
+                        return {
+                            'q': term,
+                            'add_new': true
+                        };
+                    },
+                    'results': function (data, page) {
+                        return {results: data.tags};
                     }
-                    query.callback(data);
-                },
-                matcher: function(term, text) { return text.toUpperCase().indexOf(term.toUpperCase())>=0; }
+                }
             });
         });
     </script>

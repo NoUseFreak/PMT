@@ -30,4 +30,15 @@ class TagRepository extends EntityRepository
 
 		return $tag;
 	}
+
+	public function findByName($name, $limit = 10)
+	{
+		$tags = $this->getEntityManager()
+			->createQuery('SELECT t FROM PMT\\CoreBundle\\Entity\\Tag t WHERE t.name LIKE :name ORDER BY t.name ASC')
+			->setMaxResults($limit)
+			->setParameter('name', '%' . $name . '%')
+			->getResult();
+
+		return $tags;
+	}
 }
