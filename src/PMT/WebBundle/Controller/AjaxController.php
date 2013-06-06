@@ -15,8 +15,10 @@ class AjaxController extends Controller
 	 */
 	public function tagsAction()
 	{
+		$term = trim($this->getRequest()->request->get('q'));
+
 		$tags = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Tag')
-			->findByName($this->getRequest()->request->get('q'));
+			->findByName($term);
 
 		$tagObjects = array_map(
 			function ($tag) {
@@ -28,12 +30,12 @@ class AjaxController extends Controller
 			$tags
 		);
 
-		if ($this->getRequest()->request->get('add_new')) {
+		if ($this->getRequest()->request->get('add_new') && !in_array($term, $tags)) {
 			array_unshift(
 				$tagObjects,
 				array(
-					'id' => $this->getRequest()->request->get('q'),
-					'text' => 'new: ' . $this->getRequest()->request->get('q'),
+					'id' => $term,
+					'text' => 'new: ' . $term,
 				)
 			);
 		}
