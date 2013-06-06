@@ -9,45 +9,44 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AjaxController extends Controller
 {
-	/**
-	 * @Route("/ajax/tags.json", name="ajax_tags")
-	 * @Method("post")
-	 */
-	public function tagsAction()
-	{
-		$term = trim($this->getRequest()->request->get('q'));
+    /**
+     * @Route("/ajax/tags.json", name="ajax_tags")
+     * @Method("post")
+     */
+    public function tagsAction()
+    {
+        $term = trim($this->getRequest()->request->get('q'));
 
-		$tags = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Tag')
-			->findByName($term);
+        $tags = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Tag')
+            ->findByName($term);
 
-		$tagObjects = array_map(
-			function ($tag) {
-				return array(
-					'id' => $tag->getName(),
-					'text' => $tag->getName(),
-				);
-			},
-			$tags
-		);
+        $tagObjects = array_map(
+            function ($tag) {
+                return array(
+                    'id' => $tag->getName(),
+                    'text' => $tag->getName(),
+                );
+            },
+            $tags
+        );
 
-		if ($this->getRequest()->request->get('add_new') && !in_array($term, $tags)) {
-			array_unshift(
-				$tagObjects,
-				array(
-					'id' => $term,
-					'text' => 'new: ' . $term,
-				)
-			);
-		}
+        if ($this->getRequest()->request->get('add_new') && !in_array($term, $tags)) {
+            array_unshift(
+                $tagObjects,
+                array(
+                    'id' => $term,
+                    'text' => 'new: ' . $term,
+                )
+            );
+        }
 
-		$response = new JsonResponse();
-		$response->setData(
-			array(
-				'tags' => $tagObjects,
-			)
-		);
+        $response = new JsonResponse();
+        $response->setData(
+            array(
+                'tags' => $tagObjects,
+            )
+        );
 
-		return $response;
-
-	}
+        return $response;
+    }
 }

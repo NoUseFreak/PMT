@@ -13,8 +13,6 @@ namespace PMT\CoreBundle\Entity\Project;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\EntityManager;
 
 /**
  * @ORM\Entity
@@ -24,142 +22,142 @@ use Doctrine\ORM\EntityManager;
  */
 class Project
 {
-	/**
-	 * @ORM\Id
-	 * @ORM\Column(type="integer")
-	 * @ORM\GeneratedValue(strategy="AUTO")
-	 *
-	 * @var int
-	 */
-	private $id;
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @var int
+     */
+    private $id;
 
-	/**
-	 * @ORM\Column(type="text")
-	 * @Assert\NotBlank()
-	 *
-	 * @var string
-	 */
-	private $name;
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     *
+     * @var string
+     */
+    private $name;
 
-	/**
-	 * @ORM\Column(type="string")
-	 * @Assert\NotBlank()
-	 * @var string
-	 */
-	private $code;
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @var string
+     */
+    private $code;
 
-	/**
-	 * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Issue\Issue", mappedBy="project")
-	 */
-	private $issues;
+    /**
+     * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Issue\Issue", mappedBy="project")
+     */
+    private $issues;
 
-	private $creator;
+    private $creator;
 
-	/**
-	 * @ORM\Column(type="text", nullable=true)
-	 *
-	 * @var string
-	 */
-	private $description;
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     *
+     * @var string
+     */
+    private $description;
 
-	public function __construct()
-	{
-		$this->issues = new ArrayCollection();
-	}
+    public function __construct()
+    {
+        $this->issues = new ArrayCollection();
+    }
 
-	/**
-	 * @param int $id
-	 */
-	public function setId($id)
-	{
-		$this->id = $id;
-	}
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	/**
-	 * @param mixed $creator
-	 */
-	public function setCreator($creator)
-	{
-		$this->creator = $creator;
-	}
+    /**
+     * @param mixed $creator
+     */
+    public function setCreator($creator)
+    {
+        $this->creator = $creator;
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getCreator()
-	{
-		return $this->creator;
-	}
+    /**
+     * @return mixed
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
 
-	/**
-	 * @param string $description
-	 */
-	public function setDescription($description)
-	{
-		$this->description = $description;
-	}
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getDescription()
-	{
-		return $this->description;
-	}
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 
-	/**
-	 * @param string $code
-	 */
-	public function setCode($code)
-	{
-		$this->code = $code;
-	}
+    /**
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getCode()
-	{
-		return $this->code;
-	}
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
 
-	/**
-	 * @param string $name
-	 */
-	public function setName($name)
-	{
-		$this->name = $name;
-	}
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return $this->name;
-	}
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getIssues()
-	{
-		return $this->issues;
-	}
+    /**
+     * @return mixed
+     */
+    public function getIssues()
+    {
+        return $this->issues;
+    }
 
-	/**
-	 * @param mixed $issues
-	 */
-	public function setIssues($issues)
-	{
-		$this->issues = $issues;
-	}
+    /**
+     * @param mixed $issues
+     */
+    public function setIssues($issues)
+    {
+        $this->issues = $issues;
+    }
 }

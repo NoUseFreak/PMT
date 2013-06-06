@@ -14,18 +14,18 @@ use Doctrine\ORM\EntityRepository;
 
 class ProjectRepository extends EntityRepository
 {
-	public function findAllForUser($user = null)
-	{
-		return $this->getEntityManager()
-			->createQuery('SELECT p FROM PMT\\CoreBundle\\Entity\\Project\\Project p ORDER BY p.name ASC')
-			->getResult();
-	}
+    public function findAllForUser($user = null)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM PMT\\CoreBundle\\Entity\\Project\\Project p ORDER BY p.name ASC')
+            ->getResult();
+    }
 
-	public function findByCode($code)
-	{
-		return $this->getEntityManager()
-			->createQuery('SELECT p FROM PMT\\CoreBundle\\Entity\\Project\\Project p WHERE p.code = :code')
-			->setParameter('code', $code)
-			->getOneOrNullResult();
-	}
+    public function findByCode($code)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM PMT\\CoreBundle\\Entity\\Project\\Project p WHERE p.code = :code')
+            ->setParameter('code', $code)
+            ->getOneOrNullResult();
+    }
 }

@@ -14,11 +14,11 @@ use Doctrine\ORM\EntityRepository;
 
 class IssueRepository extends EntityRepository
 {
-	public function findCriticalForUser($user = null)
-	{
-		return $this->getEntityManager()
-			->createQuery('SELECT i FROM PMT\\CoreBundle\\Entity\\Issue\\Issue i')
-			->setMaxResults(10)
-			->getResult();
-	}
+    public function findCriticalForUser($user = null)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT i FROM PMT\\CoreBundle\\Entity\\Issue\\Issue i')
+            ->setMaxResults(10)
+            ->getResult();
+    }
 }
