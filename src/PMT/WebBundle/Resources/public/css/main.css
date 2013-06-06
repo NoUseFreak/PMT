@@ -40,3 +40,21 @@ body {
 .time_tracking td.bar {
     width: 100px;
 }
+
+/**
+ * Activity stream
+ */
+
+ul.activity-stream.advanced,
+ul.activity-stream.advanced ul {
+    margin: 0;
+}
+ul.activity-stream.advanced li {
+    border-bottom: 1px solid #E5E5E5;
+}
+ul.activity-stream.advanced li:last-child {
+    border-bottom: 0;
+}
+ul.activity-stream.advanced > li {
+    min-height: 80px;
+}

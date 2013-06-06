@@ -56,7 +56,7 @@
                     </div>
                     <div id="accordion_stream" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            The activity stream of the project
+                            {% include 'PMTWebBundle:Activity:list.html.twig' with {'view': 'advanced'} %}
                         </div>
                     </div>
                 </div>
