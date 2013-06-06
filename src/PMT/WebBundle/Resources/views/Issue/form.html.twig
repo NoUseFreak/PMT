@@ -150,6 +150,7 @@
             $('#issue_tags').select2({
                 'tags': true,
                 'multiple': true,
+                'minimumInputLength': 2,
                 'ajax': {
                     'url': "/ajax/tags.json",
                     'dataType': 'json',
