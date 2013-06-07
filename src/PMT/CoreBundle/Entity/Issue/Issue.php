@@ -13,6 +13,7 @@ namespace PMT\CoreBundle\Entity\Issue;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use PMT\CoreBundle\Entity\Project\Project;
+use PMT\CoreBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -40,9 +41,20 @@ class Issue
      */
     private $summary;
 
-    private $creator;
-
-    private $assignee;
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\User")
+     * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
+     *
+     * @var User
+     */
+	private $creator;
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\User")
+     * @ORM\JoinColumn(name="assignee_id", referencedColumnName="id")
+     *
+     * @var User
+     */
+	private $assignee;
 
     /**
      * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Issue\Type")
@@ -51,6 +63,14 @@ class Issue
      * @var Type
      */
     private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Issue\Status")
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
+     *
+     * @var Type
+     */
+    private $status;
 
     /**
      * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Project\Project", inversedBy="issues")
@@ -197,11 +217,59 @@ class Issue
         return $this->project;
     }
 
+	/**
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return $this->summary;
+	}
+
     /**
-     * @return string
+     * @param \PMT\CoreBundle\Entity\User $assignee
      */
-    public function __toString()
+    public function setAssignee($assignee)
     {
-        return $this->summary;
+        $this->assignee = $assignee;
+    }
+
+    /**
+     * @return \PMT\CoreBundle\Entity\User
+     */
+    public function getAssignee()
+    {
+        return $this->assignee;
+    }
+
+    /**
+     * @param \PMT\CoreBundle\Entity\User $creator
+     */
+    public function setCreator($creator)
+    {
+        $this->creator = $creator;
+    }
+
+    /**
+     * @return \PMT\CoreBundle\Entity\User
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
+    /**
+     * @param \PMT\CoreBundle\Entity\Issue\Type $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return \PMT\CoreBundle\Entity\Issue\Type
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

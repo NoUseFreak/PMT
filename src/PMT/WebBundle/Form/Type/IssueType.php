@@ -18,13 +18,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 class IssueType extends AbstractType
 {
     protected $om;
+    protected $options = array();
 
     /**
      * @param ObjectManager $om
      */
-    public function __construct(ObjectManager $om)
+    public function __construct(ObjectManager $om, $options)
     {
         $this->om = $om;
+        $this->options = $options;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -64,9 +66,25 @@ class IssueType extends AbstractType
                 )
             )
             ->add(
-                $builder->create('tags', 'text')
+                'creator',
+                'entity',
+                array(
+                    'class' => 'PMT\CoreBundle\Entity\User',
+                    'property' => 'username',
+                    'data' => $this->options['activeUser'],
+                )
+            )
+            ->add(
+                $builder->create(
+                    'tags',
+                    'text',
+                    array(
+                        'required' => false,
+                    )
+                )
                     ->addModelTransformer(new TagsTransformer($this->om))
-                );
+            );
+
     }
 
     /**

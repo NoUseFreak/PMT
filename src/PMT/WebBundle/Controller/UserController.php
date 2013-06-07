@@ -23,8 +23,12 @@ class UserController extends Controller
             throw $this->createNotFoundException('The user could not be found');
         }
 
+        $issues = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Issue\Issue')
+            ->findAllForUser($user);
+
         return array(
             'user' => $user,
+            'issues' => $issues,
         );
     }
 }

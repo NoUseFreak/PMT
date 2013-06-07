@@ -129,15 +129,19 @@
                         <div class="accordion-inner">
                             <table>
                                 <tr>
-                                    <td>Assignee:</td>
+                                    <td>Creator:</td>
                                     <td>
-                                        <a href="#">Me</a>
+                                        <a href="{{ path('user_profile', {'username': issue.creator.username }) }}">{{ issue.creator.username }}</a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Reporter:</td>
+                                    <td>Assignee:</td>
                                     <td>
-                                        <a href="#">Some other developer</a>
+                                        {% if issue.assignee %}
+                                            <a href="{{ path('user_profile', {'username': issue.assignee.username }) }}">{{ issue.assignee.username }}</a>
+                                        {% else %}
+                                            open
+                                        {% endif %}
                                     </td>
                                 </tr>
                             </table>

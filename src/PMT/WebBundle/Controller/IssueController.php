@@ -20,7 +20,12 @@ class IssueController extends Controller
     {
         $issue = new Issue();
 
-        $form = $this->createForm(new IssueType($this->getDoctrine()->getManager()), $issue);
+        $form = $this->createForm(
+            new IssueType($this->getDoctrine()->getManager(), array(
+                'activeUser' => $this->get('security.context')->getToken()->getUser(),
+            )),
+            $issue
+        );
 
         if ($projectCode) {
             $project = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Project\Project')

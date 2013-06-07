@@ -103,12 +103,11 @@
                         <div id="accordion_people" class="accordion-body collapse in">
                             <div class="accordion-inner">
                                 <div class="control-group">
-                                    <label class="control-label" for="owner">
-                                        owner
-                                    </label>
-
+                                    <div class="control-label">
+                                        {{ form_label(form.creator) }}
+                                    </div>
                                     <div class="controls row-fluid">
-                                        <select name="" id="owner" class="span12"></select>
+                                        {{ form_widget(form.creator, {'attr': {'class': 'span12' }}) }}
                                     </div>
                                 </div>
                             </div>
