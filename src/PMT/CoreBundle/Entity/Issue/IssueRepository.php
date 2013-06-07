@@ -14,7 +14,7 @@ use Doctrine\ORM\EntityRepository;
 
 class IssueRepository extends EntityRepository
 {
-    public function findCriticalForUser($user = null)
+    public function findCriticalForUser($user)
     {
         return $this->getEntityManager()
             ->createQuery('SELECT i FROM PMT\\CoreBundle\\Entity\\Issue\\Issue i')
@@ -22,11 +22,11 @@ class IssueRepository extends EntityRepository
             ->getResult();
     }
 
-    public function findAllForUser($user = null)
+    public function findAllForUser($user)
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT i FROM PMT\\CoreBundle\\Entity\\Issue\\Issue i WHERE i.creator = :USER OR i.assignee = :USER'
+                'SELECT i FROM PMT\\CoreBundle\\Entity\\Issue\\Issue i WHERE i.creator = :user OR i.assignee = :user'
             )
             ->setParameter('user', $user)
             ->setMaxResults(10)
