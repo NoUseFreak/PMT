@@ -45,16 +45,17 @@ body {
  * Activity stream
  */
 
-ul.activity-stream.advanced,
-ul.activity-stream.advanced ul {
+ul.activity-stream,
+ul.activity-stream ul {
     margin: 0;
 }
-ul.activity-stream.advanced li {
+ul.activity-stream li {
     border-bottom: 1px solid #E5E5E5;
+    list-style: none;
 }
-ul.activity-stream.advanced li:last-child {
+ul.activity-stream li:last-child {
     border-bottom: 0;
 }
-ul.activity-stream.advanced > li {
+ul.activity-stream > li {
     min-height: 80px;
 }
