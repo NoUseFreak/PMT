@@ -99,6 +99,15 @@ class IssueController extends Controller
         );
     }
 
+    /**
+     * @Template()
+     * @Route("/issues", name="issue_navigator")
+     */
+    public function navigatorAction()
+    {
+        return array();
+    }
+
     private function getIssue($id)
     {
         $issue = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Issue\Issue')

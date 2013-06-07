@@ -59,3 +59,17 @@ ul.activity-stream li:last-child {
 ul.activity-stream > li {
     min-height: 80px;
 }
+
+/**
+ * Issue navigator
+ */
+.issue-nagivator ul,
+.issue-nagivator li {
+    float: left;
+    list-style: none outside none;
+    margin: 0 0 5px;
+    width: 100%;
+}
+.issue-nagivator .control-group:last-child {
+    margin-bottom: 0;
+}
