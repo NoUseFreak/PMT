@@ -3,7 +3,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block head_additions %}
-    <link href="{{ asset('bundles/pmtweb/css/login.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('bundles/pmtweb/css/anonymous.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block fos_user_content %}
@@ -12,7 +12,7 @@
     {% endif %}
 
     <div class="container">
-        <div class="signin-wrapper">
+        <div class="box-wrapper">
             <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
                 <h2 class="form-signin-heading">Please sign in</h2>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
