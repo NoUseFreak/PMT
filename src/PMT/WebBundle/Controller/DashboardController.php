@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     /**
      * @Template()
-     * @Route("/", name="dashboard")
+     * @Route("/", name="pmtweb_dashboard")
      */
     public function dashboardAction()
     {

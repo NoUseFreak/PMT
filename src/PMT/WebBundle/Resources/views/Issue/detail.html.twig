@@ -5,7 +5,7 @@
         <div class="span8">
             <nav>
                 <p>
-                    <a href="{{ path('project_summary', {'code': issue.project.code}) }}" rel="up">{{ issue.project.name }}</a>
+                    <a href="{{ path('pmtweb_project_summary', {'code': issue.project.code}) }}" rel="up">{{ issue.project.name }}</a>
                 </p>
             </nav>
             <h1>{{ issue.summary }}</h1>
@@ -13,7 +13,7 @@
         <div class="span4">
             <ul class="actions nav nav-pills pull-right">
                 <li class="active">
-                    <a href="{{ path('project_issue_form', {'projectCode': issue.project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
+                    <a href="{{ path('pmtweb_project_issue_form', {'projectCode': issue.project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
                 </li>
             </ul>
         </div>
@@ -131,14 +131,14 @@
                                 <tr>
                                     <td>Creator:</td>
                                     <td>
-                                        <a href="{{ path('user_profile', {'username': issue.creator.username }) }}">{{ issue.creator.username }}</a>
+                                        <a href="{{ path('pmtweb_user_profile', {'username': issue.creator.username }) }}">{{ issue.creator.username }}</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Assignee:</td>
                                     <td>
                                         {% if issue.assignee %}
-                                            <a href="{{ path('user_profile', {'username': issue.assignee.username }) }}">{{ issue.assignee.username }}</a>
+                                            <a href="{{ path('pmtweb_user_profile', {'username': issue.assignee.username }) }}">{{ issue.assignee.username }}</a>
                                         {% else %}
                                             open
                                         {% endif %}

@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     /**
      * @Template()
-     * @Route("/users/{username}", name="user_profile")
+     * @Route("/users/{username}", name="pmtweb_user_profile")
      */
     public function profileAction($username)
     {

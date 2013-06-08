@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class AjaxController extends Controller
 {
     /**
-     * @Route("/ajax/tags.json", name="ajax_tags")
+     * @Route("/ajax/tags.json", name="pmtweb_ajax_tags")
      * @Method("post")
      */
     public function tagsAction()

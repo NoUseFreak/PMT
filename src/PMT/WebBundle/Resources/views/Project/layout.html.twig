@@ -8,7 +8,7 @@
         <div class="span4">
             <ul class="actions nav nav-pills pull-right">
                 <li class="active">
-                    <a href="{{ path('project_issue_form', {'projectCode': project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
+                    <a href="{{ path('pmtweb_project_issue_form', {'projectCode': project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
                 </li>
             </ul>
         </div>
@@ -18,11 +18,11 @@
         <div class="span12">
             <div class="tabbable tabs-left">
                 <ul class="nav nav-tabs span2">
-                    <li{% if app.request.attributes.get('_route') == 'project_summary' %} class="active"{% endif %}>
-                        <a href="{{ path('project_summary', {'code': project.code}) }}">Summary</a>
+                    <li{% if app.request.attributes.get('_route') == 'pmtweb_project_summary' %} class="active"{% endif %}>
+                        <a href="{{ path('pmtweb_project_summary', {'code': project.code}) }}">Summary</a>
                     </li>
-                    <li{% if app.request.attributes.get('_route') == 'project_issues' %} class="active"{% endif %}>
-                        <a href="{{ path('project_issues', {'code': project.code}) }}">Issues</a>
+                    <li{% if app.request.attributes.get('_route') == 'pmtweb_project_issues' %} class="active"{% endif %}>
+                        <a href="{{ path('pmtweb_project_issues', {'code': project.code}) }}">Issues</a>
                     </li>
                     <li>
                         <a href="#roadmap">Road Map</a>
