@@ -101,7 +101,7 @@ class IssueController extends Controller
 
     /**
      * @Template()
-     * @Route("/issues", name="issue_navigator")
+     * @Route("/issues", name="pmtweb_issue_navigator")
      */
     public function navigatorAction()
     {
