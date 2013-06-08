@@ -32,17 +32,33 @@ class WorkflowStepAction
 
     /**
      * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Workflow\Workflow")
-     * @ORM\JoinColumn(name="workflow_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Workflow\WorkflowStep")
+     * @ORM\JoinColumn(name="start_step_id", referencedColumnName="id")
      */
-    private $workflowStep;
+    private $startStep;
 
     /**
      * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Issue\Status")
-     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Workflow\WorkflowStep")
+     * @ORM\JoinColumn(name="end_step_id", referencedColumnName="id")
      */
-    private $status;
+    private $endStep;
+
+    /**
+     * @param mixed $endStep
+     */
+    public function setEndStep($endStep)
+    {
+        $this->endStep = $endStep;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEndStep()
+    {
+        return $this->endStep;
+    }
 
     /**
      * @param int $id
@@ -61,34 +77,18 @@ class WorkflowStepAction
     }
 
     /**
-     * @param mixed $status
+     * @param mixed $startStep
      */
-    public function setStatus($status)
+    public function setStartStep($startStep)
     {
-        $this->status = $status;
+        $this->startStep = $startStep;
     }
 
     /**
      * @return mixed
      */
-    public function getStatus()
+    public function getStartStep()
     {
-        return $this->status;
-    }
-
-    /**
-     * @param mixed $workflowStep
-     */
-    public function setWorkflowStep($workflowStep)
-    {
-        $this->workflowStep = $workflowStep;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getWorkflowStep()
-    {
-        return $this->workflowStep;
+        return $this->startStep;
     }
 }

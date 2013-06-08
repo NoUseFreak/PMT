@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="workflow_steps")
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class WorkflowfStep
+class WorkflowStep
 {
     /**
      * @ORM\Id
