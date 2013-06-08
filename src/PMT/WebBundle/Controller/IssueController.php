@@ -13,8 +13,8 @@ class IssueController extends Controller
 {
     /**
      * @Template()
-     * @Route("/add", defaults={"projectCode": "0"}, name="issue_form")
-     * @Route("/{projectCode}/add", name="project_issue_form")
+     * @Route("/add", defaults={"projectCode": "0"}, name="pmtweb_issue_form")
+     * @Route("/{projectCode}/add", name="pmtweb_project_issue_form")
      */
     public function formAction($projectCode, Request $request)
     {
@@ -33,7 +33,7 @@ class IssueController extends Controller
             if ($project) {
                 $form->get('project')->setData($project);
             } else {
-                return $this->redirect($this->generateUrl('issue_form'));
+                return $this->redirect($this->generateUrl('pmtweb_issue_form'));
             }
         }
 
@@ -69,7 +69,7 @@ class IssueController extends Controller
                     $redirectUrl = $form->get('currentPath')->getData();
                 } else {
                     $redirectUrl = $this->generateUrl(
-                        'issue_detail',
+                        'pmtweb_issue_detail',
                         array(
                             'project_code' => $issue->getProject()->getCode(),
                             'id' => $issue->getId(),
@@ -88,7 +88,7 @@ class IssueController extends Controller
 
     /**
      * @Template()
-     * @Route("/{project_code}/{id}", requirements={"id" = "\d+"}, name="issue_detail")
+     * @Route("/{project_code}/{id}", requirements={"id" = "\d+"}, name="pmtweb_issue_detail")
      */
     public function detailAction($id)
     {

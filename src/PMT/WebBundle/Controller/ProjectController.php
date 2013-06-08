@@ -10,7 +10,7 @@ class ProjectController extends Controller
 {
     /**
      * @Template()
-     * @Route("/{code}/summary", name="project_summary")
+     * @Route("/{code}/summary", name="pmtweb_project_summary")
      */
     public function summaryAction($code)
     {
@@ -23,7 +23,7 @@ class ProjectController extends Controller
 
     /**
      * @Template()
-     * @Route("/{code}/issues", name="project_issues")
+     * @Route("/{code}/issues", name="pmtweb_project_issues")
      */
     public function issuesAction($code)
     {
