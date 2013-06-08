@@ -18,7 +18,7 @@
     </ul>
     <ul class="nav">
         <li{% if app.request.attributes.get('_route') == 'dashboard' %} class="active"{% endif %}><a href="{{ path('dashboard') }}">Dashboard</a></li>
-        <li{% if app.request.attributes.get('_route') == 'issue_navigator' %} class="active"{% endif %}><a href="{{ path('issue_navigator') }}">Dashboard</a></li>
+        <li{% if app.request.attributes.get('_route') == 'issue_navigator' %} class="active"{% endif %}><a href="{{ path('issue_navigator') }}">Issues</a></li>
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Project <b class="caret"></b></a>
             <ul class="dropdown-menu">

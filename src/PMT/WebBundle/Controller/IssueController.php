@@ -105,7 +105,9 @@ class IssueController extends Controller
      */
     public function navigatorAction()
     {
-        return array();
+        return array(
+            'issues' => array(),
+        );
     }
 
     private function getIssue($id)
