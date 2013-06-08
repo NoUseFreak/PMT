@@ -16,10 +16,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="workflow_steps")
+ * @ORM\Table(name="workflow_step_actions")
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class WorkflowfStep
+class WorkflowStepAction
 {
     /**
      * @ORM\Id
@@ -35,7 +35,7 @@ class WorkflowfStep
      * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Workflow\Workflow")
      * @ORM\JoinColumn(name="workflow_id", referencedColumnName="id")
      */
-    private $workflow;
+    private $workflowStep;
 
     /**
      * @Assert\NotBlank()
@@ -43,18 +43,6 @@ class WorkflowfStep
      * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      */
     private $status;
-
-    /**
-     * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Workflow\WorkflowStepAction", mappedBy="id")
-     */
-    private $actions;
-
-    /**
-     * @ORM\Column(type="integer", options={"default" = 0})
-     *
-     * @var int
-     */
-    private $order;
 
     /**
      * @param int $id
@@ -89,50 +77,18 @@ class WorkflowfStep
     }
 
     /**
-     * @param mixed $workflow
+     * @param mixed $workflowStep
      */
-    public function setWorkflow($workflow)
+    public function setWorkflowStep($workflowStep)
     {
-        $this->workflow = $workflow;
+        $this->workflowStep = $workflowStep;
     }
 
     /**
      * @return mixed
      */
-    public function getWorkflow()
+    public function getWorkflowStep()
     {
-        return $this->workflow;
-    }
-
-    /**
-     * @param mixed $actions
-     */
-    public function setActions($actions)
-    {
-        $this->actions = $actions;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActions()
-    {
-        return $this->actions;
-    }
-
-    /**
-     * @param int $order
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-    }
-
-    /**
-     * @return int
-     */
-    public function getOrder()
-    {
-        return $this->order;
+        return $this->workflowStep;
     }
 }
