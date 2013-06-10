@@ -85,7 +85,7 @@ class Workflow
     }
 
     /**
-     * @return mixed
+     * @return WorkflowStep[]
      */
     public function getSteps()
     {

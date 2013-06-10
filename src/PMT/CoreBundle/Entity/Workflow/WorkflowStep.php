@@ -113,7 +113,7 @@ class WorkflowStep
     }
 
     /**
-     * @return mixed
+     * @return WorkflowStepAction[]
      */
     public function getActions()
     {
