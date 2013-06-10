@@ -3,6 +3,7 @@
 namespace PMT\WebBundle\Controller;
 
 use PMT\CoreBundle\Entity\Issue\Issue;
+use PMT\CoreBundle\Model\WorkflowManager;
 use PMT\WebBundle\Form\Type\IssueType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -95,11 +96,20 @@ class IssueController extends Controller
     {
         $issue = $this->getIssue($id);
 
+        $manager = new WorkflowManager();
+
         return array(
             'issue' => $issue,
+            'nextSteps' => $manager->getNextSteps($issue->getProject()->getWorkflow(), $issue->getStatus()),
+            'backSteps' => $manager->getPreviousSteps($issue->getProject()->getWorkflow(), $issue->getStatus()),
         );
     }
 
+    /**
+     * @param $id
+     * @return Issue
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     private function getIssue($id)
     {
         $issue = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Issue\Issue')

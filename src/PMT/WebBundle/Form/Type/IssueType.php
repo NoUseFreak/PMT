@@ -22,6 +22,7 @@ class IssueType extends AbstractType
 
     /**
      * @param ObjectManager $om
+     * @param array $options
      */
     public function __construct(ObjectManager $om, $options)
     {

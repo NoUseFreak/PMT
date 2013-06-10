@@ -39,6 +39,12 @@ class Workflow
     private $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Workflow\WorkflowStep", mappedBy="workflow")
+     * @ORM\OrderBy({"order" = "ASC"})
+     */
+    private $steps;
+
+    /**
      * @param int $id
      */
     public function setId($id)
@@ -69,4 +75,22 @@ class Workflow
     {
         return $this->name;
     }
+
+    /**
+     * @param mixed $steps
+     */
+    public function setSteps($steps)
+    {
+        $this->steps = $steps;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSteps()
+    {
+        return $this->steps;
+    }
+
+
 }

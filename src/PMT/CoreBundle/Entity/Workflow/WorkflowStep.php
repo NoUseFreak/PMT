@@ -45,7 +45,7 @@ class WorkflowStep
     private $status;
 
     /**
-     * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Workflow\WorkflowStepAction", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Workflow\WorkflowStepAction", mappedBy="startStep")
      */
     private $actions;
 
