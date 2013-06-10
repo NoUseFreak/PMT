@@ -11,6 +11,7 @@
 namespace PMT\CoreBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use PMT\CoreBundle\Entity\Issue\Issue;
 use PMT\CoreBundle\Entity\Issue\Status;
 use PMT\CoreBundle\Entity\Workflow\Workflow;
 use PMT\CoreBundle\Entity\Workflow\WorkflowStep;
@@ -24,11 +25,7 @@ class WorkflowManager
      */
     public function getNextSteps(Workflow $workflow, Status $currentStatus)
     {
-        foreach ($workflow->getSteps() as $step) {
-            if ($step->getStatus() == $currentStatus) {
-                break;
-            }
-        }
+        $step = $this->getCurrentStep($workflow, $currentStatus);
 
         $steps = new ArrayCollection();
         foreach ($step->getActions() as $action) {
@@ -47,11 +44,7 @@ class WorkflowManager
      */
     public function getPreviousSteps(Workflow $workflow, Status $currentStatus)
     {
-        foreach ($workflow->getSteps() as $step) {
-            if ($step->getStatus() == $currentStatus) {
-                break;
-            }
-        }
+        $step = $this->getCurrentStep($workflow, $currentStatus);
 
         $steps = new ArrayCollection();
         foreach ($step->getActions() as $action) {
@@ -61,5 +54,55 @@ class WorkflowManager
         }
 
         return $steps;
+    }
+
+    /**
+     * @param Issue $issue
+     * @param Status $currentStatus
+     * @param \PMT\CoreBundle\Entity\Workflow\WorkflowStep $newStep
+     * @internal param \PMT\CoreBundle\Entity\Workflow\WorkflowStep $step
+     * @return \PMT\CoreBundle\Entity\Workflow\WorkflowStep Indicate if the step could be completed
+     */
+    public function setToStep(Issue $issue, Status $currentStatus, WorkflowStep $newStep)
+    {
+        $step = $this->getCurrentStep($issue->getProject()->getWorkflow(), $currentStatus);
+
+        if (!$this->validateStep($step, $newStep)) {
+            return false;
+        }
+
+        //TODO implement this
+
+        return true;
+    }
+
+    /**
+     * @param Workflow $workflow
+     * @param Status $status
+     * @return mixed
+     */
+    private function getCurrentStep(Workflow $workflow, Status $status)
+    {
+        foreach ($workflow->getSteps() as $step) {
+            if ($step->getStatus() == $status) {
+                return $step;
+            }
+        }
+    }
+
+    /**
+     * @param WorkflowStep $currentStep
+     * @param WorkflowStep $newStep
+     * @return bool
+     */
+    private function validateStep(WorkflowStep $currentStep, WorkflowStep $newStep)
+    {
+        foreach ($currentStep->getActions() as $action) {
+            if ($action->getEndStep() == $newStep) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
