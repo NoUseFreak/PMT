@@ -115,10 +115,10 @@ class IssueController extends Controller
 
         $workflowManager = new WorkflowManager($this->getDoctrine()->getManager());
         if ($workflowManager->setToStep($issue, $step)) {
-            // set success message
+            $this->get('session')->getFlashBag()->add('success', 'Issue updated to ' . $step->getStatus()->getName());
         }
         else {
-            // set failure message
+            $this->get('session')->getFlashBag()->add('alert', 'Issue status could not be updated.');
         }
 
         return $this->redirect(
