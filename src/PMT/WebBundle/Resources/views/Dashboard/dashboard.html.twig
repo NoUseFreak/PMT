@@ -1,29 +1,26 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
 
+{% block content_title %}Dashboard{% endblock %}
+
+{% block content_actions %}
+    <ul class="actions nav nav-pills pull-right">
+        <li class="active">
+            <a href="{{ path('pmtweb_issue_form') }}"><i class="icon-edit icon-plus"></i> Create
+                issue</a>
+        </li>
+        <li>
+            <a href="#"><i class="icon-edit icon-plus"></i> Add gadgets</a>
+        </li>
+        <li>
+            <a href="#"><i class="icon-edit"></i> Edit layout</a>
+        </li>
+        <li>
+            <a href="#"><i class="icon-wrench"></i> Settings</a>
+        </li>
+    </ul>
+{% endblock %}
+
 {% block content %}
-    <div class="row">
-        <div class="span6">
-            <h1>Dashboard</h1>
-        </div>
-        <div class="span6">
-            <ul class="actions nav nav-pills pull-right">
-                <li class="active">
-                    <a href="{{ path('pmtweb_issue_form') }}"><i class="icon-edit icon-plus"></i> Create issue</a>
-                </li>
-                <li>
-                    <a href="#"><i class="icon-edit icon-plus"></i> Add gadgets</a>
-                </li>
-                <li>
-                    <a href="#"><i class="icon-edit"></i> Edit layout</a>
-                </li>
-                <li>
-                    <a href="#"><i class="icon-wrench"></i> Settings</a>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-
     <div class="row">
         <div class="span6">
             <div class="accordion">

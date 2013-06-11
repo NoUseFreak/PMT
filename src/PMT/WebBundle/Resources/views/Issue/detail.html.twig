@@ -1,24 +1,16 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
 
-{% block content %}
-    <div class="row">
-        <div class="span8">
-            <nav>
-                <p>
-                    <a href="{{ path('pmtweb_project_summary', {'code': issue.project.code}) }}" rel="up">{{ issue.project.name }}</a>
-                </p>
-            </nav>
-            <h1>{{ issue.summary }}</h1>
-        </div>
-        <div class="span4">
-            <ul class="actions nav nav-pills pull-right">
-                <li class="active">
-                    <a href="{{ path('pmtweb_project_issue_form', {'projectCode': issue.project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+{% block content_title %}{{ issue.summary }}{% endblock %}
 
+{% block content_actions %}
+    <ul class="actions nav nav-pills pull-right">
+        <li class="active">
+            <a href="{{ path('pmtweb_project_issue_form', {'projectCode': issue.project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block content %}
     <div class="row">
         <div class="span8">
             <div class="accordion">
