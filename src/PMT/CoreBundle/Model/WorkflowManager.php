@@ -11,6 +11,8 @@
 namespace PMT\CoreBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManager;
 use PMT\CoreBundle\Entity\Issue\Issue;
 use PMT\CoreBundle\Entity\Issue\Status;
 use PMT\CoreBundle\Entity\Workflow\Workflow;
@@ -18,6 +20,14 @@ use PMT\CoreBundle\Entity\Workflow\WorkflowStep;
 
 class WorkflowManager
 {
+
+    private $em;
+
+    public function __construct(ObjectManager $em)
+    {
+        $this->em = $em;
+    }
+
     /**
      * @param Workflow $workflow
      * @param Status $currentStatus
@@ -58,8 +68,8 @@ class WorkflowManager
 
     /**
      * @param Issue $issue
-     * @param Status $currentStatus
      * @param WorkflowStep $newStep
+     * @internal param \PMT\CoreBundle\Entity\Issue\Status $currentStatus
      * @internal param \PMT\CoreBundle\Entity\Workflow\WorkflowStep $step
      * @return WorkflowStep Indicate if the step could be completed
      */
@@ -71,7 +81,8 @@ class WorkflowManager
             return false;
         }
 
-        //TODO implement this
+        $issue->setStatus($newStep->getStatus());
+        $this->em->flush();
 
         return true;
     }

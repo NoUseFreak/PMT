@@ -142,10 +142,18 @@
                     <div id="accordion_actions" class="accordion-body collapse in">
                         <div class="accordion-inner">
                             {% for step in backSteps %}
-                                <a href="#" class="btn btn-info">{{ step.status.name }}</a>
+                                <a href="{{ path('pmtweb_issue_new_step', {
+                                    'projectCode': issue.project.code,
+                                    'id': issue.id,
+                                    'stepId': step.id
+                                }) }}" class="btn btn-info">{{ step.status.name }}</a>
                             {% endfor %}
                             {% for step in nextSteps %}
-                                <a href="#" class="btn btn-success">{{ step.status.name }}</a>
+                                <a href="{{ path('pmtweb_issue_new_step', {
+                                'projectCode': issue.project.code,
+                                'id': issue.id,
+                                'stepId': step.id
+                                }) }}" class="btn btn-success">{{ step.status.name }}</a>
                             {% endfor %}
                         </div>
                     </div>
