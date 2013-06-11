@@ -78,6 +78,8 @@ class IssueController extends Controller
                     );
                 }
 
+                $this->get('session')->getFlashBag()->add('success', 'New issue created!');
+
                 return $this->redirect($redirectUrl);
             }
         }
