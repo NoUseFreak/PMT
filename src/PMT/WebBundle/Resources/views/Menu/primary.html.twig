@@ -3,7 +3,7 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
 </button>
-<a class="brand" href="{{ path('dashboard') }}">PMT</a>
+<a class="brand" href="{{ path('pmtweb_dashboard') }}">PMT</a>
 <div class="nav-collapse collapse">
     <ul class="nav pull-right">
         <li class="dropdown">
@@ -17,12 +17,12 @@
         </li>
     </ul>
     <ul class="nav">
-        <li{% if app.request.attributes.get('_route') == 'dashboard' %} class="active"{% endif %}><a href="{{ path('dashboard') }}">Dashboard</a></li>
+        <li{% if app.request.attributes.get('_route') == 'pmtweb_dashboard' %} class="active"{% endif %}><a href="{{ path('pmtweb_dashboard') }}">Dashboard</a></li>
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Project <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 {% for project in projects %}
-                    <li><a href="{{ path('project_summary', {'code': project.code}) }}">{{ project.name }} <span class="tag project">{{ project.code }}</span></a></li>
+                    <li><a href="{{ path('pmtweb_project_summary', {'code': project.code}) }}">{{ project.name }} <span class="tag project">{{ project.code }}</span></a></li>
                 {% endfor %}
                 <li class="divider"></li>
                 <li><a href="#">Create</a></li>

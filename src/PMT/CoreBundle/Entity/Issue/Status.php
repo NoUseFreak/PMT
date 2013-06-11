@@ -8,29 +8,38 @@
  * file that was distributed with this source code.
  */
 
-namespace PMT\CoreBundle\Entity;
+namespace PMT\CoreBundle\Entity\Issue;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="tags", uniqueConstraints={@ORM\UniqueConstraint(name="name_idx", columns={"name"})})})
- * @ORM\Entity(repositoryClass="PMT\CoreBundle\Entity\TagRepository")
+ * @ORM\Table(name="issue_statuses", uniqueConstraints={@ORM\UniqueConstraint(name="name_idx", columns={"name"})})})
+ * @ORM\Entity(repositoryClass="PMT\CoreBundle\Entity\Issue\StatusRepository")
+ *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class Tag
+class Status
 {
+    const UNASSIGNED = 1;
+    const ASSIGNED = 2;
+    const IN_PROGRESS = 3;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @var int
      */
     private $id;
 
     /**
      * @ORM\Column
      * @Assert\NotBlank()
+     *
+     * @var string
      */
     private $name;
 

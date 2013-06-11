@@ -14,11 +14,44 @@ use Doctrine\ORM\EntityRepository;
 
 class IssueRepository extends EntityRepository
 {
-	public function findCriticalForUser($user = null)
-	{
-		return $this->getEntityManager()
-			->createQuery('SELECT i FROM PMT\\CoreBundle\\Entity\\Issue\\Issue i')
-			->setMaxResults(10)
-			->getResult();
-	}
+    public function findCriticalForUser($user)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT i FROM PMT\\CoreBundle\\Entity\\Issue\\Issue i')
+            ->setMaxResults(10)
+            ->getResult();
+    }
+
+    public function findAllForUser($user)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT i FROM PMT\\CoreBundle\\Entity\\Issue\\Issue i WHERE i.creator = :user OR i.assignee = :user'
+            )
+            ->setParameter('user', $user)
+            ->setMaxResults(10)
+            ->getResult();
+    }
+
+    public function findAllForUserInStatus($user, $status)
+    {
+        if (is_numeric($status)) {
+            $status = $this->getEntityManager()->getRepository('PMT\CoreBundle\Entity\Issue\Status')
+                ->find($status);
+        }
+
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT i FROM PMT\\CoreBundle\\Entity\\Issue\\Issue i'
+                . ' WHERE (i.creator = :user OR i.assignee = :user) AND i.status = :status'
+            )
+            ->setParameters(
+                array(
+                    'user' => $user,
+                    'status' => $status,
+                )
+            )
+            ->setMaxResults(10)
+            ->getResult();
+    }
 }

@@ -1,24 +1,16 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
 
-{% block content %}
-    <div class="row">
-        <div class="span8">
-            <nav>
-                <p>
-                    <a href="{{ path('project_summary', {'code': issue.project.code}) }}" rel="up">{{ issue.project.name }}</a>
-                </p>
-            </nav>
-            <h1>{{ issue.summary }}</h1>
-        </div>
-        <div class="span4">
-            <ul class="actions nav nav-pills pull-right">
-                <li class="active">
-                    <a href="{{ path('project_issue_form', {'projectCode': issue.project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+{% block content_title %}{{ issue.summary }}{% endblock %}
 
+{% block content_actions %}
+    <ul class="actions nav nav-pills pull-right">
+        <li class="active">
+            <a href="{{ path('pmtweb_project_issue_form', {'projectCode': issue.project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block content %}
     <div class="row">
         <div class="span8">
             <div class="accordion">
@@ -129,15 +121,19 @@
                         <div class="accordion-inner">
                             <table>
                                 <tr>
-                                    <td>Assignee:</td>
+                                    <td>Creator:</td>
                                     <td>
-                                        <a href="#">Me</a>
+                                        <a href="{{ path('pmtweb_user_profile', {'username': issue.creator.username }) }}">{{ issue.creator.username }}</a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Reporter:</td>
+                                    <td>Assignee:</td>
                                     <td>
-                                        <a href="#">Some other developer</a>
+                                        {% if issue.assignee %}
+                                            <a href="{{ path('pmtweb_user_profile', {'username': issue.assignee.username }) }}">{{ issue.assignee.username }}</a>
+                                        {% else %}
+                                            open
+                                        {% endif %}
                                     </td>
                                 </tr>
                             </table>

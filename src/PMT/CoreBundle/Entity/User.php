@@ -14,7 +14,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PMT\CoreBundle\Entity\UserRepository")
  * @ORM\Table(name="users")
  */
 class User extends BaseUser
@@ -31,4 +31,3 @@ class User extends BaseUser
         parent::__construct();
     }
 }
-

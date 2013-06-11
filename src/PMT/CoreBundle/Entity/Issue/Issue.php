@@ -11,9 +11,9 @@
 namespace PMT\CoreBundle\Entity\Issue;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
 use PMT\CoreBundle\Entity\Project\Project;
+use PMT\CoreBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -24,179 +24,198 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Issue
 {
-	/**
-	 * @ORM\Id
-	 * @ORM\Column(type="integer")
-	 * @ORM\GeneratedValue(strategy="AUTO")
-	 *
-	 * @var int
-	 */
-	private $id;
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @var int
+     */
+    private $id;
 
-	/**
-	 * @ORM\Column(type="text")
-	 * @Assert\NotBlank()
-	 *
-	 * @var string
-	 */
-	private $summary;
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     *
+     * @var string
+     */
+    private $summary;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\User")
+     * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
+     *
+     * @var User
+     */
 	private $creator;
-
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\User")
+     * @ORM\JoinColumn(name="assignee_id", referencedColumnName="id")
+     *
+     * @var User
+     */
 	private $assignee;
 
-	/**
-	 * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Issue\Type")
-	 * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
-	 *
-	 * @var Type
-	 */
-	private $type;
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Issue\Type")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     *
+     * @var Type
+     */
+    private $type;
 
-	/**
-	 * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Project\Project", inversedBy="issues")
-	 * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
-	 *
-	 * @var Project
-	 */
-	private $project;
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Issue\Status")
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
+     *
+     * @var Type
+     */
+    private $status;
 
-	private $priority;
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Project\Project", inversedBy="issues")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     *
+     * @var Project
+     */
+    private $project;
 
-	/**
-	 * @ORM\Column(type="text", nullable=true)
-	 *
-	 * @var string
-	 */
-	private $description;
+    private $priority;
 
-	/**
-	 * @ORM\ManyToMany(targetEntity="PMT\CoreBundle\Entity\Tag")
-	 * @ORM\JoinTable(name="issue_tags",
-	 *   joinColumns={@ORM\JoinColumn(name="issue_id", referencedColumnName="id")},
-	 *   inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
-	 * )
-	 *
-	 * @var ArrayCollection
-	 */
-	private $tags;
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     *
+     * @var string
+     */
+    private $description;
 
-	public function __construct()
-	{
-		$this->tags = new ArrayCollection();
-	}
+    /**
+     * @ORM\ManyToMany(targetEntity="PMT\CoreBundle\Entity\Tag")
+     * @ORM\JoinTable(name="issue_tags",
+     *   joinColumns={@ORM\JoinColumn(name="issue_id", referencedColumnName="id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
+     * )
+     *
+     * @var ArrayCollection
+     */
+    private $tags;
 
-	/**
-	 * @param int $id
-	 */
-	public function setId($id)
-	{
-		$this->id = $id;
-	}
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
-	/**
-	 * @param string $description
-	 */
-	public function setDescription($description)
-	{
-		$this->description = $description;
-	}
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getDescription()
-	{
-		return $this->description;
-	}
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
 
-	/**
-	 * @param mixed $priority
-	 */
-	public function setPriority($priority)
-	{
-		$this->priority = $priority;
-	}
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getPriority()
-	{
-		return $this->priority;
-	}
+    /**
+     * @param mixed $priority
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    }
 
-	/**
-	 * @param string $summary
-	 */
-	public function setSummary($summary)
-	{
-		$this->summary = $summary;
-	}
+    /**
+     * @return mixed
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getSummary()
-	{
-		return $this->summary;
-	}
+    /**
+     * @param string $summary
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
 
-	/**
-	 * @param mixed $tags
-	 */
-	public function setTags($tags)
-	{
-		$this->tags = $tags;
-	}
+    /**
+     * @return string
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getTags()
-	{
-		return $this->tags;
-	}
+    /**
+     * @param mixed $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
 
-	/**
-	 * @param mixed $type
-	 */
-	public function setType($type)
-	{
-		$this->type = $type;
-	}
+    /**
+     * @return mixed
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getType()
-	{
-		return $this->type;
-	}
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
 
-	/**
-	 * @param \PMT\CoreBundle\Entity\Project\Project $project
-	 */
-	public function setProject($project)
-	{
-		$this->project = $project;
-	}
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
-	/**
-	 * @return \PMT\CoreBundle\Entity\Project\Project
-	 */
-	public function getProject()
-	{
-		return $this->project;
-	}
+    /**
+     * @param \PMT\CoreBundle\Entity\Project\Project $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
+
+    /**
+     * @return \PMT\CoreBundle\Entity\Project\Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
 
 	/**
 	 * @return string
@@ -205,4 +224,52 @@ class Issue
 	{
 		return $this->summary;
 	}
+
+    /**
+     * @param \PMT\CoreBundle\Entity\User $assignee
+     */
+    public function setAssignee($assignee)
+    {
+        $this->assignee = $assignee;
+    }
+
+    /**
+     * @return \PMT\CoreBundle\Entity\User
+     */
+    public function getAssignee()
+    {
+        return $this->assignee;
+    }
+
+    /**
+     * @param \PMT\CoreBundle\Entity\User $creator
+     */
+    public function setCreator($creator)
+    {
+        $this->creator = $creator;
+    }
+
+    /**
+     * @return \PMT\CoreBundle\Entity\User
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
+    /**
+     * @param \PMT\CoreBundle\Entity\Issue\Type $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return \PMT\CoreBundle\Entity\Issue\Type
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 }

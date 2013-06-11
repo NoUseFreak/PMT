@@ -5,14 +5,14 @@
 {% if view == 'advanced' %}
     <ul class="activity-stream advanced">
         <li class="media">
-            <a class="pull-left" href="#">
+            <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">
                 <img class="media-object avatar avatar-medium" src="https://si0.twimg.com/profile_images/2364006435/u0tai5lvqeegtbxkepjq_bigger.png">
             </a>
             <div class="media-body">
                 <ul>
                     <li>
                         <p>
-                            <a href="#">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
                         </p>
                         <p>
                             <i class="icon-time"></i> <time datetime="2013-06-06T20:00+00:00"></time>
@@ -20,7 +20,7 @@
                     </li>
                     <li>
                         <p>
-                            <a href="#">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
                         </p>
                         <p>
                             <i class="icon-time"></i> <time datetime="2013-06-13T20:00+00:00"></time>
@@ -30,14 +30,14 @@
             </div>
         </li>
         <li class="media">
-            <a class="pull-left" href="#">
+            <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': 'denhul'}) }}">
                 <img class="media-object avatar avatar-medium" src="https://si0.twimg.com/profile_images/3059818588/f3f18ee7ecbf043ff34a3a0e1b41013c_bigger.jpeg">
             </a>
             <div class="media-body">
                 <ul>
                     <li>
                         <p>
-                            <a href="#">Dennis Hulsmans</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'denhul'}) }}">Dennis Hulsmans</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
                         </p>
                         <p>
                             <i class="icon-time"></i> <time datetime="2013-05-13T20:00+00:00"></time>
@@ -47,14 +47,14 @@
             </div>
         </li>
         <li class="media">
-            <a class="pull-left" href="#">
+            <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': 'Ozmodiar'}) }}">
                 <img class="media-object avatar avatar-medium" src="https://si0.twimg.com/profile_images/3010046075/a4267cf8196b4286f09ae05296a2a0b8_bigger.png">
             </a>
             <div class="media-body">
                 <ul>
                     <li>
                         <p>
-                            <a href="#"> Joeri van Dooren</a> commented on <a href="#">NOTIFIER-2 - Some issue summary</a>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'Ozmodiar'}) }}"> Joeri van Dooren</a> commented on <a href="#">NOTIFIER-2 - Some issue summary</a>
                         </p>
                         <p>
                             <i class="icon-time"></i> <time datetime="2012-04-13T20:00+00:00"></time>
@@ -65,7 +65,25 @@
         </li>
     </ul>
 {% else %}
-
+    <ul class="activity-stream simple">
+        <ul>
+            <li>
+                <p>
+                    <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
+                </p>
+                <p>
+                    <i class="icon-time"></i> <time datetime="2013-06-06T20:00+00:00"></time>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
+                </p>
+                <p>
+                    <i class="icon-time"></i> <time datetime="2013-06-13T20:00+00:00"></time>
+                </p>
+            </li>
+        </ul>
 {% endif %}
 
 {% block body_scripts %}

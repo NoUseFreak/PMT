@@ -1,16 +1,13 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
 
+{% block content_title %}New issue{% endblock %}
+
+{% block content_actions %}{% endblock %}
+
 {% block content %}
-
-    <div class="row">
-        <div class="span8">
-            <h1>New issue</h1>
-        </div>
-    </div>
-
     <div class="row">
         {{ form_errors(form) }}
-        <form action="{{ path('issue_form') }}" method="post" {{ form_enctype(form) }}>
+        <form action="{{ path('pmtweb_issue_form') }}" method="post" {{ form_enctype(form) }}>
             <div class="span8">
                 <div class="accordion">
                     <div class="accordion-group">
@@ -103,12 +100,11 @@
                         <div id="accordion_people" class="accordion-body collapse in">
                             <div class="accordion-inner">
                                 <div class="control-group">
-                                    <label class="control-label" for="owner">
-                                        owner
-                                    </label>
-
+                                    <div class="control-label">
+                                        {{ form_label(form.creator) }}
+                                    </div>
                                     <div class="controls row-fluid">
-                                        <select name="" id="owner" class="span12"></select>
+                                        {{ form_widget(form.creator, {'attr': {'class': 'span12' }}) }}
                                     </div>
                                 </div>
                             </div>
@@ -148,19 +144,23 @@
         $(function () {
             $('select').select2();
             $('#issue_tags').select2({
-                'tags': [],
-                query: function (query) {
-                    var data = {results: []}, i, j, s;
-                    if (query.term.length) {
-                        for (i = 1; i < 5; i++) {
-                            s = "";
-                            for (j = 0; j < i; j++) {s = s + query.term;}
-                            data.results.push({id: query.term, text: s});
-                        }
+                'tags': true,
+                'multiple': true,
+                'minimumInputLength': 2,
+                'ajax': {
+                    'url': "/ajax/tags.json",
+                    'dataType': 'json',
+                    'type': 'post',
+                    'data': function (term, page) {
+                        return {
+                            'q': term,
+                            'add_new': true
+                        };
+                    },
+                    'results': function (data, page) {
+                        return {results: data.tags};
                     }
-                    query.callback(data);
-                },
-                matcher: function(term, text) { return text.toUpperCase().indexOf(term.toUpperCase())>=0; }
+                }
             });
         });
     </script>
