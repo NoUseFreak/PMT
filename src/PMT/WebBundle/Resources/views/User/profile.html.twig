@@ -1,9 +1,20 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
 
+{% block content_title %}{{ user.username }}{% endblock %}
+
+{% block content_actions %}
+<ul class="actions nav nav-pills pull-right">
+    <li class="active">
+        <a href="{{ path('pmtweb_issue_form') }}"><i class="icon-edit icon-plus"></i> Create
+            issue</a>
+    </li>
+</ul>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="span8">
-            <h1>{{ user.username }}</h1>
+            <h1></h1>
         </div>
     </div>
 
