@@ -59,13 +59,13 @@ class WorkflowManager
     /**
      * @param Issue $issue
      * @param Status $currentStatus
-     * @param \PMT\CoreBundle\Entity\Workflow\WorkflowStep $newStep
+     * @param WorkflowStep $newStep
      * @internal param \PMT\CoreBundle\Entity\Workflow\WorkflowStep $step
-     * @return \PMT\CoreBundle\Entity\Workflow\WorkflowStep Indicate if the step could be completed
+     * @return WorkflowStep Indicate if the step could be completed
      */
-    public function setToStep(Issue $issue, Status $currentStatus, WorkflowStep $newStep)
+    public function setToStep(Issue $issue, WorkflowStep $newStep)
     {
-        $step = $this->getCurrentStep($issue->getProject()->getWorkflow(), $currentStatus);
+        $step = $this->getCurrentStep($issue->getProject()->getWorkflow(), $issue->getStatus());
 
         if (!$this->validateStep($step, $newStep)) {
             return false;
@@ -79,7 +79,7 @@ class WorkflowManager
     /**
      * @param Workflow $workflow
      * @param Status $status
-     * @return mixed
+     * @return null|WorkflowStep
      */
     private function getCurrentStep(Workflow $workflow, Status $status)
     {
@@ -88,6 +88,8 @@ class WorkflowManager
                 return $step;
             }
         }
+
+        return null;
     }
 
     /**

@@ -186,7 +186,7 @@ class Issue
     }
 
     /**
-     * @param mixed $type
+     * @param Type $type
      */
     public function setType($type)
     {
@@ -194,7 +194,7 @@ class Issue
     }
 
     /**
-     * @return mixed
+     * @return Type
      */
     public function getType()
     {
@@ -202,7 +202,7 @@ class Issue
     }
 
     /**
-     * @param \PMT\CoreBundle\Entity\Project\Project $project
+     * @param Project $project
      */
     public function setProject($project)
     {
@@ -210,7 +210,7 @@ class Issue
     }
 
     /**
-     * @return \PMT\CoreBundle\Entity\Project\Project
+     * @return Project
      */
     public function getProject()
     {
@@ -226,7 +226,7 @@ class Issue
 	}
 
     /**
-     * @param \PMT\CoreBundle\Entity\User $assignee
+     * @param User $assignee
      */
     public function setAssignee($assignee)
     {
@@ -234,7 +234,7 @@ class Issue
     }
 
     /**
-     * @return \PMT\CoreBundle\Entity\User
+     * @return User
      */
     public function getAssignee()
     {
@@ -242,7 +242,7 @@ class Issue
     }
 
     /**
-     * @param \PMT\CoreBundle\Entity\User $creator
+     * @param User $creator
      */
     public function setCreator($creator)
     {
@@ -250,7 +250,7 @@ class Issue
     }
 
     /**
-     * @return \PMT\CoreBundle\Entity\User
+     * @return User
      */
     public function getCreator()
     {
@@ -258,7 +258,7 @@ class Issue
     }
 
     /**
-     * @param \PMT\CoreBundle\Entity\Issue\Type $status
+     * @param Type $status
      */
     public function setStatus($status)
     {
@@ -266,7 +266,7 @@ class Issue
     }
 
     /**
-     * @return \PMT\CoreBundle\Entity\Issue\Type
+     * @return Status
      */
     public function getStatus()
     {
