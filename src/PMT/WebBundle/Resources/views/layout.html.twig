@@ -44,8 +44,7 @@
                 {% block content_actions %}
                     <ul class="actions nav nav-pills pull-right">
                         <li class="active">
-                            <a href="{{ path('pmtweb_issue_form') }}"><i class="icon-edit icon-plus"></i> Create
-                                issue</a>
+                            <a href="{{ path('pmtweb_issue_form') }}"><i class="icon-edit icon-plus"></i> Create issue</a>
                         </li>
                     </ul>
                 {% endblock %}
@@ -53,6 +52,14 @@
         </div>
     {% endblock %}
 
+    {% for name, flashbag in app.session.flashbag %}
+        {% for message in flashbag %}
+        <div class="alert alert-{{ name }}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endfor %}
 
     {% block content %}
     {% endblock %}
