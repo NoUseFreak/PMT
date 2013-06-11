@@ -1,0 +1,11 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block head_additions %}
+    <link href="{{ asset('bundles/pmtweb/css/anonymous.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block fos_user_content %}
+    <div class="container">
+        {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    </div>
+{% endblock fos_user_content %}

@@ -1,9 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block head_additions %}
-    <link href="{{ asset('bundles/pmtweb/css/anonymous.css') }}" rel="stylesheet"/>
-{% endblock %}
-
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"
       class="fos_user_registration_register box-wrapper">
     <h2 class="form-registration-heading">Register</h2>
