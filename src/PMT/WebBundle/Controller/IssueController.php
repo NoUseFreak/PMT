@@ -45,6 +45,7 @@ class IssueController extends Controller
                     'label' => 'Create another',
                     'required' => false,
                     'mapped' => false,
+                    'data' => $this->getRequest()->query->has('rebuild'),
                 )
             )
             ->add(
@@ -66,7 +67,7 @@ class IssueController extends Controller
                 $em->flush();
 
                 if ($form->get('rebuild')->getData()) {
-                    $redirectUrl = $form->get('currentPath')->getData();
+                    $redirectUrl = $form->get('currentPath')->getData() . '?rebuild';
                 } else {
                     $redirectUrl = $this->generateUrl(
                         'pmtweb_issue_detail',
