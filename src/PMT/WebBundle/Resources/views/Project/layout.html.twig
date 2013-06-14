@@ -5,7 +5,8 @@
 {% block content_actions %}
     <ul class="actions nav nav-pills pull-right">
         <li class="active">
-            <a href="{{ path('pmtweb_project_issue_form', {'projectCode': project.code}) }}"><i class="icon-edit icon-plus"></i> Create issue</a>
+            <a href="{{ path('pmtweb_project_issue_form', {'projectCode': project.code}) }}"><i
+                        class="icon-edit icon-plus"></i> Create issue</a>
         </li>
         <li>
             <a href="#"><i class="icon-wrench"></i> Settings</a>
@@ -14,60 +15,58 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="span12">
-            <div class="tabbable tabs-left">
-                <ul class="nav nav-tabs span2">
-                    <li{% if app.request.attributes.get('_route') == 'pmtweb_project_summary' %} class="active"{% endif %}>
-                        <a href="{{ path('pmtweb_project_summary', {'code': project.code}) }}">Summary</a>
-                    </li>
-                    <li{% if app.request.attributes.get('_route') == 'pmtweb_project_issues' %} class="active"{% endif %}>
-                        <a href="{{ path('pmtweb_project_issues', {'code': project.code}) }}">Issues</a>
-                    </li>
-                    <li>
-                        <a href="#roadmap">Road Map</a>
-                    </li>
-                    <li>
-                        <a href="#agile">Agile</a>
-                    </li>
-                    <li>
-                        <a href="#people">People</a>
-                    </li>
-                    <li>
-                        <a href="#changelog">Change Log</a>
-                    </li>
-                    <li>
-                        <a href="#popular">Popular Items</a>
-                    </li>
-                    <li>
-                        <a href="#calendar">Calendar</a>
-                    </li>
-                    <li>
-                        <a href="#milestones">Milestones</a>
-                    </li>
-                    <li>
-                        <a href="#components">Components</a>
-                    </li>
-                    <li>
-                        <a href="#labels">Labels</a>
-                    </li>
-                    <li>
-                        <a href="#builds">Builds</a>
-                    </li>
-                    <li>
-                        <a href="#source">Source</a>
-                    </li>
-                    <li>
-                        <a href="#reviews">Reviews</a>
-                    </li>
-                    <li>
-                        <a href="#test">Test</a>
-                    </li>
-                </ul>
-                <div class="tabs-container">
-                    <div class="tab-content span10">
-                        {% block tabContent %}{% endblock %}
-                    </div>
+    <div class="row-fluid">
+        <div class="tabbable tabs-left">
+            <ul class="nav nav-tabs span2">
+                <li{% if app.request.attributes.get('_route') == 'pmtweb_project_summary' %} class="active"{% endif %}>
+                    <a href="{{ path('pmtweb_project_summary', {'code': project.code}) }}">Summary</a>
+                </li>
+                <li{% if app.request.attributes.get('_route') == 'pmtweb_project_issues' %} class="active"{% endif %}>
+                    <a href="{{ path('pmtweb_project_issues', {'code': project.code}) }}">Issues</a>
+                </li>
+                <li>
+                    <a href="#roadmap">Road Map</a>
+                </li>
+                <li>
+                    <a href="#agile">Agile</a>
+                </li>
+                <li>
+                    <a href="#people">People</a>
+                </li>
+                <li>
+                    <a href="#changelog">Change Log</a>
+                </li>
+                <li>
+                    <a href="#popular">Popular Items</a>
+                </li>
+                <li>
+                    <a href="#calendar">Calendar</a>
+                </li>
+                <li>
+                    <a href="#milestones">Milestones</a>
+                </li>
+                <li>
+                    <a href="#components">Components</a>
+                </li>
+                <li>
+                    <a href="#labels">Labels</a>
+                </li>
+                <li>
+                    <a href="#builds">Builds</a>
+                </li>
+                <li>
+                    <a href="#source">Source</a>
+                </li>
+                <li>
+                    <a href="#reviews">Reviews</a>
+                </li>
+                <li>
+                    <a href="#test">Test</a>
+                </li>
+            </ul>
+            <div class="tabs-container span10">
+                <div class="tab-content">
+                    {% block tabContent %}{% endblock %}
                 </div>
             </div>
         </div>

@@ -24,11 +24,6 @@ body {
 .tabs-left > .nav-tabs {
     margin-right: -1px;
 }
-.tabs-left > .tabs-container {
-    border-top: 1px solid #DDDDDD;
-    float: left;
-    padding-top: 19px;
-}
 
 .time_tracking {
     width: 100%;
@@ -58,4 +53,14 @@ ul.activity-stream li:last-child {
 }
 ul.activity-stream > li {
     min-height: 80px;
+}
+
+/**
+ * Fluid fixes
+ */
+
+@media (min-width: 960px) {
+    .container-fluid {
+        min-width: 960px;
+    }
 }
