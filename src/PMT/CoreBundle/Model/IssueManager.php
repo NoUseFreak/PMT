@@ -24,6 +24,9 @@ class IssueManager
 
     public function saveIssue(Issue $issue)
     {
+        $activityManager = new ActivityManager($this->em, $issue->getCreator());
+
+
         if (!$issue->getCreated()) {
             $issue->setCreated(new \DateTime());
 
@@ -37,5 +40,8 @@ class IssueManager
 
         $this->em->persist($issue);
         $this->em->flush();
+
+
+        $activityManager->log('created', $issue);
     }
 }
