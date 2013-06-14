@@ -40,7 +40,7 @@ class IssueController extends Controller
             }
 
             $projectManager = new ProjectManager($this->getDoctrine()->getManager());
-            $form->get('priority')->setData($projectManager->getDefaultPriority($project));
+            //$form->get('priority')->setData($projectManager->getDefaultPriority($project));
         }
 
         $form

@@ -32,9 +32,8 @@ class WorkflowStep
     private $id;
 
     /**
-     * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Workflow\Workflow")
-     * @ORM\JoinColumn(name="workflow_id", referencedColumnName="id")
+     * Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Workflow\Workflow", inversedBy="steps")
      */
     private $workflow;
 

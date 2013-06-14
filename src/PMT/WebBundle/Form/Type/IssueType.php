@@ -11,6 +11,7 @@
 namespace PMT\WebBundle\Form\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use PMT\CoreBundle\Form\DataTransformer\TagsTransformer;
 use PMT\CoreBundle\Model\ProjectManager;
 use Symfony\Component\Form\AbstractType;
@@ -65,6 +66,10 @@ class IssueType extends AbstractType
                 array(
                     'class' => 'PMT\CoreBundle\Entity\Issue\Priority',
                     'property' => 'name',
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('p')
+                            ->orderBy('p.order', 'ASC');
+                    },
                 )
             )
             ->add(

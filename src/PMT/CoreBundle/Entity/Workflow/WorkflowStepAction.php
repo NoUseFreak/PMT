@@ -32,7 +32,7 @@ class WorkflowStepAction
 
     /**
      * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Workflow\WorkflowStep")
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Workflow\WorkflowStep", inversedBy="actions")
      * @ORM\JoinColumn(name="start_step_id", referencedColumnName="id")
      */
     private $startStep;
