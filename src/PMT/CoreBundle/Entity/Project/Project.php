@@ -51,7 +51,19 @@ class Project
      */
     private $issues;
 
+    /**
+     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\User")
+     * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
+     */
     private $creator;
+
+    /**
+     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Workflow\Workflow")
+     * @ORM\JoinColumn(name="workflow_id", referencedColumnName="id")
+     */
+    private $workflow;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -159,5 +171,21 @@ class Project
     public function setIssues($issues)
     {
         $this->issues = $issues;
+    }
+
+    /**
+     * @param mixed $workflow
+     */
+    public function setWorkflow($workflow)
+    {
+        $this->workflow = $workflow;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWorkflow()
+    {
+        return $this->workflow;
     }
 }

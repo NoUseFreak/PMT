@@ -3,6 +3,7 @@
 namespace PMT\WebBundle\Controller;
 
 use PMT\CoreBundle\Entity\Issue\Issue;
+use PMT\CoreBundle\Model\WorkflowManager;
 use PMT\WebBundle\Form\Type\IssueType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -72,7 +73,7 @@ class IssueController extends Controller
                     $redirectUrl = $this->generateUrl(
                         'pmtweb_issue_detail',
                         array(
-                            'project_code' => $issue->getProject()->getCode(),
+                            'projectCode' => $issue->getProject()->getCode(),
                             'id' => $issue->getId(),
                         )
                     );
@@ -91,17 +92,53 @@ class IssueController extends Controller
 
     /**
      * @Template()
-     * @Route("/{project_code}/{id}", requirements={"id" = "\d+"}, name="pmtweb_issue_detail")
+     * @Route("/{projectCode}/{id}", requirements={"id" = "\d+"}, name="pmtweb_issue_detail")
      */
     public function detailAction($id)
     {
         $issue = $this->getIssue($id);
 
+        $manager = new WorkflowManager($this->getDoctrine()->getManager());
+
         return array(
             'issue' => $issue,
+            'nextSteps' => $manager->getNextSteps($issue->getProject()->getWorkflow(), $issue->getStatus()),
+            'backSteps' => $manager->getPreviousSteps($issue->getProject()->getWorkflow(), $issue->getStatus()),
         );
     }
 
+    /**
+     * @Route("/{projectCode}/{id}/step/{stepId}", requirements={"id" = "\d+"}, name="pmtweb_issue_new_step")
+     */
+    public function newStepAction($projectCode, $id, $stepId)
+    {
+        $issue = $this->getIssue($id);
+        $step = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Workflow\WorkflowStep')->find($stepId);
+
+        $workflowManager = new WorkflowManager($this->getDoctrine()->getManager());
+        if ($workflowManager->setToStep($issue, $step)) {
+            $this->get('session')->getFlashBag()->add('success', 'Issue updated to ' . $step->getStatus()->getName());
+        }
+        else {
+            $this->get('session')->getFlashBag()->add('alert', 'Issue status could not be updated.');
+        }
+
+        return $this->redirect(
+            $this->generateUrl(
+                'pmtweb_issue_detail',
+                array(
+                    'projectCode' => $projectCode,
+                    'id' => $id,
+                )
+            )
+        );
+    }
+
+    /**
+     * @param $id
+     * @return Issue
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     private function getIssue($id)
     {
         $issue = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Issue\Issue')
