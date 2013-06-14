@@ -59,8 +59,8 @@ ul.activity-stream > li {
  * Fluid fixes
  */
 
-@media (min-width: 960px) {
+@media (max-width: 979px) {
     .container-fluid {
-        min-width: 960px;
+        width: 930px !important;
     }
 }
