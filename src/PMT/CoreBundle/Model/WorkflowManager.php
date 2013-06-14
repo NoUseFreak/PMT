@@ -30,6 +30,16 @@ class WorkflowManager
 
     /**
      * @param Workflow $workflow
+     * @return WorkflowStep
+     */
+    public function getFirstStep(Workflow $workflow)
+    {
+        return $this->em->getRepository('\PMT\CoreBundle\Entity\Workflow\WorkflowStep')
+            ->findStartStep($workflow);
+    }
+
+    /**
+     * @param Workflow $workflow
      * @param Status $currentStatus
      * @return WorkflowStep[]
      */

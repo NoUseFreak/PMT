@@ -100,6 +100,20 @@ class Issue
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="datetime", name="created_at")
+     *
+     * @var string
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(type="datetime", name="last_updated")
+     *
+     * @var string
+     */
+    private $lastUpdated;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -271,5 +285,37 @@ class Issue
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @param \DateTime $created
+     */
+    public function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $lastUpdated
+     */
+    public function setLastUpdated(\DateTime $lastUpdated)
+    {
+        $this->lastUpdated = $lastUpdated;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getLastUpdated()
+    {
+        return $this->lastUpdated;
     }
 }

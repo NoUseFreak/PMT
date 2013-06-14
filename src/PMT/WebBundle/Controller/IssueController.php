@@ -3,6 +3,7 @@
 namespace PMT\WebBundle\Controller;
 
 use PMT\CoreBundle\Entity\Issue\Issue;
+use PMT\CoreBundle\Model\IssueManager;
 use PMT\CoreBundle\Model\WorkflowManager;
 use PMT\WebBundle\Form\Type\IssueType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -59,13 +60,13 @@ class IssueController extends Controller
             );
 
         if ($request->isMethod('POST')) {
-            $form->bind($request);
+            $form->submit($request);
 
             if ($form->isValid()) {
                 // perform some action, such as saving the task to the database
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($issue);
-                $em->flush();
+                $issueManager = new IssueManager($this->getDoctrine()->getManager());
+
+                $issueManager->saveIssue($issue);
 
                 if ($form->get('rebuild')->getData()) {
                     $redirectUrl = $form->get('currentPath')->getData() . '?rebuild';

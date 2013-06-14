@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @ORM\Table(name="workflow_steps")
+ * @ORM\Entity(repositoryClass="PMT\CoreBundle\Entity\Workflow\WorkflowStepRepository")
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class WorkflowStep
@@ -55,6 +56,20 @@ class WorkflowStep
      * @var int
      */
     private $order;
+
+    /**
+     * @ORM\Column(type="boolean", name="is_first", options={"default" = false})
+     *
+     * @var bool
+     */
+    private $start;
+
+    /**
+     * @ORM\Column(type="boolean", name="is_final", options={"default" = false})
+     *
+     * @var bool
+     */
+    private $final;
 
     /**
      * @param int $id
@@ -134,5 +149,37 @@ class WorkflowStep
     public function getOrder()
     {
         return $this->order;
+    }
+
+    /**
+     * @param boolean $final
+     */
+    public function setFinal($final)
+    {
+        $this->final = $final;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isFinal()
+    {
+        return $this->final;
+    }
+
+    /**
+     * @param boolean $start
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isStart()
+    {
+        return $this->start;
     }
 }
