@@ -26,11 +26,11 @@
                                 <table>
                                     <tr>
                                         <td>Type:</td>
-                                        <td>Major</td>
+                                        <td>{{ issue.type.name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Priority:</td>
-                                        <td>value</td>
+                                        <td>{{ issue.priority.name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Milestone:</td>
@@ -54,7 +54,7 @@
                                 <table>
                                     <tr>
                                         <td>Status:</td>
-                                        <td>{{ issue.status.names }}</td>
+                                        <td>{{ issue.status.name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Resolution:</td>

@@ -80,6 +80,12 @@ class Issue
      */
     private $project;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Issue\Priority")
+     * @ORM\JoinColumn(name="priority_id", referencedColumnName="id")
+     *
+     * @var Priority
+     */
     private $priority;
 
     /**

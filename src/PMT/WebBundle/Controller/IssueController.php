@@ -4,6 +4,7 @@ namespace PMT\WebBundle\Controller;
 
 use PMT\CoreBundle\Entity\Issue\Issue;
 use PMT\CoreBundle\Model\IssueManager;
+use PMT\CoreBundle\Model\ProjectManager;
 use PMT\CoreBundle\Model\WorkflowManager;
 use PMT\WebBundle\Form\Type\IssueType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,6 +38,9 @@ class IssueController extends Controller
             } else {
                 return $this->redirect($this->generateUrl('pmtweb_issue_form'));
             }
+
+            $projectManager = new ProjectManager($this->getDoctrine()->getManager());
+            $form->get('priority')->setData($projectManager->getDefaultPriority($project));
         }
 
         $form
