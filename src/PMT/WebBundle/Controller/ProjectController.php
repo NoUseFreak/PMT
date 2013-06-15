@@ -2,6 +2,7 @@
 
 namespace PMT\WebBundle\Controller;
 
+use PMT\CoreBundle\Model\ActivityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -16,8 +17,11 @@ class ProjectController extends Controller
     {
         $project = $this->getProject($code);
 
+        $logManager = new ActivityManager($this->getDoctrine()->getManager());
+
         return array(
             'project' => $project,
+            'activity' => $logManager->getProjectLog($project),
         );
     }
 

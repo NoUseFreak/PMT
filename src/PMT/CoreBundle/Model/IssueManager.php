@@ -24,7 +24,7 @@ class IssueManager
 
     public function saveIssue(Issue $issue)
     {
-        $activityManager = new ActivityManager($this->em, $issue->getCreator());
+        $activityManager = new ActivityManager($this->em);
 
 
         if (!$issue->getCreated()) {
@@ -42,6 +42,6 @@ class IssueManager
         $this->em->flush();
 
 
-        $activityManager->log('created', $issue);
+        $activityManager->log($issue->getCreator(), 'created', $issue);
     }
 }

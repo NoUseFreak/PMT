@@ -16,31 +16,31 @@ use FOS\UserBundle\Model\UserInterface;
 use PMT\CoreBundle\Entity\Activity\Event;
 use PMT\CoreBundle\Entity\Activity\Log;
 use PMT\CoreBundle\Entity\Activity\Type;
+use PMT\CoreBundle\Entity\Project\Project;
 
 class ActivityManager
 {
     private $em;
-    private $user;
 
-    public function __construct(ObjectManager $em, UserInterface $user)
+    public function __construct(ObjectManager $em)
     {
         $this->em = $em;
-        $this->user = $user;
     }
 
-    public function log($event, $source, $target = null)
+    public function log(UserInterface $user, $event, $source, $target = null)
     {
         $typeRepo = $this->em->getRepository('PMT\CoreBundle\Entity\Activity\Type');
         $eventRepo = $this->em->getRepository('PMT\CoreBundle\Entity\Activity\Event');
 
-        $logEvent = $this->getEvent($eventRepo, $event);
-        $sourceType = $this->getType($typeRepo, $source);
-
         $log = new Log();
-        $log->setUser($this->user);
-        $log->setSourceType($sourceType);
+        $log->setUser($user);
+        $log->setSourceType($this->getType($typeRepo, $source));
         $log->setSourceId($source->getId());
-        $log->setEvent($logEvent);
+        $log->setEvent($this->getEvent($eventRepo, $event));
+        if ($target) {
+            $log->setTargetType($this->getType($typeRepo, $target));
+            $log->setTargetId($target->getId());
+        }
 
         $this->em->persist($log);
         $this->em->flush();
@@ -70,5 +70,11 @@ class ActivityManager
         }
 
         return $type;
+    }
+
+    public function getProjectLog(Project $project)
+    {
+        return $this->em->getRepository('PMT\CoreBundle\Entity\Activity\Log')
+            ->getProjectLog($project);
     }
 }

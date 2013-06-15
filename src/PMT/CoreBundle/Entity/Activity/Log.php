@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @ORM\Table(name="activity_log")
+ * @ORM\Entity(repositoryClass="PMT\CoreBundle\Entity\Activity\LogRepository")
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
