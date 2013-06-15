@@ -80,6 +80,12 @@ class Issue
      */
     private $project;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Issue\Priority")
+     * @ORM\JoinColumn(name="priority_id", referencedColumnName="id")
+     *
+     * @var Priority
+     */
     private $priority;
 
     /**
@@ -99,6 +105,20 @@ class Issue
      * @var ArrayCollection
      */
     private $tags;
+
+    /**
+     * @ORM\Column(type="datetime", name="created_at")
+     *
+     * @var string
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(type="datetime", name="last_updated")
+     *
+     * @var string
+     */
+    private $lastUpdated;
 
     public function __construct()
     {
@@ -186,7 +206,7 @@ class Issue
     }
 
     /**
-     * @param mixed $type
+     * @param Type $type
      */
     public function setType($type)
     {
@@ -194,7 +214,7 @@ class Issue
     }
 
     /**
-     * @return mixed
+     * @return Type
      */
     public function getType()
     {
@@ -202,7 +222,7 @@ class Issue
     }
 
     /**
-     * @param \PMT\CoreBundle\Entity\Project\Project $project
+     * @param Project $project
      */
     public function setProject($project)
     {
@@ -210,7 +230,7 @@ class Issue
     }
 
     /**
-     * @return \PMT\CoreBundle\Entity\Project\Project
+     * @return Project
      */
     public function getProject()
     {
@@ -226,7 +246,7 @@ class Issue
 	}
 
     /**
-     * @param \PMT\CoreBundle\Entity\User $assignee
+     * @param User $assignee
      */
     public function setAssignee($assignee)
     {
@@ -234,7 +254,7 @@ class Issue
     }
 
     /**
-     * @return \PMT\CoreBundle\Entity\User
+     * @return User
      */
     public function getAssignee()
     {
@@ -242,7 +262,7 @@ class Issue
     }
 
     /**
-     * @param \PMT\CoreBundle\Entity\User $creator
+     * @param User $creator
      */
     public function setCreator($creator)
     {
@@ -250,7 +270,7 @@ class Issue
     }
 
     /**
-     * @return \PMT\CoreBundle\Entity\User
+     * @return User
      */
     public function getCreator()
     {
@@ -258,7 +278,7 @@ class Issue
     }
 
     /**
-     * @param \PMT\CoreBundle\Entity\Issue\Type $status
+     * @param Type $status
      */
     public function setStatus($status)
     {
@@ -266,10 +286,42 @@ class Issue
     }
 
     /**
-     * @return \PMT\CoreBundle\Entity\Issue\Type
+     * @return Status
      */
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @param \DateTime $created
+     */
+    public function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $lastUpdated
+     */
+    public function setLastUpdated(\DateTime $lastUpdated)
+    {
+        $this->lastUpdated = $lastUpdated;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getLastUpdated()
+    {
+        return $this->lastUpdated;
     }
 }

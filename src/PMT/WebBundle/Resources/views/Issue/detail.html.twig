@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div class="row-fluid">
         <div class="span8">
             <div class="accordion">
                 <div class="accordion-group">
@@ -26,11 +26,11 @@
                                 <table>
                                     <tr>
                                         <td>Type:</td>
-                                        <td>Major</td>
+                                        <td>{{ issue.type.name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Priority:</td>
-                                        <td>value</td>
+                                        <td>{{ issue.priority.name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Milestone:</td>
@@ -54,7 +54,7 @@
                                 <table>
                                     <tr>
                                         <td>Status:</td>
-                                        <td>value</td>
+                                        <td>{{ issue.status.name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Resolution:</td>
@@ -97,11 +97,25 @@
             <div class="accordion">
                 <div class="accordion-group">
                     <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" href="#accordion_comments">
+                            Comments
+                        </a>
+                    </div>
+                    <div id="accordion_comments" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            {% include 'PMTWebBundle:Comment:list.html.twig' with {'view': 'advanced'} %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_activity">
                             Activity
                         </a>
                     </div>
-                    <div id="accordion_activity" class="accordion-body collapse in">
+                    <div id="accordion_activity" class="accordion-body collapse">
                         <div class="accordion-inner">
                             {% include 'PMTWebBundle:Activity:list.html.twig' with {'view': 'advanced'} %}
                         </div>
@@ -110,6 +124,42 @@
             </div>
         </div>
         <div class="span4">
+            <div class="accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" href="javascript:void();">
+                            Actions
+                        </a>
+                    </div>
+                    <div id="accordion_actions" class="accordion-body in">
+                        <div class="accordion-inner">
+                            <div class="btn-group">
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                    {{ issue.status.name }}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for step in backSteps %}
+                                        <li><a href="{{ path('pmtweb_issue_new_step', {
+                                        'projectCode': issue.project.code,
+                                        'id': issue.id,
+                                        'stepId': step.id
+                                        }) }}">{{ step.status.name }}</a></li>
+                                    {% endfor %}
+                                    {% for step in nextSteps %}
+                                        <li><a href="{{ path('pmtweb_issue_new_step', {
+                                        'projectCode': issue.project.code,
+                                        'id': issue.id,
+                                        'stepId': step.id
+                                        }) }}">{{ step.status.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="accordion">
                 <div class="accordion-group">
                     <div class="accordion-heading">

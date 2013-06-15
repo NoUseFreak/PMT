@@ -11,7 +11,9 @@
 namespace PMT\WebBundle\Form\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use PMT\CoreBundle\Form\DataTransformer\TagsTransformer;
+use PMT\CoreBundle\Model\ProjectManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -22,6 +24,7 @@ class IssueType extends AbstractType
 
     /**
      * @param ObjectManager $om
+     * @param array $options
      */
     public function __construct(ObjectManager $om, $options)
     {
@@ -59,10 +62,14 @@ class IssueType extends AbstractType
             )
             ->add(
                 'priority',
-                'choice',
+                'entity',
                 array(
-                    'choices' => array('1' => 'Major', '2' => 'Normal'),
-                    'required' => true,
+                    'class' => 'PMT\CoreBundle\Entity\Issue\Priority',
+                    'property' => 'name',
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('p')
+                            ->orderBy('p.order', 'ASC');
+                    },
                 )
             )
             ->add(

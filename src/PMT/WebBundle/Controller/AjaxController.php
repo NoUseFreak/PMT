@@ -31,13 +31,11 @@ class AjaxController extends Controller
         );
 
         if ($this->getRequest()->request->get('add_new') && !in_array($term, $tags)) {
-            array_unshift(
-                $tagObjects,
+            $tagObjects[] =
                 array(
                     'id' => $term,
                     'text' => 'new: ' . $term,
-                )
-            );
+                );
         }
 
         $response = new JsonResponse();
