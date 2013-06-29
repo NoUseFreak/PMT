@@ -37,6 +37,14 @@ body {
 }
 
 /**
+ * Issue
+ */
+
+table.issue-details td:first-child {
+    padding-right: 15px;
+}
+
+/**
  * Activity stream
  */
 
