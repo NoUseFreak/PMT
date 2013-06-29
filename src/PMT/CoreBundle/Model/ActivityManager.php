@@ -21,10 +21,12 @@ use PMT\CoreBundle\Entity\Project\Project;
 class ActivityManager
 {
     private $em;
+    private $user;
 
-    public function __construct(ObjectManager $em)
+    public function __construct(ObjectManager $em, UserInterface $user)
     {
         $this->em = $em;
+        $this->user = $user;
     }
 
     public function log(UserInterface $user, $event, $source, $target = null)
@@ -76,5 +78,11 @@ class ActivityManager
     {
         return $this->em->getRepository('PMT\CoreBundle\Entity\Activity\Log')
             ->getProjectLog($project);
+    }
+
+    public function getDashboardLog()
+    {
+        return $this->em->getRepository('PMT\CoreBundle\Entity\Activity\Log')
+            ->getDashboardLog($this->user);
     }
 }

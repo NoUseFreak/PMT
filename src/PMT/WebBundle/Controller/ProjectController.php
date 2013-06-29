@@ -63,7 +63,10 @@ class ProjectController extends Controller
     {
         $project = $this->getProject($code);
 
-        $logManager = new ActivityManager($this->getDoctrine()->getManager());
+        $logManager = new ActivityManager(
+            $this->getDoctrine()->getManager(),
+            $this->get('security.context')->getToken()->getUser()
+        );
 
         return array(
             'project' => $project,
