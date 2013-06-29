@@ -26,7 +26,7 @@
                     <li><a href="{{ path('pmtweb_project_summary', {'code': project.code}) }}">{{ project.name }} <span class="tag project">{{ project.code }}</span></a></li>
                 {% endfor %}
                 <li class="divider"></li>
-                <li><a href="#">Create</a></li>
+                <li><a href="{{ path('pmtweb_project_form') }}">Create</a></li>
                 <li><a href="#">Settings</a></li>
             </ul>
         </li>
