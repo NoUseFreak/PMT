@@ -24,14 +24,13 @@ class IssueManager
 
     public function saveIssue(Issue $issue)
     {
-        $activityManager = new ActivityManager($this->em);
-
-
+        $new = false;
         if (!$issue->getCreated()) {
+            $new = true;
             $issue->setCreated(new \DateTime());
 
+            // Set first status
             $workflowManager = new WorkflowManager($this->em);
-
             $firstStep = $workflowManager->getFirstStep($issue->getProject()->getWorkflow());
             $issue->setStatus($firstStep->getStatus());
         }
@@ -42,6 +41,13 @@ class IssueManager
         $this->em->flush();
 
 
-        $activityManager->log($issue->getCreator(), 'created', $issue);
+        // Log creation
+        $activityManager = new ActivityManager($this->em, $issue->getCreator());
+        if ($new) {
+            $activityManager->log($issue->getCreator(), 'created', $issue);
+        }
+        else {
+            $activityManager->log($issue->getCreator(), 'updated', $issue);
+        }
     }
 }
