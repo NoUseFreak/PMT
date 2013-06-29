@@ -1,0 +1,143 @@
+{% extends "PMTWebBundle::layout.html.twig" %}
+
+{% block content_title %}New project{% endblock %}
+
+{% block content_actions %}{% endblock %}
+
+{% block content %}
+    <div class="row-fluid">
+        {{ form_errors(form) }}
+        <form action="{{ path('pmtweb_project_form') }}" method="post" {{ form_enctype(form) }}>
+            <div class="span8">
+                <div class="accordion">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#accordion_details">
+                                Details
+                            </a>
+                        </div>
+                        <div id="accordion_details" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+
+                                <div class="control-group">
+                                    <label class="control-label" for="summary">
+                                        {{ form_label(form.name) }}
+                                    </label>
+
+                                    <div class="controls row-fluid">
+                                        {{ form_widget(form.name, {'attr': {'class': 'span12' }}) }}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="summary">
+                                        {{ form_label(form.code) }}
+                                    </label>
+
+                                    <div class="controls row-fluid">
+                                        {{ form_widget(form.code, {'attr': {'class': 'span12' }}) }}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="type">
+                                        {{ form_label(form.description) }}
+                                    </label>
+
+                                    <div class="controls row-fluid">
+                                        {{ form_widget(form.description, {'attr': {'class': 'span12', 'rows': '10' }}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="accordion">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#accordion_people">
+                                People
+                            </a>
+                        </div>
+                        <div id="accordion_people" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        {{ form_label(form.creator) }}
+                                    </div>
+                                    <div class="controls row-fluid">
+                                        {{ form_widget(form.creator, {'attr': {'class': 'span12' }}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#accordion_workflow">
+                                Workflow
+                            </a>
+                        </div>
+                        <div id="accordion_workflow" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        {{ form_label(form.workflow) }}
+                                    </div>
+                                    <div class="controls row-fluid">
+                                        {{ form_widget(form.workflow, {'attr': {'class': 'span12' }}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="form-actions">
+                    <div class="form-horizontal">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn" onclick="window.history.back();">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ form_rest(form) }}
+        </form>
+
+    </div>
+{% endblock %}
+
+{% block body_scripts %}
+    <script>
+        $(function () {
+            $('select').select2();
+            $('#issue_tags').select2({
+                'tags': true,
+                'multiple': true,
+                'minimumInputLength': 2,
+                'ajax': {
+                    'url': "/ajax/tags.json",
+                    'dataType': 'json',
+                    'type': 'post',
+                    'data': function (term, page) {
+                        return {
+                            'q': term,
+                            'add_new': true
+                        };
+                    },
+                    'results': function (data, page) {
+                        return {results: data.tags};
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}

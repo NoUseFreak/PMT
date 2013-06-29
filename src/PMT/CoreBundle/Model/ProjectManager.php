@@ -14,6 +14,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use PMT\CoreBundle\Entity\Issue\Issue;
 use PMT\CoreBundle\Entity\Issue\Priority;
 use PMT\CoreBundle\Entity\Project\Project;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class ProjectManager
 {
@@ -36,5 +37,22 @@ class ProjectManager
                     'order' => 0,
                 )
             );
+    }
+
+    /**
+     * @param Project $project
+     */
+    public function saveProject(Project $project)
+    {
+        try {
+            $this->em->persist($project);
+            $this->em->flush();
+        }
+        catch (Exception $e) {
+
+            return false;
+        }
+
+        return true;
     }
 }

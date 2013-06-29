@@ -113,6 +113,17 @@ class IssueController extends Controller
     }
 
     /**
+     * @Template()
+     * @Route("/issues", name="pmtweb_issue_navigator")
+     */
+    public function navigatorAction()
+    {
+        return array(
+            'issues' => array(),
+        );
+    }
+
+    /**
      * @Route("/{projectCode}/{id}/step/{stepId}", requirements={"id" = "\d+"}, name="pmtweb_issue_new_step")
      */
     public function newStepAction($projectCode, $id, $stepId)
