@@ -52,6 +52,11 @@ class Project
     private $issues;
 
     /**
+     * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Project\Milestone", mappedBy="project")
+     */
+    private $milestones;
+
+    /**
      * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\User")
      * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
@@ -187,5 +192,21 @@ class Project
     public function getWorkflow()
     {
         return $this->workflow;
+    }
+
+    /**
+     * @param mixed $milestones
+     */
+    public function setMilestones($milestones)
+    {
+        $this->milestones = $milestones;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMilestones()
+    {
+        return $this->milestones;
     }
 }
