@@ -72,6 +72,14 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="control-label">
+                                        {{ form_label(form.milestone) }}
+                                    </div>
+                                    <div class="controls row-fluid">
+                                        {{ form_widget(form.milestone, {'attr': {'class': 'span12' }}) }}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="control-label">
                                         {{ form_label(form.type) }}
                                     </div>
                                     <div class="controls row-fluid">

@@ -45,6 +45,17 @@ class IssueType extends AbstractType
                 )
             )
             ->add(
+                'milestone',
+                'entity',
+                array(
+                    'class' => 'PMT\CoreBundle\Entity\Project\Milestone',
+                    'property' => 'name',
+                    'empty_value' => 'Choose an milestone',
+                    'required' => false,
+                    'mapped' => false,
+                )
+            )
+            ->add(
                 'type',
                 'entity',
                 array(
