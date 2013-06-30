@@ -1,0 +1,13 @@
+{% if view == 'advanced' %}
+<ul class="advanced">
+    {% for milestone in milestones %}
+        <li>{{ milestone.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+    <ul>
+        {% for milestone in milestones %}
+            <li>{{ milestone.name }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}

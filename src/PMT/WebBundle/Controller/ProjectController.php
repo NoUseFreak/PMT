@@ -87,6 +87,19 @@ class ProjectController extends Controller
         );
     }
 
+    /**
+     * @Template()
+     * @Route("/{projectCode}/milestones", name="pmtweb_project_milestones")
+     */
+    public function milestonesAction($projectCode)
+    {
+        $project = $this->getProject($projectCode);
+
+        return array(
+            'project' => $project,
+        );
+    }
+
     private function getProject($code)
     {
         $project = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Project\Project')

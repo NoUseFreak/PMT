@@ -1,0 +1,22 @@
+{% extends "PMTWebBundle:Project:layout.html.twig" %}
+
+{% block tabContent %}
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" href="#accordion_description">
+                            Milestones
+                        </a>
+                    </div>
+                    <div id="accordion_description" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            {% include 'PMTWebBundle:Milestone:list.html.twig' with {'milestones': project.milestones, 'view': 'advanced'} %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

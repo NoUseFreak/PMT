@@ -42,8 +42,8 @@
                 <li>
                     <a href="#calendar">Calendar</a>
                 </li>
-                <li>
-                    <a href="#milestones">Milestones</a>
+                <li{% if app.request.attributes.get('_route') == 'pmtweb_project_milestones' %} class="active"{% endif %}>
+                    <a href="{{ path('pmtweb_project_milestones', {'projectCode': project.code}) }}">Milestones</a>
                 </li>
                 <li>
                     <a href="#components">Components</a>
