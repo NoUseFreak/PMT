@@ -86,3 +86,8 @@ ul.activity-stream > li {
 .issue-nagivator .control-group:last-child {
     margin-bottom: 0;
 }
+
+ul .a {
+    float: right;
+    width: 50%;
+}

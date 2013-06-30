@@ -54,6 +54,13 @@ class Milestone
     private $description;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var \DateTime
+     */
+    private $dueDate;
+
+    /**
      * @param string $description
      */
     public function setDescription($description)
@@ -115,5 +122,21 @@ class Milestone
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * @param \DateTime $dueDate
+     */
+    public function setDueDate($dueDate)
+    {
+        $this->dueDate = $dueDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDueDate()
+    {
+        return $this->dueDate;
     }
 }

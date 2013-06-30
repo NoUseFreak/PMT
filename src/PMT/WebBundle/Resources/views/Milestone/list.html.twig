@@ -1,7 +1,20 @@
 {% if view == 'advanced' %}
-<ul class="advanced">
+<ul class="advanced unstyled container-fluid">
     {% for milestone in milestones %}
-        <li>{{ milestone.name }}</li>
+        <li class="row">
+            <div class="span6">
+                <div>{{ milestone.name }}</div>
+                <div>{{ milestone.dueDate|date("d-m-Y") }}</div>
+            </div>
+            <div class="span6">
+                <div>
+                    12 closed - 6 open
+                </div>
+                <div class="progress">
+                    <div class="bar" style="width: 60%;"><span class="pull-left">&nbsp;60%</span></div>
+                </div>
+            </div>
+        </li>
     {% endfor %}
 </ul>
 {% else %}
