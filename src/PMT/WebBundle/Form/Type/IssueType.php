@@ -50,7 +50,7 @@ class IssueType extends AbstractType
                 array(
                     'class' => 'PMT\CoreBundle\Entity\Project\Milestone',
                     'property' => 'name',
-                    'empty_value' => 'Choose an milestone',
+                    'empty_value' => 'No milestone',
                     'required' => false,
                     'mapped' => false,
                 )
