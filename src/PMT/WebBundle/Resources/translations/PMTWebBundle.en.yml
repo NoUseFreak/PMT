@@ -1,8 +1,10 @@
 # Issue
 issue:
+    details: Details
     type: Type
     priority: Priority
     milestone: Milestone
+    nomilestone: No milestone
     components: Components
     tags: Labels
     status: Status
@@ -21,3 +23,9 @@ issue:
     duedate: Due
     resolveddate: Resolved
     timetracking: Time tracking
+    meta: Meta
+    nomilestonefound: No milestone found
+    form:
+        create: Create issue
+        cancel: Cancel
+        newissue: New issue

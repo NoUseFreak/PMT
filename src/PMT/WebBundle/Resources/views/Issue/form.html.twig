@@ -1,6 +1,7 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
 
-{% block content_title %}New issue{% endblock %}
+{% block content_title %}{{ 'issue.form.newissue'|trans }}{% endblock %}
 
 {% block content_actions %}{% endblock %}
 
@@ -13,7 +14,7 @@
                     <div class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle" data-toggle="collapse" href="#accordion_details">
-                                Details
+                                {{ 'issue.details'|trans }}
                             </a>
                         </div>
                         <div id="accordion_details" class="accordion-body collapse in">
@@ -57,7 +58,7 @@
                     <div class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle" data-toggle="collapse" href="#accordion_meta">
-                                Meta
+                                {{ 'issue.meta'|trans }}
                             </a>
                         </div>
                         <div id="accordion_meta" class="accordion-body collapse in">
@@ -102,7 +103,7 @@
                     <div class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle" data-toggle="collapse" href="#accordion_people">
-                                People
+                                {{ 'issue.people'|trans }}
                             </a>
                         </div>
                         <div id="accordion_people" class="accordion-body collapse in">
@@ -128,8 +129,8 @@
                 <div class="form-actions">
                     <div class="form-horizontal">
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                            <button type="button" class="btn" onclick="window.history.back();">Cancel</button>
+                            <button type="submit" class="btn btn-primary">{{ 'issue.form.create'|trans }}</button>
+                            <button type="button" class="btn" onclick="window.history.back();">{{ 'issue.form.cancel'|trans }}</button>
                         </div>
                         <div class="control-group">
                             <label class="control-label" for="rebuild">
@@ -173,13 +174,13 @@
                 }
             });
             $('#issue_milestone').select2({
-                'placeholder': 'No milestone',
+                'placeholder': '{{ 'issue.nomilestone'|trans }}',
                 'allowClear': true,
                 'initSelection': function() {
                     return '';
                 },
                 'formatNoMatches': function(term) {
-                    return 'No milestones found';
+                    return '{{ 'issue.nomilestonefound'|trans }}';
                 },
                 'ajax': {
                     'url': "/ajax/milestones.json",

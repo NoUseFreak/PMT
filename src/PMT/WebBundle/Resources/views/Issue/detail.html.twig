@@ -18,7 +18,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_details">
-                            Details
+                            {{ 'issue.details'|trans }}
                         </a>
                     </div>
                     <div id="accordion_details" class="accordion-body collapse in">
@@ -39,7 +39,7 @@
                                             {% if issue.milestone %}
                                                 {{ issue.milestone.name }}
                                             {% else %}
-                                                No milestone
+                                                {{ 'issue.nomilestone'|trans }}
                                             {% endif %}
                                         </td>
                                     </tr>
