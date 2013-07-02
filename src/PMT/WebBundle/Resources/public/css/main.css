@@ -1,3 +1,15 @@
+/**
+ * Bootstrap overwrites
+ */
+.collapse {
+    overflow: hidden;
+}
+.collapse.in {
+    overflow: visible;
+}
+
+
+
 body {
     padding-top: 60px;
     padding-bottom: 40px;
@@ -87,7 +99,6 @@ ul.activity-stream > li {
     margin-bottom: 0;
 }
 
-ul .a {
-    float: right;
-    width: 50%;
+time.moment:hover {
+    cursor: default;
 }

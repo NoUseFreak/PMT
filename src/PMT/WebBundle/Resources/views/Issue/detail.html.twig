@@ -21,52 +21,54 @@
                         </a>
                     </div>
                     <div id="accordion_details" class="accordion-body collapse in">
-                        <div class="accordion-inner row-fluid">
-                            <div class="span6">
-                                <table class="issue-details">
-                                    <tr>
-                                        <td>Type:</td>
-                                        <td>{{ issue.type.name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Priority:</td>
-                                        <td>{{ issue.priority.name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Milestone:</td>
-                                        <td>
-                                            {% if issue.milestone %}
-                                                {{ issue.milestone.name }}
-                                            {% else %}
-                                                No milestone
-                                            {% endif %}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Components:</td>
-                                        <td>value</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Labels:</td>
-                                        <td>
-                                            {% for tag in issue.tags %}
-                                                {{ tag.name }},
-                                            {% endfor %}
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="span6">
-                                <table class="issue-details">
-                                    <tr>
-                                        <td>Status:</td>
-                                        <td>{{ issue.status.name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Resolution:</td>
-                                        <td>value</td>
-                                    </tr>
-                                </table>
+                        <div class="accordion-inner">
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <table class="issue-details">
+                                        <tr>
+                                            <td>Type:</td>
+                                            <td>{{ issue.type.name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Priority:</td>
+                                            <td>{{ issue.priority.name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Milestone:</td>
+                                            <td>
+                                                {% if issue.milestone %}
+                                                    {{ issue.milestone.name }}
+                                                {% else %}
+                                                    No milestone
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Components:</td>
+                                            <td>value</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Labels:</td>
+                                            <td>
+                                                {% for tag in issue.tags %}
+                                                    {{ tag.name }},
+                                                {% endfor %}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="span6">
+                                    <table class="issue-details">
+                                        <tr>
+                                            <td>{{ 'issue.status'|trans }}:</td>
+                                            <td>{{ issue.status.name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ 'issue.resolution'|trans }}:</td>
+                                            <td>value</td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -209,19 +211,11 @@
                             <table>
                                 <tr>
                                     <td>Created:</td>
-                                    <td>{{ "now"|date("d/m/Y") }}</td>
+                                    <td><time class="moment" datetime="{{ issue.created|date('Y-m-d\TH:i:s') }}"></time></td>
                                 </tr>
                                 <tr>
                                     <td>Updated:</td>
-                                    <td>{{ "now"|date("d/m/Y") }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Due:</td>
-                                    <td>{{ "now"|date("d/m/Y") }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Resolved:</td>
-                                    <td>{{ "now"|date("d/m/Y") }}</td>
+                                    <td><time class="moment" datetime="{{ issue.lastUpdated|date('Y-m-d\TH:i:s') }}"></time></td>
                                 </tr>
                             </table>
                         </div>
