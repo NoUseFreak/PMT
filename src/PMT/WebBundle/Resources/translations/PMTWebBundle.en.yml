@@ -34,4 +34,6 @@ issue:
         newissue: New issue
     navigator:
         search: Search
+    link:
+        create: Create issue
 
