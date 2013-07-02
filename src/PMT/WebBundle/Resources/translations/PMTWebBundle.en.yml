@@ -50,6 +50,7 @@ issue:
 # Project
 project:
     projects: Projects
+    summary: Summary
     roadmap: Road map
     agile: Agile
     people: People
