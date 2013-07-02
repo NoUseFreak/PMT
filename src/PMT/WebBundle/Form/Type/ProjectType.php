@@ -77,6 +77,6 @@ class ProjectType extends AbstractType
      */
     public function getName()
     {
-        return 'issue';
+        return 'project';
     }
 }

@@ -5,6 +5,7 @@ namespace PMT\WebBundle\Controller;
 use PMT\CoreBundle\Model\ActivityManager;
 use PMT\CoreBundle\Entity\Project\Project;
 use PMT\CoreBundle\Model\ProjectManager;
+use PMT\WebBundle\Form\Type\ProjectEditType;
 use PMT\WebBundle\Form\Type\ProjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -64,7 +65,7 @@ class ProjectController extends Controller
         $project = $this->getProject($projectCode);
 
         $form = $this->createForm(
-            new ProjectType($this->getDoctrine()->getManager(), array(
+            new ProjectEditType($this->getDoctrine()->getManager(), array(
                 'activeUser' => $this->get('security.context')->getToken()->getUser(),
             )),
             $project
