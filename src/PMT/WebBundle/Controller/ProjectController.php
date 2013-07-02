@@ -17,7 +17,7 @@ class ProjectController extends Controller
      * @Template()
      * @Route("/project/create", name="pmtweb_project_form")
      */
-    public function formAction(Request $request)
+    public function createFormAction(Request $request)
     {
         $project = new Project();
 
@@ -52,6 +52,49 @@ class ProjectController extends Controller
 
         return array(
             'form' => $form->createView(),
+        );
+    }
+
+    /**
+     * @Template()
+     * @Route("/{projectCode}/edit", name="pmtweb_project_edit")
+     */
+    public function editFormAction($projectCode, Request $request)
+    {
+        $project = $this->getProject($projectCode);
+
+        $form = $this->createForm(
+            new ProjectType($this->getDoctrine()->getManager(), array(
+                'activeUser' => $this->get('security.context')->getToken()->getUser(),
+            )),
+            $project
+        );
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+
+                $projectManager = new ProjectManager($this->getDoctrine()->getManager());
+                if ($projectManager->saveProject($project)) {
+                    $redirectUrl = $this->generateUrl(
+                        'pmtweb_project_summary',
+                        array(
+                            'code' => $project->getCode(),
+                        )
+                    );
+
+                    $this->get('session')->getFlashBag()->add('success', 'Project updated!');
+
+                    return $this->redirect($redirectUrl);
+                }
+
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+            'project' => $project,
         );
     }
 
