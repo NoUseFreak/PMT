@@ -1,8 +1,10 @@
 # Issue
 issue:
+    issues: Issues
     details: Details
     type: Type
     priority: Priority
+    priorities: Priorities
     milestone: Milestone
     nomilestone: No milestone
     components: Components
@@ -25,7 +27,11 @@ issue:
     timetracking: Time tracking
     meta: Meta
     nomilestonefound: No milestone found
+    project: Project
     form:
         create: Create issue
         cancel: Cancel
         newissue: New issue
+    navigator:
+        search: Search
+

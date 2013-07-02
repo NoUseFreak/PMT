@@ -1,6 +1,6 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
 
-{% block content_title %}Issues{% endblock %}
+{% block content_title %}{{ 'issue.issues'|trans }}{% endblock %}
 
 {% block content %}
     <form action="" class="issue-nagivator row">
@@ -9,14 +9,14 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_people">
-                            Search
+                            {{ 'issue.navigator.search'|trans }}
                         </a>
                     </div>
                     <div id="accordion_people" class="accordion-body collapse in">
                         <div class="accordion-inner">
                             <div class="control-group">
                                 <div class="control-label hide">
-                                    Search
+                                    {{ 'issue.navigator.search'|trans }}
                                 </div>
                                 <div class="controls row-fluid">
                                     <input type="text" class="span12"/>
@@ -30,14 +30,14 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_people">
-                            Project
+                            {{ 'issue.project'|trans }}
                         </a>
                     </div>
                     <div id="accordion_people" class="accordion-body collapse in">
                         <div class="accordion-inner">
                             <div class="control-group">
                                 <div class="control-label hide">
-                                    Project
+                                    {{ 'issue.project'|trans }}
                                 </div>
                                 <div class="controls row-fluid">
                                     <select class="span12" name="project" id="">
@@ -49,7 +49,7 @@
                             </div>
                             <div class="control-group">
                                 <div class="control-label hide">
-                                    Milestone
+                                    {{ 'issue.milestone'|trans }}
                                 </div>
                                 <div class="controls row-fluid">
                                     <select class="span12" name="milestone" id="">
@@ -98,14 +98,14 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_filter">
-                            Meta
+                            {{ 'issue.meta'|trans }}
                         </a>
                     </div>
                     <div id="accordion_filter" class="accordion-body collapse in form-inline">
                         <div class="accordion-inner">
                             <div class="control-group">
                                 <div class="control-label hide">
-                                    Status
+                                    {{ 'issue.status'|trans }}
                                 </div>
                                 <div class="controls row-fluid">
                                     <select class="span12" name="status" id="">
@@ -117,7 +117,7 @@
                             </div>
                             <div class="control-group">
                                 <div class="control-label hide">
-                                    Priorities
+                                    {{ 'issue.priorities'|trans }}
                                 </div>
                                 <div class="controls row-fluid">
                                     <select class="span12" name="priority" id="">
@@ -141,7 +141,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" href="javascript:void();">
-                            Issues
+                            {{ 'issue.issues'|trans }}
                         </a>
                     </div>
                     <div id="accordion_issues" class="accordion-body collapse in">
@@ -157,7 +157,6 @@
 
 {% endblock %}
 
-
 {% block body_scripts %}
     <script type="text/javascript">
         $(function() {
@@ -168,7 +167,6 @@
                 $(this).next('input').click();
                 $('form.issue-nagivator').submit();
             });
-
         });
     </script>
 {% endblock %}
