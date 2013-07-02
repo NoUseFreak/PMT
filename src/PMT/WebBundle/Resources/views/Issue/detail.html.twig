@@ -1,4 +1,5 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
 
 {% block content_title %}{{ issue.summary }}{% endblock %}
 
@@ -25,15 +26,15 @@
                             <div class="span6">
                                 <table class="issue-details">
                                     <tr>
-                                        <td>Type:</td>
+                                        <td>{{ 'issue.type'|trans }}:</td>
                                         <td>{{ issue.type.name }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Priority:</td>
+                                        <td>{{ 'issue.priority'|trans }}:</td>
                                         <td>{{ issue.priority.name }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Milestone:</td>
+                                        <td>{{ 'issue.milestone'|trans }}:</td>
                                         <td>
                                             {% if issue.milestone %}
                                                 {{ issue.milestone.name }}
@@ -43,11 +44,11 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Components:</td>
+                                        <td>{{ 'issue.components'|trans }}:</td>
                                         <td>value</td>
                                     </tr>
                                     <tr>
-                                        <td>Labels:</td>
+                                        <td>{{ 'issue.tags'|trans }}:</td>
                                         <td>
                                             {% for tag in issue.tags %}
                                                 {{ tag.name }},
@@ -59,11 +60,11 @@
                             <div class="span6">
                                 <table class="issue-details">
                                     <tr>
-                                        <td>Status:</td>
+                                        <td>{{ 'issue.status'|trans }}:</td>
                                         <td>{{ issue.status.name }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Resolution:</td>
+                                        <td>{{ 'issue.resolution'|trans }}:</td>
                                         <td>value</td>
                                     </tr>
                                 </table>
@@ -76,7 +77,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_description">
-                            Description
+                            {{ 'issue.description'|trans }}
                         </a>
                     </div>
                     <div id="accordion_description" class="accordion-body collapse in">
@@ -90,7 +91,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_subtasks">
-                            Sub-tasks
+                            {{ 'issue.subtasks'|trans }}
                         </a>
                     </div>
                     <div id="accordion_subtasks" class="accordion-body collapse in">
@@ -104,7 +105,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_comments">
-                            Comments
+                            {{ 'issue.comments'|trans }}
                         </a>
                     </div>
                     <div id="accordion_comments" class="accordion-body collapse in">
@@ -118,7 +119,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_activity">
-                            Activity
+                            {{ 'issue.activity'|trans }}
                         </a>
                     </div>
                     <div id="accordion_activity" class="accordion-body collapse">
@@ -134,7 +135,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" href="javascript:void();">
-                            Actions
+                            {{ 'issue.actions'|trans }}
                         </a>
                     </div>
                     <div id="accordion_actions" class="accordion-body in">
@@ -170,20 +171,20 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_people">
-                            People
+                            {{ 'issue.people'|trans }}
                         </a>
                     </div>
                     <div id="accordion_people" class="accordion-body collapse in">
                         <div class="accordion-inner">
                             <table>
                                 <tr>
-                                    <td>Creator:</td>
+                                    <td>{{ 'issue.creator'|trans }}:</td>
                                     <td>
                                         <a href="{{ path('pmtweb_user_profile', {'username': issue.creator.username }) }}">{{ issue.creator.username }}</a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Assignee:</td>
+                                    <td>{{ 'issue.assignee'|trans }}:</td>
                                     <td>
                                         {% if issue.assignee %}
                                             <a href="{{ path('pmtweb_user_profile', {'username': issue.assignee.username }) }}">{{ issue.assignee.username }}</a>
@@ -201,26 +202,26 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_dates">
-                            Dates
+                            {{ 'issue.dates'|trans }}
                         </a>
                     </div>
                     <div id="accordion_dates" class="accordion-body collapse in">
                         <div class="accordion-inner">
                             <table>
                                 <tr>
-                                    <td>Created:</td>
+                                    <td>{{ 'issue.created'|trans }}:</td>
                                     <td>{{ "now"|date("d/m/Y") }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Updated:</td>
+                                    <td>{{ 'issue.updated'|trans }}:</td>
                                     <td>{{ "now"|date("d/m/Y") }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Due:</td>
+                                    <td>{{ 'issue.duedate'|trans }}:</td>
                                     <td>{{ "now"|date("d/m/Y") }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Resolved:</td>
+                                    <td>{{ 'issue.resolveddate'|trans }}:</td>
                                     <td>{{ "now"|date("d/m/Y") }}</td>
                                 </tr>
                             </table>
@@ -232,7 +233,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_timetracking">
-                            Time tracking
+                            {{ 'issue.timetracking'|trans }}
                         </a>
                     </div>
                     <div id="accordion_timetracking" class="accordion-body collapse in">

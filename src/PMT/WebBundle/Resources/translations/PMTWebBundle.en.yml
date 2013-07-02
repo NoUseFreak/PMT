@@ -1,0 +1,23 @@
+# Issue
+issue:
+    type: Type
+    priority: Priority
+    milestone: Milestone
+    components: Components
+    tags: Labels
+    status: Status
+    resolution: Resolution
+    description: Description
+    subtasks: Sub-tasks
+    comments: Comments
+    activity: Activity
+    actions: Actions
+    people: People
+    creator: Creator
+    assignee: Assignee
+    dates: Dates
+    created: Created
+    updated: Updated
+    duedate: Due
+    resolveddate: Resolved
+    timetracking: Time tracking
