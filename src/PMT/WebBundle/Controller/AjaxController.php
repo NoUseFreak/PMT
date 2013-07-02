@@ -47,4 +47,42 @@ class AjaxController extends Controller
 
         return $response;
     }
+
+    /**
+     * @Route("/ajax/milestones.json", name="pmtweb_ajax_milestones")
+     * @Method("post")
+     */
+    public function milestoneAction()
+    {
+        $params = array(
+            'project' => $this->getRequest()->request->get('project_id'),
+        );
+
+        $milestones = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Project\Milestone')
+            ->findBy(
+                $params,
+                array(
+                    'dueDate' => 'ASC',
+                )
+            );
+
+        $milestoneObjects = array_map(
+            function ($milestone) {
+                return array(
+                    'id' => $milestone->getId(),
+                    'text' => $milestone->getName(),
+                );
+            },
+            $milestones
+        );
+
+        $response = new JsonResponse();
+        $response->setData(
+            array(
+                'milestones' => $milestoneObjects,
+            )
+        );
+
+        return $response;
+    }
 }

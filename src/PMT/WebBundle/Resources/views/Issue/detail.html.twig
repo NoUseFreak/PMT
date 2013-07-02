@@ -34,7 +34,13 @@
                                     </tr>
                                     <tr>
                                         <td>Milestone:</td>
-                                        <td>value</td>
+                                        <td>
+                                            {% if issue.milestone %}
+                                                {{ issue.milestone.name }}
+                                            {% else %}
+                                                No milestone
+                                            {% endif %}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Components:</td>

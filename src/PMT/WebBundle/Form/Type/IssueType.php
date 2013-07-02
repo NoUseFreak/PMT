@@ -12,6 +12,7 @@ namespace PMT\WebBundle\Form\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
+use PMT\CoreBundle\Form\DataTransformer\MilestoneTransformer;
 use PMT\CoreBundle\Form\DataTransformer\TagsTransformer;
 use PMT\CoreBundle\Model\ProjectManager;
 use Symfony\Component\Form\AbstractType;
@@ -45,15 +46,14 @@ class IssueType extends AbstractType
                 )
             )
             ->add(
-                'milestone',
-                'entity',
-                array(
-                    'class' => 'PMT\CoreBundle\Entity\Project\Milestone',
-                    'property' => 'name',
-                    'empty_value' => 'No milestone',
-                    'required' => false,
-                    'mapped' => false,
+                $builder->create(
+                    'milestone',
+                    'text',
+                    array(
+                        'required' => false,
+                    )
                 )
+                    ->addModelTransformer(new MilestoneTransformer($this->om))
             )
             ->add(
                 'type',

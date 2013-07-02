@@ -81,6 +81,14 @@ class Issue
     private $project;
 
     /**
+     * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Project\Milestone", inversedBy="issues")
+     * @ORM\JoinColumn(name="milestone_id", referencedColumnName="id")
+     *
+     * @var Project
+     */
+    private $milestone;
+
+    /**
      * @ORM\ManyToOne(targetEntity="PMT\CoreBundle\Entity\Issue\Priority")
      * @ORM\JoinColumn(name="priority_id", referencedColumnName="id")
      *
@@ -323,5 +331,21 @@ class Issue
     public function getLastUpdated()
     {
         return $this->lastUpdated;
+    }
+
+    /**
+     * @param \PMT\CoreBundle\Entity\Project\Project $milestone
+     */
+    public function setMilestone($milestone)
+    {
+        $this->milestone = $milestone;
+    }
+
+    /**
+     * @return \PMT\CoreBundle\Entity\Project\Project
+     */
+    public function getMilestone()
+    {
+        return $this->milestone;
     }
 }

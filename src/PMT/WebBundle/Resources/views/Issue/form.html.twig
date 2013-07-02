@@ -172,6 +172,33 @@
                     }
                 }
             });
+            $('#issue_milestone').select2({
+                'placeholder': 'No milestone',
+                'allowClear': true,
+                'initSelection': function() {
+                    return '';
+                },
+                'formatNoMatches': function(term) {
+                    return 'No milestones found';
+                },
+                'ajax': {
+                    'url': "/ajax/milestones.json",
+                    'dataType': 'json',
+                    'type': 'post',
+                    'data': function (term, page) {
+                        return {
+                            'q': term,
+                            'project_id': $('#issue_project').val()
+                        };
+                    },
+                    'results': function (data, page) {
+                        return {results: data.milestones};
+                    }
+                }
+            });
+            $('#issue_project').on('change', function() {
+                $('#issue_milestone').select2('val', '');
+            });
         });
     </script>
 {% endblock %}
