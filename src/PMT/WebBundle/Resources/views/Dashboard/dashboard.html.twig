@@ -1,12 +1,12 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
 
-{% block content_title %}Dashboard{% endblock %}
+{% block content_title %}{{ 'dashboard.dashboard'|trans }}{% endblock %}
 
 {% block content_actions %}
     <ul class="actions nav nav-pills pull-right">
         <li class="active">
-            <a href="{{ path('pmtweb_issue_form') }}"><i class="icon-edit icon-plus"></i> Create
-                issue</a>
+            <a href="{{ path('pmtweb_issue_form') }}"><i class="icon-edit icon-plus"></i> {{ 'issue.link.create'|trans }}</a>
         </li>
         <li>
             <a href="#"><i class="icon-edit icon-plus"></i> Add gadgets</a>
@@ -27,7 +27,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_stream">
-                            Activity stream
+                            {{ 'activity.activity_stream'|trans }}
                         </a>
                     </div>
                     <div id="accordion_stream" class="accordion-body collapse in">
@@ -43,7 +43,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_myissues">
-                            Assigned to me
+                            {{ 'issue.assigned_to_me'|trans }}
                         </a>
                     </div>
                     <div id="accordion_myissues" class="accordion-body collapse in">
@@ -57,7 +57,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" href="#accordion_inprogress">
-                            Issues in progress
+                            {{ 'issue.issues_in_progress'|trans }}
                         </a>
                     </div>
                     <div id="accordion_inprogress" class="accordion-body collapse in">

@@ -1,0 +1,70 @@
+# Dashboard
+dashboard:
+    dashboard: Dashboard
+
+# Activity stream
+activity:
+    activity_stream: Activity stream
+
+# Issue
+issue:
+    issues: Issues
+    details: Details
+    type: Type
+    priority: Priority
+    priorities: Priorities
+    milestone: Milestone
+    nomilestone: No milestone
+    components: Components
+    tags: Labels
+    status: Status
+    resolution: Resolution
+    description: Description
+    subtasks: Sub-tasks
+    comments: Comments
+    actions: Actions
+    people: People
+    creator: Creator
+    assignee: Assignee
+    dates: Dates
+    created: Created
+    updated: Updated
+    duedate: Due
+    resolveddate: Resolved
+    timetracking: Time tracking
+    meta: Meta
+    nomilestonefound: No milestone found
+    project: Project
+    assigned_to_me: Assigned to me
+    issues_in_progress: In progress
+    form:
+        create: Create issue
+        cancel: Cancel
+        newissue: New issue
+    navigator:
+        search: Search
+        owner: Owner
+    link:
+        create: Create issue
+
+# Project
+project:
+    projects: Projects
+    summary: Summary
+    roadmap: Road map
+    agile: Agile
+    people: People
+    link:
+        create: Create project
+
+# Mileston
+milestone:
+    milestones: Milestones
+
+# User
+user:
+    contact_details: Contact details
+    link:
+        profile: Profile
+        logout: Logout
+        preferences: Preferences
