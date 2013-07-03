@@ -13,7 +13,7 @@ before_script:
   - mysql -e 'create database pmt;'
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install -n --dev --prefer-source
-  - app/console doctrine:schema:install
+  - app/console doctrine:schema:create
   - mysql pmt < docs/test_data.sql
   - app/console fos:user:create username email@domain.com password
 
