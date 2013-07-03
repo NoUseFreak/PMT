@@ -39,7 +39,7 @@
     </filter>
 
     <php>
-        <env name="PMTWEB_AUTH_USER" value="admin"/>
-        <env name="PMTWEB_AUTH_PASSWORD" value="test"/>
+        <env name="PMTWEB_AUTH_USER" value="username"/>
+        <env name="PMTWEB_AUTH_PASSWORD" value="password"/>
     </php>
 </phpunit>
