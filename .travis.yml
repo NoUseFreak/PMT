@@ -12,7 +12,7 @@ before_script:
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install -n --dev --prefer-source
   - app/console doctrine:schema:create
-  - mysql pmt < docs/test_data.sql
+  - mysql pmt < doc/test_data.sql
   - app/console fos:user:create username email@domain.com password
 
 script: phpunit -c app
