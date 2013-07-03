@@ -20,7 +20,7 @@ class DashboardControllerTest extends WebTestCase
         $client = $this->getLoggedInClient();
         $crawler = $client->request('GET', '/');
 
-        $this->assertGreaterThan(0, $crawler->filter('html h1:contains("Dashboard")')->count());
+        $this->assertGreaterThan(0, $crawler->filter('html h1:contains("dashboard.dashboard")')->count());
     }
 
     protected function getLoggedInClient()
