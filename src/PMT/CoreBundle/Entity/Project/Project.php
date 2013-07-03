@@ -52,7 +52,7 @@ class Project
     private $issues;
 
     /**
-     * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Project\Milestone", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Project\Milestone", mappedBy="project", cascade={"persist"})
      */
     private $milestones;
 
@@ -80,6 +80,7 @@ class Project
     public function __construct()
     {
         $this->issues = new ArrayCollection();
+        $this->milestones = new ArrayCollection();
     }
 
     /**
@@ -208,5 +209,17 @@ class Project
     public function getMilestones()
     {
         return $this->milestones;
+    }
+
+    public function addMilestone(Milestone $milestone)
+    {
+        $milestone->setProject($this);
+
+        $this->milestones->add($milestone);
+    }
+
+    public function removeMilestone($milestone)
+    {
+        $this->milestones->removeElement($milestone);
     }
 }

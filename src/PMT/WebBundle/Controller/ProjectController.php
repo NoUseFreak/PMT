@@ -62,7 +62,13 @@ class ProjectController extends Controller
      */
     public function editFormAction($projectCode, Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $project = $this->getProject($projectCode);
+
+        $originalMilestones = array();
+        foreach ($project->getMilestones() as $milestone) {
+            $originalMilestones[] = $milestone;
+        };
 
         $form = $this->createForm(
             new ProjectEditType($this->getDoctrine()->getManager(), array(
@@ -75,6 +81,22 @@ class ProjectController extends Controller
             $form->handleRequest($request);
 
             if ($form->isValid()) {
+
+                foreach ($project->getMilestones() as $milestone) {
+                    foreach ($originalMilestones as $key => $toDel) {
+                        if ($toDel->getId() === $milestone->getId()) {
+                            unset($originalMilestones[$key]);
+                        }
+                    }
+                }
+                foreach ($originalMilestones as $milestone) {
+                    $project->getMilestones()->removeElement($milestone);
+                    $em->persist($milestone);
+                    $em->remove($milestone);
+                }
+
+                $em->persist($project);
+                $em->flush();
 
                 $projectManager = new ProjectManager($this->getDoctrine()->getManager());
                 if ($projectManager->saveProject($project)) {
@@ -144,6 +166,11 @@ class ProjectController extends Controller
         );
     }
 
+    /**
+     * @param $code
+     * @return Project
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     private function getProject($code)
     {
         $project = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Project\Project')

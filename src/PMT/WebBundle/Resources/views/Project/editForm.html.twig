@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <form action="{{ path('pmtweb_project_form') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('pmtweb_project_edit', {'projectCode': project.code}) }}" method="post" {{ form_enctype(form) }}>
 
         <div class="row-fluid">
             <div class="tabbable tabs-left">
@@ -136,7 +136,80 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane" id="milestones"></div>
+                        <div class="tab-pane" id="milestones">
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="accordion">
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle" data-toggle="collapse" href="#">
+                                                    Milestones
+                                                </a>
+                                            </div>
+                                            <div class="accordion-body collapse in">
+                                                <div class="accordion-inner">
+                                                    <ul class="milestones" data-prototype="{{ form_widget(form.milestones.vars.prototype)|e }}">
+                                                        {# iterate over each existing tag and render its only field: name #}
+                                                        {% for milestone in form.milestones %}
+                                                            <li>
+                                                                {{ form_row(milestone.name) }}
+                                                                {{ form_row(milestone.dueDate) }}
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    <script type="text/javascript">
+                                                        var collectionHolder = $('ul.milestones');
+                                                        collectionHolder.find('li').each(function() {
+                                                            addMilestoneFormDeleteLink($(this));
+                                                        });
+
+                                                        var $addMilestoneLink = $('<a href="#" class="add_milestone_link">Add a milestone</a>');
+                                                        var $newLinkLi = $('<li></li>').append($addMilestoneLink);
+
+                                                        jQuery(document).ready(function() {
+                                                            collectionHolder.append($newLinkLi);
+                                                            collectionHolder.data('index', collectionHolder.find(':input').length);
+
+                                                            $addMilestoneLink.on('click', function(e) {
+                                                                e.preventDefault();
+                                                                addMilestoneForm(collectionHolder, $newLinkLi);
+                                                            });
+                                                        });
+
+                                                        function addMilestoneForm(collectionHolder, $newLinkLi) {
+                                                            var prototype = collectionHolder.data('prototype');
+
+                                                            var index = collectionHolder.data('index');
+                                                            var newForm = prototype.replace(/__name__/g, index);
+
+                                                            collectionHolder.data('index', index + 1);
+
+                                                            var $newFormLi = $('<li></li>').append(newForm);
+                                                            $newLinkLi.before($newFormLi);
+                                                            addMilestoneFormDeleteLink($newFormLi);
+                                                        }
+                                                        function addMilestoneFormDeleteLink($milestoneFormLi) {
+                                                            var $removeFormA = $('<a href="#">delete this milestone</a>');
+                                                            $milestoneFormLi.append($removeFormA);
+
+                                                            $removeFormA.on('click', function(e) {
+                                                                // prevent the link from creating a "#" on the URL
+                                                                e.preventDefault();
+
+                                                                // remove the li for the tag form
+                                                                $milestoneFormLi.remove();
+                                                            });
+                                                        }
+                                                    </script>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

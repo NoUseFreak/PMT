@@ -10,8 +10,25 @@
 
 namespace PMT\WebBundle\Form\Type;
 
+use Symfony\Component\Form\FormBuilderInterface;
+
 class ProjectEditType extends ProjectType
 {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        parent::buildForm($builder, $options);
+
+        $builder->add(
+            'milestones',
+            'collection',
+            array(
+                'type' => new MilestoneType(),
+                'allow_add' => true,
+                'by_reference' => false,
+                'allow_delete' => true,
+            )
+        );
+    }
 
     /**
      * Returns the name of this type.
