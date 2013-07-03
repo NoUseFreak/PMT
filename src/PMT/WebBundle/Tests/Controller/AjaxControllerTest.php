@@ -8,7 +8,7 @@ class AjaxControllerTest extends WebTestCase
 {
     protected $client;
 
-    public function testTagFirewall()
+    public function testTagsFirewall()
     {
         $client = static::createClient();
         $client->request('POST', '/ajax/tags.json');
@@ -29,6 +29,13 @@ class AjaxControllerTest extends WebTestCase
 
         $array = (array)json_decode($client->getResponse()->getContent());
         $this->assertTrue(array_key_exists('tags', $array));
+    }
+
+    public function testMilestonesFirewall()
+    {
+        $client = static::createClient();
+        $client->request('POST', '/ajax/milestones.json');
+        $this->assertContains('/login', $client->getResponse()->headers->get('location'));
     }
 
     public function testMilestones()
