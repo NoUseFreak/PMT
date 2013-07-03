@@ -4,6 +4,8 @@ php:
   - 5.3.3
   - 5.3
   - 5.4
+env:
+  - DB=mysql
 
 services: mysql
 
@@ -11,5 +13,8 @@ before_script:
   - mysql -e 'create database pmt;'
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install -n --dev --prefer-source
+  - app/console doctrine:schema:install
+  - mysql pmt < docs/test_data.sql
+  - app/console fos:user:create username email@domain.com password
 
 script: phpunit -c app
