@@ -30,11 +30,10 @@ class MilestoneType extends AbstractType
             )
             ->add(
                 'dueDate',
-                'datetime',
+                'date',
                 array(
                     'required' => false,
-                    'date_widget' => 'single_text',
-                    'time_widget' => 'single_text',
+                    'widget' => 'single_text',
                 )
             );
 
