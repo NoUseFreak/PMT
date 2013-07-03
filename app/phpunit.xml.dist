@@ -38,4 +38,8 @@
         </whitelist>
     </filter>
 
+    <php>
+        <env name="PMTWEB_AUTH_USER" value="admin"/>
+        <env name="PMTWEB_AUTH_PASSWORD" value="test"/>
+    </php>
 </phpunit>
