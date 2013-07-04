@@ -25,6 +25,17 @@ class ProjectControllerTest extends WebTestCase
         $client->submit($form);
     }
 
+    /**
+     * @depends testForm
+     */
+    public function testDetail()
+    {
+        $client = $this->getLoggedInClient();
+        $crawler = $client->request('GET', '/project/summary');
+
+        $this->assertGreaterThan(0, $crawler->filter('.row-fluid h1')->count());
+    }
+
     protected function getLoggedInClient()
     {
         $client = static::createClient();

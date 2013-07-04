@@ -24,28 +24,17 @@ class IssueControllerTest extends WebTestCase
      */
     public function testDetail()
     {
-        $issue = $this->getMock('\PMT\CoreBundle\Entity\Issue\Issue');
-
-
-
-        $issueRepo = $this->getMockBuilder('\PMT\CoreBundle\Entity\Issue\IssueRepository')
-            ->disableOriginalConstructor()
-            ->getMock();
-        $issueRepo->expects($this->once())
-            ->method('find')
-            ->will($this->returnValue($issue));
-
         $client = $this->getLoggedInClient();
-        $client->getContainer()->set('doctrine.orm.default_entity_manager', $issueRepo);
+        $crawler = $client->request('GET', '/code/1');
 
-        $crawler = $client->request('GET', '/code/id');
-
-
+        $this->assertGreaterThan(0, $crawler->filter('.row-fluid h1')->count());
     }
 
-    protected function getLoggedInClient()
+    protected function getLoggedInClient($client = null)
     {
-        $client = static::createClient();
+        if (is_null($client)) {
+            $client = static::createClient();
+        }
 
         $crawler = $client->request('GET', '/login');
         $form = $crawler->selectButton('_submit')->form(
