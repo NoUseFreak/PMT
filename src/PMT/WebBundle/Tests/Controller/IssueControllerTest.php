@@ -27,7 +27,7 @@ class IssueControllerTest extends WebTestCase
         $client = $this->getLoggedInClient();
         $crawler = $client->request('GET', '/code/1');
 
-        $this->assertGreaterThan(0, $crawler->filter('.row-fluid h1')->count());
+        $this->assertGreaterThan(0, $crawler->filter('h1:contains("issue")')->count());
     }
 
     protected function getLoggedInClient($client = null)

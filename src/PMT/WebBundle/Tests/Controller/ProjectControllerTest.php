@@ -33,7 +33,7 @@ class ProjectControllerTest extends WebTestCase
         $client = $this->getLoggedInClient();
         $crawler = $client->request('GET', '/project/summary');
 
-        $this->assertGreaterThan(0, $crawler->filter('.row-fluid h1')->count());
+        $this->assertGreaterThan(0, $crawler->filter('h1:contains("project")')->count());
     }
 
     protected function getLoggedInClient()

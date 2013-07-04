@@ -1,4 +1,14 @@
 --
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'username','username','email@test.be','email@test.be',1,'owcy4utzzzksc8sck0w4wgkook84cg4','xJXKZOQcmMAwQUX7dDW2rOlE0Wsf8HdlUM8vVur3DkxVw5Nxw2L3XyB+HAXC6WPCnun5WGG5Uu4yuPgC7euPfQ==','2013-07-04 22:27:32',0,0,NULL,NULL,NULL,'a:0:{}',0,NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `issue_statuses`
 --
 LOCK TABLES `issue_statuses` WRITE;
@@ -70,4 +80,24 @@ INSERT INTO `workflow_step_actions` VALUES (5,3,2);
 INSERT INTO `workflow_step_actions` VALUES (6,3,4);
 INSERT INTO `workflow_step_actions` VALUES (7,4,1);
 /*!40000 ALTER TABLE `workflow_step_actions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `projects`
+--
+
+LOCK TABLES `projects` WRITE;
+/*!40000 ALTER TABLE `projects` DISABLE KEYS */;
+INSERT INTO `projects` VALUES (1,1,1,'project','project',NULL);
+/*!40000 ALTER TABLE `projects` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `issues`
+--
+
+LOCK TABLES `issues` WRITE;
+/*!40000 ALTER TABLE `issues` DISABLE KEYS */;
+INSERT INTO `issues` VALUES (1,1,NULL,1,1,1,NULL,5,'issue',NULL,'2013-07-04 22:28:01','2013-07-04 22:28:01');
+/*!40000 ALTER TABLE `issues` ENABLE KEYS */;
 UNLOCK TABLES;

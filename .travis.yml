@@ -13,6 +13,5 @@ before_script:
   - composer install -n --dev --prefer-source
   - app/console doctrine:schema:create
   - mysql pmt < doc/test_data.sql
-  - app/console fos:user:create username email@domain.com password
 
 script: phpunit -c app
