@@ -31,7 +31,7 @@ class IssueController extends Controller
         );
 
         if ($projectCode) {
-            $project = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Project\Project')
+            $project = $this->get('pmt_core.project_repository')
                 ->findByCode($projectCode);
             if ($project) {
                 $form->get('project')->setData($project);
@@ -129,7 +129,7 @@ class IssueController extends Controller
     public function newStepAction($projectCode, $id, $stepId)
     {
         $issue = $this->getIssue($id);
-        $step = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Workflow\WorkflowStep')->find($stepId);
+        $step = $this->get('pmt_core.workflow_step_repository')->find($stepId);
 
         $workflowManager = new WorkflowManager($this->getDoctrine()->getManager());
         if ($workflowManager->setToStep($issue, $step)) {
@@ -157,7 +157,7 @@ class IssueController extends Controller
      */
     private function getIssue($id)
     {
-        $issue = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Issue\Issue')
+        $issue = $this->get('pmt_core.issue_repository')
             ->find($id);
 
         if (!$issue) {

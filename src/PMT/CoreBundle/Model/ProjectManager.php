@@ -41,6 +41,7 @@ class ProjectManager
 
     /**
      * @param Project $project
+     * @return bool
      */
     public function saveProject(Project $project)
     {

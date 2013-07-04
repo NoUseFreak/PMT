@@ -1,0 +1,18 @@
+services:
+    pmt_core.issue_repository:
+        class: PMT\CoreBundle\Entity\Issue\IssueRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: ["PMT\\CoreBundle\\Entity\\Issue\\Issue"]
+
+    pmt_core.project_repository:
+        class: PMT\CoreBundle\Entity\Project\ProjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: ["PMT\\CoreBundle\\Entity\\Project\\Project"]
+
+    pmt_core.workflow_step_repository:
+        class: PMT\CoreBundle\Entity\Workflow\WorkflowStepRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: ["PMT\\CoreBundle\\Entity\\Workflow\\WorkflowStep"]

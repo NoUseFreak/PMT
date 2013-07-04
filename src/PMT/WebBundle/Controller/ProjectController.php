@@ -173,7 +173,7 @@ class ProjectController extends Controller
      */
     private function getProject($code)
     {
-        $project = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Project\Project')
+        $project = $this->get('pmt_core.project_repository')
             ->findByCode($code);
 
         if (!$project) {
