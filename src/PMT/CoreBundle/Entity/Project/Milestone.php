@@ -61,6 +61,11 @@ class Milestone
     private $dueDate;
 
     /**
+     * @ORM\OneToMany(targetEntity="PMT\CoreBundle\Entity\Issue\Issue", mappedBy="milestone")
+     */
+    private $issues;
+
+    /**
      * @param string $description
      */
     public function setDescription($description)
@@ -138,5 +143,21 @@ class Milestone
     public function getDueDate()
     {
         return $this->dueDate;
+    }
+
+    /**
+     * @param mixed $issues
+     */
+    public function setIssues($issues)
+    {
+        $this->issues = $issues;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIssues()
+    {
+        return $this->issues;
     }
 }
