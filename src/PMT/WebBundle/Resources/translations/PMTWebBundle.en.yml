@@ -5,6 +5,8 @@ dashboard:
 # Activity stream
 activity:
     activity_stream: Activity stream
+    list:
+        noresult: Nothing logged yet
 
 # Issue
 issue:
@@ -46,6 +48,8 @@ issue:
         owner: Owner
     link:
         create: Create issue
+    list:
+        noresult: No issues
 
 # Project
 project:
@@ -62,6 +66,8 @@ project:
 # Mileston
 milestone:
     milestones: Milestones
+    list:
+        noresult: No milestones
 
 # User
 user:

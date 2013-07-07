@@ -1,30 +1,43 @@
 {% if view == 'advanced' %}
-<ul class="advanced unstyled container-fluid">
-    {% for milestone in milestones %}
-        <li class="row">
-            <div class="span6">
-                <div><a href="#">{{ milestone.name }}</a></div>
-                {% if milestone.dueDate > date() %}
-                    <div>Due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\TH:i:s') }}"></time></div>
-                {% else %}
-                    <div>Past due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\TH:i:s') }}"></time></div>
-                {% endif %}
-            </div>
-            <div class="span6">
-                <div>
-                    12 closed - 6 open
-                </div>
-                <div class="progress">
-                    <div class="bar" style="width: 60%;"><span class="pull-left">&nbsp;60%</span></div>
-                </div>
-            </div>
-        </li>
-    {% endfor %}
-</ul>
-{% else %}
-    <ul>
+    {% if milestones|length %}
+        <ul class="advanced unstyled container-fluid">
         {% for milestone in milestones %}
-            <li>{{ milestone.name }}</li>
+            <li class="row">
+                <div class="span6">
+                    <div><a href="#">{{ milestone.name }}</a></div>
+                    {% if milestone.dueDate > date() %}
+                        <div>Due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\TH:i:s') }}"></time></div>
+                    {% else %}
+                        <div>Past due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\TH:i:s') }}"></time></div>
+                    {% endif %}
+                </div>
+                <div class="span6">
+                    <div>
+                        12 closed - 6 open
+                    </div>
+                    <div class="progress">
+                        <div class="bar" style="width: 60%;"><span class="pull-left">&nbsp;60%</span></div>
+                    </div>
+                </div>
+            </li>
         {% endfor %}
-    </ul>
+
+        </ul>
+    {% else %}
+        <div class="advanced">
+            {{ 'milestone.list.noresult'|trans }}
+        </div>
+    {% endif %}
+{% else %}
+    {% if milestones|length %}
+        <ul>
+            {% for milestone in milestones %}
+                <li>{{ milestone.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="simple">
+            {{ 'milestone.list.noresult'|trans }}
+        </div>
+    {% endif %}
 {% endif %}

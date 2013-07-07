@@ -1,13 +1,26 @@
+{% trans_default_domain 'PMTWebBundle' %}
 {% if view == 'advanced' %}
-<ul class="advanced">
-    {% for issue in issues %}
-        <li><a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
-    {% endfor %}
-</ul>
+    {% if issues|length %}
+        <ul class="advanced">
+            {% for issue in issues %}
+                <li><a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="advanced">
+            {{ 'issue.list.noresult'|trans }}
+        </div>
+    {% endif %}
 {% else %}
-    <ul>
-        {% for issue in issues %}
-            <li><a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
-        {% endfor %}
-    </ul>
+    {% if issues|length %}
+        <ul>
+            {% for issue in issues %}
+                <li><a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="advanced">
+            {{ 'issue.list.noresult'|trans }}
+        </div>
+    {% endif %}
 {% endif %}

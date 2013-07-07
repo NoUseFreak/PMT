@@ -1,30 +1,37 @@
+{% trans_default_domain 'PMTWebBundle' %}
 {% if view == 'advanced' %}
-    <ul class="activity-stream advanced">
-        {% for log in activity %}
-            <li class="media">
-                <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': log.user}) }}">
-                    <img class="media-object avatar avatar-medium" src="https://si0.twimg.com/profile_images/2364006435/u0tai5lvqeegtbxkepjq_bigger.png">
-                </a>
-                <div class="media-body">
-                    <ul>
-                        <li>
-                            <p>
-                                <a href="{{ path('pmtweb_user_profile', {'username': log.user}) }}">{{ log.user.username }}</a>
-                                {{ log.event.name }}
-                                <a href="{{ path('pmtweb_issue_detail', {'projectCode': log.issue.project.code, 'id': log.issue.id}) }}">{{ log.issue.project.code }}-{{ log.issue.id }} - {{ log.issue.summary }}</a>
-                            </p>
-                            <p>
-                                <i class="icon-time"></i> <time class="moment" datetime="{{ log.timestamp|date('Y-m-d\TH:i:s') }}"></time>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+    {% if activity|length %}
+        <ul class="activity-stream advanced">
+            {% for log in activity %}
+                <li class="media">
+                    <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': log.user}) }}">
+                        <img class="media-object avatar avatar-medium" src="https://si0.twimg.com/profile_images/2364006435/u0tai5lvqeegtbxkepjq_bigger.png">
+                    </a>
+                    <div class="media-body">
+                        <ul>
+                            <li>
+                                <p>
+                                    <a href="{{ path('pmtweb_user_profile', {'username': log.user}) }}">{{ log.user.username }}</a>
+                                    {{ log.event.name }}
+                                    <a href="{{ path('pmtweb_issue_detail', {'projectCode': log.issue.project.code, 'id': log.issue.id}) }}">{{ log.issue.project.code }}-{{ log.issue.id }} - {{ log.issue.summary }}</a>
+                                </p>
+                                <p>
+                                    <i class="icon-time"></i> <time class="moment" datetime="{{ log.timestamp|date('Y-m-d\TH:i:s') }}"></time>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="advanced">
+            {{ 'activity.list.noresult'|trans }}
+        </div>
+    {% endif %}
 {% else %}
-    <ul class="activity-stream simple">
-        <ul>
+    {% if activity|length %}
+        <ul class="activity-stream simple">
             <li>
                 <p>
                     <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
@@ -42,4 +49,9 @@
                 </p>
             </li>
         </ul>
+    {% else %}
+        <div class="advanced">
+            {{ 'activity.list.noresult'|trans }}
+        </div>
+    {% endif %}
 {% endif %}
