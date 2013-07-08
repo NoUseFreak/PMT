@@ -5,7 +5,7 @@
             {% for log in activity %}
                 <li class="media">
                     <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': log.user}) }}">
-                        <img class="media-object avatar avatar-medium" src="https://si0.twimg.com/profile_images/2364006435/u0tai5lvqeegtbxkepjq_bigger.png">
+                        <img class="media-object avatar avatar-medium" src="{{ gravatar(log.user.email) }}">
                     </a>
                     <div class="media-body">
                         <ul>

@@ -20,7 +20,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/security-extra-bundle": "1.5.*",
         "jms/di-extra-bundle": "1.4.*",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "ornicar/gravatar-bundle": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.21"

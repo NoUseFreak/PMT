@@ -73,3 +73,8 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: PMT\CoreBundle\Entity\User
+
+ornicar_gravatar:
+    rating: g
+    size: 73
+    default: mm

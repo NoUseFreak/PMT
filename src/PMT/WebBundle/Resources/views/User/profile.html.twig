@@ -31,8 +31,13 @@
                     <div id="accordion_details" class="accordion-body collapse in">
                         <div class="accordion-inner">
                             <div class="media">
-                                <div class="pull-left">
-                                    <img class="media-object avatar avatar-medium" src="https://si0.twimg.com/profile_images/2364006435/u0tai5lvqeegtbxkepjq_bigger.png">
+                                <div class="pull-left span4">
+                                    {% if gravatar_exists(user.email) %}
+                                        <img class="media-object avatar avatar-medium" src="{{ gravatar(user.email, 120) }}">
+                                    {% else %}
+                                        <img class="media-object avatar avatar-medium" src="{{ gravatar(user.email, 120) }}">
+                                        Set your avatar using gravatar.
+                                    {% endif %}
                                 </div>
                                 <div class="media-body">
                                     <table>
