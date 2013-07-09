@@ -6,9 +6,9 @@
                 <div class="span6">
                     <div><a href="#">{{ milestone.name }}</a></div>
                     {% if milestone.dueDate > date() %}
-                        <div>Due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\TH:i:s') }}"></time></div>
+                        <div>Due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\\TH:i:sP') }}"></time></div>
                     {% else %}
-                        <div>Past due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\TH:i:s') }}"></time></div>
+                        <div>Past due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\\TH:i:sP') }}"></time></div>
                     {% endif %}
                 </div>
                 <div class="span6">

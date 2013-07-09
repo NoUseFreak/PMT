@@ -33,9 +33,9 @@
                             <div class="media">
                                 <div class="pull-left span4">
                                     {% if gravatar_exists(user.email) %}
-                                        <img class="media-object avatar avatar-medium" src="{{ gravatar(user.email, 120) }}">
+                                        <img class="media-object avatar avatar-medium" src="{{ gravatar(user.email, 120) }}" alt="Avatar">
                                     {% else %}
-                                        <img class="media-object avatar avatar-medium" src="{{ gravatar(user.email, 120) }}">
+                                        <img class="media-object avatar avatar-medium" src="{{ gravatar(user.email, 120) }}" alt="No avatar">
                                         Set your avatar using gravatar.
                                     {% endif %}
                                 </div>

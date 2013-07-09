@@ -54,6 +54,7 @@ class ProjectType extends AbstractType
                 'creator',
                 'entity',
                 array(
+                    'empty_value' => '',
                     'class' => 'PMT\CoreBundle\Entity\User',
                     'property' => 'username',
                     'data' => $this->options['activeUser'],
@@ -63,6 +64,7 @@ class ProjectType extends AbstractType
                 'workflow',
                 'entity',
                 array(
+                    'empty_value' => '',
                     'class' => 'PMT\CoreBundle\Entity\Workflow\Workflow',
                     'property' => 'name',
                 )

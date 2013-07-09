@@ -6,13 +6,13 @@
     <ul class="activity-stream advanced">
         <li class="media">
             <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">
-                <img class="media-object avatar avatar-medium" src="{{ gravatar('dries@nousefreak.be') }}">
+                <img class="media-object avatar avatar-medium" src="{{ gravatar('dries@nousefreak.be') }}" alt="{{ "username" }}" />
             </a>
             <div class="media-body">
                 <ul>
                     <li>
                         <p>
-                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> <i class="icon-time"></i> <time datetime="2013-06-06T20:00+00:00"></time>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                         </p>
                         <p>
                             What to do?
@@ -20,7 +20,7 @@
                     </li>
                     <li>
                         <p>
-                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> <i class="icon-time"></i> <time datetime="2013-06-06T20:10+00:00"></time>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                         </p>
                         <p>
                             I have no clue!
@@ -31,13 +31,13 @@
         </li>
         <li class="media">
             <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': 'denhul'}) }}">
-                <img class="media-object avatar avatar-medium" src="{{ gravatar('dries2@nousefreak.be') }}">
+                <img class="media-object avatar avatar-medium" src="{{ gravatar('dries2@nousefreak.be') }}" alt="{{ "username" }}" />
             </a>
             <div class="media-body">
                 <ul>
                     <li>
                         <p>
-                            <a href="{{ path('pmtweb_user_profile', {'username': 'denhul'}) }}">Dennis Hulsmans</a> <i class="icon-time"></i> <time datetime="2013-06-07T20:10+00:00"></time>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'denhul'}) }}">Dennis Hulsmans</a> <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                         </p>
                         <p>
                             Ask <a href="{{ path('pmtweb_user_profile', {'username': 'Ozmodiar'}) }}">Joeri van Dooren</a>
@@ -48,13 +48,13 @@
         </li>
         <li class="media">
             <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': 'Ozmodiar'}) }}">
-                <img class="media-object avatar avatar-medium" src="{{ gravatar('dries2@nousefreak.be') }}">
+                <img class="media-object avatar avatar-medium" src="{{ gravatar('dries2@nousefreak.be') }}" alt="{{ "username" }}" />
             </a>
             <div class="media-body">
                 <ul>
                     <li>
                         <p>
-                            <a href="{{ path('pmtweb_user_profile', {'username': 'Ozmodiar'}) }}"> Joeri van Dooren</a> <i class="icon-time"></i> <time datetime="2013-06-10T20:10+00:00"></time>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'Ozmodiar'}) }}"> Joeri van Dooren</a> <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                         </p>
                         <p>
                             How should I know?
@@ -72,7 +72,7 @@
                     <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
                 </p>
                 <p>
-                    <i class="icon-time"></i> <time datetime="2013-06-06T20:00+00:00"></time>
+                    <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                 </p>
             </li>
             <li>
@@ -80,7 +80,7 @@
                     <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
                 </p>
                 <p>
-                    <i class="icon-time"></i> <time datetime="2013-06-13T20:00+00:00"></time>
+                    <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                 </p>
             </li>
         </ul>

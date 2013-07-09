@@ -40,9 +40,9 @@ class IssueType extends AbstractType
                 'project',
                 'entity',
                 array(
+                    'empty_value' => '',
                     'class' => 'PMT\CoreBundle\Entity\Project\Project',
                     'property' => 'name',
-                    'empty_value' => 'Choose an project',
                 )
             )
             ->add(
@@ -59,6 +59,7 @@ class IssueType extends AbstractType
                 'type',
                 'entity',
                 array(
+                    'empty_value' => '',
                     'class' => 'PMT\CoreBundle\Entity\Issue\Type',
                     'property' => 'name',
                 )
@@ -75,6 +76,7 @@ class IssueType extends AbstractType
                 'priority',
                 'entity',
                 array(
+                    'empty_value' => '',
                     'class' => 'PMT\CoreBundle\Entity\Issue\Priority',
                     'property' => 'name',
                     'query_builder' => function(EntityRepository $er) {
@@ -87,6 +89,7 @@ class IssueType extends AbstractType
                 'creator',
                 'entity',
                 array(
+                    'empty_value' => '',
                     'class' => 'PMT\CoreBundle\Entity\User',
                     'property' => 'username',
                     'data' => $this->options['activeUser'],
