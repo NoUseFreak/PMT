@@ -22,10 +22,19 @@ class WorkflowManager
 {
 
     private $em;
+    private $user;
 
     public function __construct(ObjectManager $em)
     {
         $this->em = $em;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
     /**
@@ -89,6 +98,14 @@ class WorkflowManager
 
         if (!$this->validateStep($step, $newStep)) {
             return false;
+        }
+
+        if ($newStep->getRequireUser()) {
+            if (!$this->user) {
+                return false;
+            }
+
+            $issue->setAssignee($this->user);
         }
 
         $issue->setStatus($newStep->getStatus());

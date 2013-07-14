@@ -71,6 +71,13 @@ class WorkflowStep
     private $final;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default" = 0})
+     *
+     * @var bool
+     */
+    private $requireUser;
+
+    /**
      * @param int $id
      */
     public function setId($id)
@@ -180,5 +187,21 @@ class WorkflowStep
     public function isStart()
     {
         return $this->start;
+    }
+
+    /**
+     * @param boolean $requireUser
+     */
+    public function setRequireUser($requireUser)
+    {
+        $this->requireUser = $requireUser;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getRequireUser()
+    {
+        return $this->requireUser;
     }
 }

@@ -132,6 +132,7 @@ class IssueController extends Controller
         $step = $this->get('pmt_core.workflow_step_repository')->find($stepId);
 
         $workflowManager = new WorkflowManager($this->getDoctrine()->getManager());
+        $workflowManager->setUser($this->get('security.context')->getToken()->getUser());
         if ($workflowManager->setToStep($issue, $step)) {
             $this->get('session')->getFlashBag()->add('success', 'Issue updated to ' . $step->getStatus()->getName());
         }
