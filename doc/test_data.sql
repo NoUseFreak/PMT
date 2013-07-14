@@ -60,10 +60,10 @@ UNLOCK TABLES;
 --
 LOCK TABLES `workflow_steps` WRITE;
 /*!40000 ALTER TABLE `workflow_steps` DISABLE KEYS */;
-INSERT INTO `workflow_steps` VALUES (1,1,1,0,1,0);
-INSERT INTO `workflow_steps` VALUES (2,1,2,1,0,0);
-INSERT INTO `workflow_steps` VALUES (3,1,3,2,0,0);
-INSERT INTO `workflow_steps` VALUES (4,1,5,3,0,1);
+INSERT INTO `workflow_steps` VALUES (1,1,1,0,1,0,0);
+INSERT INTO `workflow_steps` VALUES (2,1,2,1,0,0,1);
+INSERT INTO `workflow_steps` VALUES (3,1,3,2,0,0,0);
+INSERT INTO `workflow_steps` VALUES (4,1,5,3,0,1,0);
 /*!40000 ALTER TABLE `workflow_steps` ENABLE KEYS */;
 UNLOCK TABLES;
 
