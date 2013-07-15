@@ -23,6 +23,9 @@ class AppKernel extends Kernel
             new PMT\CoreBundle\PMTCoreBundle(),
             new PMT\WebBundle\PMTWebBundle($this),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

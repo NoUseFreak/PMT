@@ -116,7 +116,7 @@
                     </div>
                     <div id="accordion_comments" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            {% include 'PMTWebBundle:Comment:list.html.twig' with {'view': 'advanced'} %}
+                            {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'issue:'~issue.project.id~":"~issue.id} %}
                         </div>
                     </div>
                 </div>

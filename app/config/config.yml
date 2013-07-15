@@ -19,6 +19,7 @@ framework:
     trusted_proxies: ~
     session:         ~
     fragments:       ~
+    http_method_override: true
 
 # Twig Configuration
 twig:
@@ -34,7 +35,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
+    bundles: [ "FOSCommentBundle" ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -78,3 +79,10 @@ ornicar_gravatar:
     rating: g
     size: 73
     default: mm
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: PMT\CoreBundle\Entity\Comment\Comment
+            thread: PMT\CoreBundle\Entity\Comment\Thread
