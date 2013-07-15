@@ -1,0 +1,41 @@
+{#
+
+ This file is part of the FOSCommentBundle package.
+
+ (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+
+ This source file is subject to the MIT license that is bundled
+ with this source code in the file LICENSE.
+
+#}
+
+{% block fos_comment_comment %}
+    <li class="media" id="fos_comment_{{ comment.id }}" {% if parentId is defined %}data-parent="{{ parentId }}"{% endif %}>
+        <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">
+            <img class="media-object avatar avatar-medium" src="{{ gravatar(comment.author.email) }}" alt="{{ comment.author.username }}" />
+        </a>
+        <div class="media-body">
+            <ul>
+                <li>
+                    <p>
+                        <a href="{{ path('pmtweb_user_profile', {'username': comment.author.username}) }}">{{ comment.author.username }}</a>
+                        <i class="icon-time"></i> <time class="moment" datetime="{{ comment.createdAt|date('Y-m-d\\TH:i:sP') }}"></time>
+                    </p>
+                    <div>
+                        {% block fos_comment_comment_body %}
+                            {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
+                                {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
+                            {% else %}
+                                {% if comment is fos_comment_raw %}
+                                    {{ comment.rawBody | raw }}
+                                {% else %}
+                                    {{ comment.body | nl2br }}
+                                {% endif %}
+                            {% endif %}
+                        {% endblock fos_comment_comment_body %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+{% endblock fos_comment_comment %}
