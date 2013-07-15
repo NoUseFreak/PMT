@@ -7,7 +7,9 @@
 .collapse.in {
     overflow: visible;
 }
-
+h1 {
+    font-size: 28px;
+}
 
 
 body {

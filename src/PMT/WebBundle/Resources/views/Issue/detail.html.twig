@@ -1,7 +1,11 @@
 {% extends "PMTWebBundle::layout.html.twig" %}
 {% trans_default_domain 'PMTWebBundle' %}
 
-{% block content_title %}{{ issue.summary }}{% endblock %}
+{% block content_title %}
+    <a href="{{ path('pmtweb_project_summary', {'code': issue.project.code}) }}">{{ issue.project.code }}</a>
+    /
+    {{ issue.summary }}
+{% endblock %}
 
 {% block content_actions %}
     <ul class="actions nav nav-pills pull-right">
