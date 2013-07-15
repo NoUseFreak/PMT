@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
+ * @ORM\Table(name="comment_comments")
  */
 class Comment extends BaseComment implements SignedCommentInterface
 {
