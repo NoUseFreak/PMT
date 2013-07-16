@@ -43,7 +43,7 @@
                     </div>
                     <div id="accordion_milestones" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            The milestones of the project
+                            {% include 'PMTWebBundle:Milestone:list.html.twig' with {'milestones': project.milestones, 'view': 'simple'} %}
                         </div>
                     </div>
                 </div>

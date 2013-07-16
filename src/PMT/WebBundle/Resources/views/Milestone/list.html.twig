@@ -24,19 +24,28 @@
 
         </ul>
     {% else %}
-        <div class="advanced">
+        <div class="advanced unstyled">
             {{ 'milestone.list.noresult'|trans }}
         </div>
     {% endif %}
 {% else %}
     {% if milestones|length %}
-        <ul>
+        <ul class="simple unstyled container-fluid">
             {% for milestone in milestones %}
-                <li>{{ milestone.name }}</li>
+                <li class="row">
+                    <div class="span6">
+                        {{ milestone.name }}
+                    </div>
+                    <div class="span6">
+                        <div class="progress">
+                            <div class="bar" style="width: 60%;"><span class="pull-left">&nbsp;60%</span></div>
+                        </div>
+                    </div>
+                </li>
             {% endfor %}
         </ul>
     {% else %}
-        <div class="simple">
+        <div class="simple unstyled">
             {{ 'milestone.list.noresult'|trans }}
         </div>
     {% endif %}
