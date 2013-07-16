@@ -13,7 +13,12 @@
                                 <p>
                                     <a href="{{ path('pmtweb_user_profile', {'username': log.user}) }}">{{ log.user.username }}</a>
                                     {{ log.event.name }}
-                                    <a href="{{ path('pmtweb_issue_detail', {'projectCode': log.issue.project.code, 'id': log.issue.id}) }}">{{ log.issue.project.code }}-{{ log.issue.id }} - {{ log.issue.summary }}</a>
+                                    {% if log.source.link %}
+                                        <a href="{{ path(log.source.link.route, log.source.link.args) }}">{{ log.source.label }}</a>
+                                    {% else %}
+                                        {{ log.source.label }}
+                                    {% endif %}
+                                    {#<a href="{{ path('pmtweb_issue_detail', {'projectCode': log.issue.project.code, 'id': log.issue.id}) }}">{{ log.issue.project.code }}-{{ log.issue.id }} - {{ log.issue.summary }}</a>#}
                                 </p>
                                 <p>
                                     <i class="icon-time"></i> <time class="moment" datetime="{{ log.timestamp|date('Y-m-d\\TH:i:sP') }}"></time>
