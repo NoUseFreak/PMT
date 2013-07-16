@@ -25,9 +25,6 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-    form:
-        resources:
-            - 'PMTWebBundle:Form:bootstrap.html.twig'
     globals:
         google_analytics_property_id: %google.analytics.property_id%
 
