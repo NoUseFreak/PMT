@@ -7,14 +7,15 @@
 {% endblock %}
 
 {% block fos_user_content %}
-    {% if error %}
-        <div>{{ error|trans }}</div>
-    {% endif %}
-
     <div class="container">
         <div class="box-wrapper">
             <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
                 <h2 class="form-signin-heading">Please sign in</h2>
+
+                {% if error %}
+                    {% include 'PMTWebBundle:Form:errors.html.twig' with {'errors': [error], 'type': 'error'} %}
+                {% endif %}
+
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
 
                 <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"
