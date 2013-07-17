@@ -20,7 +20,6 @@
     </ul>
     <ul class="nav">
         <li{% if app.request.attributes.get('_route') == 'pmtweb_dashboard' %} class="active"{% endif %}><a href="{{ path('pmtweb_dashboard') }}">{{ 'dashboard.dashboard'|trans }}</a></li>
-        <li{% if app.request.attributes.get('_route') == 'pmtweb_issue_navigator' %} class="active"{% endif %}><a href="{{ path('pmtweb_issue_navigator') }}">{{ 'issue.issues'|trans }}</a></li>
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ 'project.projects'|trans }} <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -29,9 +28,7 @@
                 {% endfor %}
                 <li class="divider"></li>
                 <li><a href="{{ path('pmtweb_project_form') }}">{{ 'project.link.create'|trans }}</a></li>
-                <li><a href="#">Settings</a></li>
             </ul>
         </li>
-        <li><a href="#about">About</a></li>
     </ul>
 </div>

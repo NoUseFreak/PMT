@@ -28,44 +28,8 @@
                 <li{% if app.request.attributes.get('_route') == 'pmtweb_project_issues' %} class="active"{% endif %}>
                     <a href="{{ path('pmtweb_project_issues', {'code': project.code}) }}">{{ 'issue.issues'|trans }}</a>
                 </li>
-                <li>
-                    <a href="#roadmap">{{ 'project.roadmap'|trans }}</a>
-                </li>
-                <li>
-                    <a href="#agile">{{ 'project.agile'|trans }}</a>
-                </li>
-                <li>
-                    <a href="#people">{{ 'project.people'|trans }}</a>
-                </li>
-                <li>
-                    <a href="#changelog">Change Log</a>
-                </li>
-                <li>
-                    <a href="#popular">Popular Items</a>
-                </li>
-                <li>
-                    <a href="#calendar">Calendar</a>
-                </li>
                 <li{% if app.request.attributes.get('_route') == 'pmtweb_project_milestones' %} class="active"{% endif %}>
                     <a href="{{ path('pmtweb_project_milestones', {'projectCode': project.code}) }}">{{ 'milestone.milestones'|trans }}</a>
-                </li>
-                <li>
-                    <a href="#components">Components</a>
-                </li>
-                <li>
-                    <a href="#labels">Labels</a>
-                </li>
-                <li>
-                    <a href="#builds">Builds</a>
-                </li>
-                <li>
-                    <a href="#source">Source</a>
-                </li>
-                <li>
-                    <a href="#reviews">Reviews</a>
-                </li>
-                <li>
-                    <a href="#test">Test</a>
                 </li>
             </ul>
             <div class="tabs-container span10">
