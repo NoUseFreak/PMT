@@ -1,62 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>PMT</title>
-    <meta name="description" content=""/>
-    <meta name="author" content="Dries De Peuter"/>
+{% extends "PMTWebBundle::emptyLayout.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
-
-    {% stylesheets
-        '@PMTWebBundle/Resources/public/css/bootstrap.min.css'
-        '@PMTWebBundle/Resources/public/vendor/select2/select2.css'
-        '@PMTWebBundle/Resources/public/css/select2-bootstrap.css'
-        '@PMTWebBundle/Resources/public/css/main.css'
-        filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
-    {% javascripts
-        '@PMTWebBundle/Resources/public/js/jquery.min.js'
-        '@PMTWebBundle/Resources/public/vendor/select2/select2.min.js'
-        '@PMTWebBundle/Resources/public/vendor/momentjs/moment.min.js'
-        '@PMTWebBundle/Resources/public/js/main.js' %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '{{ google_analytics_property_id }}']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
-                    'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-
-    {% block head_additions %}{% endblock %}
-</head>
-
-<body>
-
-{% if is_granted('ROLE_USER') %}
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                {{ render(controller('PMTWebBundle:Menu:primary')) }}
-            </div>
-        </div>
-    </div>
-{% endif %}
-
-<div class="container-fluid">
-
+{% block region_header %}
     {% if is_granted('ROLE_USER') %}
         {% block content_header %}
             <div class="row-fluid">
@@ -76,22 +21,16 @@
             </div>
         {% endblock %}
     {% endif %}
+{% endblock %}
 
-    {% for name, flashbag in app.session.flashbag %}
-        {% for message in flashbag %}
-        <div class="alert alert-{{ name }}">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ message }}
+{% block region_menu %}
+    {% if is_granted('ROLE_USER') %}
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    {{ render(controller('PMTWebBundle:Menu:primary')) }}
+                </div>
+            </div>
         </div>
-        {% endfor %}
-    {% endfor %}
-
-    {% block content %}
-    {% endblock %}
-
-</div>
-
-<script src="{{ asset('bundles/pmtweb/js/bootstrap.min.js') }}"></script>
-{% block body_scripts %}{% endblock %}
-</body>
-</html>
+    {% endif %}
+{% endblock %}

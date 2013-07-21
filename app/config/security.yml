@@ -18,7 +18,9 @@ security:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        assets:
+            pattern:  ^/(bundles|css|images|js)/
+            security: false
         main:
             pattern:    /
             form_login:
@@ -36,4 +38,6 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/css, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/js, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: ROLE_USER }
