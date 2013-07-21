@@ -39,10 +39,18 @@ class MilestoneType extends AbstractType
 
     }
 
+    /**
+     * Sets the default options for this type.
+     *
+     * @param OptionsResolverInterface $resolver The resolver for the options.
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        parent::setDefaultOptions($resolver);
+
         $resolver->setDefaults(array(
                 'data_class' => 'PMT\CoreBundle\Entity\Project\Milestone',
+                'intention'  => 'milestone_form',
             ));
     }
 

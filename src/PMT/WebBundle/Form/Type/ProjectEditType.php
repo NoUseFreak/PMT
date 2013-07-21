@@ -11,6 +11,7 @@
 namespace PMT\WebBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ProjectEditType extends ProjectType
 {
@@ -38,5 +39,19 @@ class ProjectEditType extends ProjectType
     public function getName()
     {
         return 'project_edit';
+    }
+
+    /**
+     * Sets the default options for this type.
+     *
+     * @param OptionsResolverInterface $resolver The resolver for the options.
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        parent::setDefaultOptions($resolver);
+
+        $resolver->setDefaults(array(
+                'intention'  => 'project_edit_form',
+            ));
     }
 }

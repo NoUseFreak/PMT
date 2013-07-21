@@ -16,6 +16,7 @@ use PMT\CoreBundle\Form\DataTransformer\TagsTransformer;
 use PMT\CoreBundle\Model\ProjectManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ProjectType extends AbstractType
 {
@@ -80,5 +81,19 @@ class ProjectType extends AbstractType
     public function getName()
     {
         return 'project';
+    }
+
+    /**
+     * Sets the default options for this type.
+     *
+     * @param OptionsResolverInterface $resolver The resolver for the options.
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        parent::setDefaultOptions($resolver);
+
+        $resolver->setDefaults(array(
+                'intention'  => 'project_create_form',
+            ));
     }
 }
