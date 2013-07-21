@@ -1,0 +1,12 @@
+{% extends "PMTWebBundle::layout.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block content_title %}Page not found{% endblock %}
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span12">
+            {{ status_code }} - {{ status_text }}
+        </div>
+    </div>
+{% endblock %}
