@@ -119,10 +119,13 @@ time.moment:hover {
     background-image: url('../img/icons/issues/type-bug.png');
 }
 .icon-issue-documentation {
-    background-image: url('../img/icons/issues/type-task.png');
+    background-image: url('../img/icons/issues/type-enhancement.png');
 }
 .icon-issue-new_feature {
     background-image: url('../img/icons/issues/type-changerequest.png');
+}
+.icon-issue-task {
+    background-image: url('../img/icons/issues/type-task.png');
 }
 
 .icon-issue-priority-trivial {
