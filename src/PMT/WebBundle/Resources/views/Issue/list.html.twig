@@ -1,11 +1,56 @@
 {% trans_default_domain 'PMTWebBundle' %}
 {% if view == 'advanced' %}
     {% if issues|length %}
-        <ul class="advanced">
-            {% for issue in issues %}
-                <li><a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
-            {% endfor %}
-        </ul>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Key</th>
+                    <th>Summary</th>
+                    <th>Assignee</th>
+                    <th>Reporter</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key,issue in issues %}
+                    <tr>
+                        <td>
+                            <i title="{{ issue.type.name }}" class="icon-issue-{{ issue|issue_type_icon_class }}"></i>
+                        </td>
+                        <td>
+                            <a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">
+                                {{ issue.project.code }}-{{ issue.id }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">
+                                {{ issue.summary }}
+                            </a>
+                        </td>
+                        <td>
+                            {% if issue.assignee %}
+                                <a href="{{ path('pmtweb_user_profile', {'username': issue.assignee.username }) }}">{{ issue.assignee.username }}</a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('pmtweb_user_profile', {'username': issue.creator.username }) }}">{{ issue.creator.username }}</a>
+                        </td>
+                        <td>
+                            <i title="{{ issue.priority.name }}" class="icon-issue-priority-{{ issue|issue_priority_icon_class }}"></i>
+                        </td>
+                        <td>
+                            <i title="{{ issue.status.name }}" class="icon-issue-status-{{ issue|issue_status_icon_class }}"></i>
+                        </td>
+                        <td>
+                            <time class="moment" datetime="{{ issue.created|date('Y-m-d\\TH:i:sP') }}"></time>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% else %}
         <div class="advanced">
             {{ 'issue.list.noresult'|trans }}
@@ -13,11 +58,31 @@
     {% endif %}
 {% else %}
     {% if issues|length %}
-        <ul>
-            {% for issue in issues %}
-                <li><a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">{{ issue.summary }}</a></li>
+        <table class="table table-striped">
+            <tbody>
+            {% for key,issue in issues %}
+                <tr>
+                    <td>
+                        <i title="{{ issue.type.name }}" class="icon-issue-{{ issue|issue_type_icon_class }}"></i>
+                        <a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">
+                            {{ issue.project.code }}-{{ issue.id }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('pmtweb_issue_detail', {'projectCode': issue.project.code, 'id': issue.id}) }}">
+                            {{ issue.summary }}
+                        </a>
+                    </td>
+                    <td>
+                        <i title="{{ issue.priority.name }}" class="icon-issue-priority-{{ issue|issue_priority_icon_class }}"></i>
+                    </td>
+                    <td>
+                        <i title="{{ issue.status.name }}" class="icon-issue-status-{{ issue|issue_status_icon_class }}"></i>
+                    </td>
+                </tr>
             {% endfor %}
-        </ul>
+            </tbody>
+        </table>
     {% else %}
         <div class="advanced">
             {{ 'issue.list.noresult'|trans }}

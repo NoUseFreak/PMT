@@ -4,3 +4,7 @@ services:
         arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: form.type, alias: issue_form }
+    pmt_web.twig.issue_extension:
+        class: PMT\WebBundle\Twig\IssueExtension
+        tags:
+            - { name: twig.extension }

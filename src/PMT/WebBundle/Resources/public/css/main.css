@@ -104,3 +104,55 @@ ul.activity-stream > li {
 time.moment:hover {
     cursor: default;
 }
+
+/**
+ * Issue lists
+ */
+
+[class^="icon-issue-"] {
+    background-position: 0 0;
+    height: 16px;
+    width: 16px;
+}
+
+.icon-issue-bug {
+    background-image: url('../img/icons/issues/type-bug.png');
+}
+.icon-issue-documentation {
+    background-image: url('../img/icons/issues/type-task.png');
+}
+.icon-issue-new_feature {
+    background-image: url('../img/icons/issues/type-changerequest.png');
+}
+
+.icon-issue-priority-trivial {
+    background-image: url('../img/icons/issues/priority-trivial.png');
+}
+.icon-issue-priority-minor {
+    background-image: url('../img/icons/issues/priority-minor.png');
+}
+.icon-issue-priority-normal {
+    background-image: url('../img/icons/issues/priority-normal.png');
+}
+.icon-issue-priority-critical {
+    background-image: url('../img/icons/issues/priority-critical.png');
+}
+.icon-issue-priority-blocker {
+    background-image: url('../img/icons/issues/priority-blocker.png');
+}
+
+.icon-issue-status-unassigned {
+    background-image: url('../img/icons/issues/status-unassigned.png');
+}
+.icon-issue-status-assigned {
+    background-image: url('../img/icons/issues/status-assigned.png');
+}
+.icon-issue-status-closed {
+    background-image: url('../img/icons/issues/status-closed.png');
+}
+.icon-issue-status-in_progress {
+    background-image: url('../img/icons/issues/status-inprogress.png');
+}
+.icon-issue-status-testing {
+    background-image: url('../img/icons/issues/status-reopened.png');
+}

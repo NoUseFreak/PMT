@@ -12,6 +12,7 @@ $(function () {
                     return moment($(this).attr('datetime')).format();
                 }
             });
+        $('[class^="icon-issue-"]').tooltip();
     }
 
     window.setInterval(function() {
