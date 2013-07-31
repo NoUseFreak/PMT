@@ -6,11 +6,14 @@
         {% if invalid_username is defined %}
             {% include 'PMTWebBundle:Form:errors.html.twig' with {'errors': ['resetting.request.invalid_username'|trans({'%username%': invalid_username})], 'type': 'error'} %}
         {% endif %}
-        <label for="username">{{ 'resetting.request.username'|trans }}</label>
-        <input type="text" id="username" name="username" required="required" class="input-block-level" />
+        <div class="form-group">
+            <label for="username">{{ 'resetting.request.username'|trans }}</label>
+            <input type="text" id="username" name="username" required="required" class="form-control" />
+        </div>
+
     </div>
     <div>
-        <a class="btn btn-large btn-link pull-right" href="{{ path('pmtweb_dashboard') }}">Back</a>
-        <input type="submit" value="{{ 'resetting.request.submit'|trans }}" class="btn btn-large btn-primary" />
+        <a class="btn btn-link pull-right" href="{{ path('pmtweb_dashboard') }}">Back</a>
+        <input type="submit" value="{{ 'resetting.request.submit'|trans }}" class="btn btn-primary" />
     </div>
 </form>
