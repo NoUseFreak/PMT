@@ -10,10 +10,7 @@
 
 namespace PMT\CoreBundle\Entity\Activity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use PMT\CoreBundle\Entity\Project\Project;
-use PMT\CoreBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

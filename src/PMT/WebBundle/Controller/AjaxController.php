@@ -17,35 +17,24 @@ class AjaxController extends Controller
     {
         $term = trim($this->getRequest()->request->get('q'));
 
-        $tags = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Tag')
-            ->findByName($term);
-
-        $tagObjects = array_map(
-            function ($tag) {
-                return array(
-                    'id' => $tag->getName(),
-                    'text' => $tag->getName(),
-                );
-            },
-            $tags
-        );
+        $tags = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Tag')->findByName($term);
+        $tagObjects = array_map(function ($tag) {
+            return array(
+                'id' => $tag->getName(),
+                'text' => $tag->getName(),
+            );
+        }, $tags);
 
         if ($this->getRequest()->request->get('add_new') && !in_array($term, $tags)) {
-            $tagObjects[] =
-                array(
-                    'id' => $term,
-                    'text' => 'new: ' . $term,
-                );
+            $tagObjects[] = array(
+                'id' => $term,
+                'text' => 'new: ' . $term,
+            );
         }
 
-        $response = new JsonResponse();
-        $response->setData(
-            array(
-                'tags' => $tagObjects,
-            )
-        );
-
-        return $response;
+        return new JsonResponse(array(
+            'tags' => $tagObjects,
+        ));
     }
 
     /**
@@ -54,35 +43,25 @@ class AjaxController extends Controller
      */
     public function milestoneAction()
     {
-        $params = array(
-            'project' => $this->getRequest()->request->get('project_id'),
-        );
-
         $milestones = $this->getDoctrine()->getRepository('PMT\CoreBundle\Entity\Project\Milestone')
             ->findBy(
-                $params,
+                array(
+                    'project' => $this->getRequest()->request->get('project_id'),
+                ),
                 array(
                     'dueDate' => 'ASC',
                 )
             );
 
-        $milestoneObjects = array_map(
-            function ($milestone) {
-                return array(
-                    'id' => $milestone->getId(),
-                    'text' => $milestone->getName(),
-                );
-            },
-            $milestones
-        );
+        $milestoneObjects = array_map(function ($milestone) {
+            return array(
+                'id' => $milestone->getId(),
+                'text' => $milestone->getName(),
+            );
+        }, $milestones);
 
-        $response = new JsonResponse();
-        $response->setData(
-            array(
-                'milestones' => $milestoneObjects,
-            )
-        );
-
-        return $response;
+        return new JsonResponse(array(
+            'milestones' => $milestoneObjects,
+        ));
     }
 }

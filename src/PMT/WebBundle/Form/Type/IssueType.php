@@ -14,7 +14,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use PMT\CoreBundle\Form\DataTransformer\MilestoneTransformer;
 use PMT\CoreBundle\Form\DataTransformer\TagsTransformer;
-use PMT\CoreBundle\Model\ProjectManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;

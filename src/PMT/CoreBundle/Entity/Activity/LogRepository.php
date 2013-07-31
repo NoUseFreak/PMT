@@ -11,7 +11,6 @@
 namespace PMT\CoreBundle\Entity\Activity;
 
 use Doctrine\ORM\EntityRepository;
-use MyProject\Proxies\__CG__\stdClass;
 use PMT\CoreBundle\Entity\Comment\Comment;
 use PMT\CoreBundle\Entity\Issue\Issue;
 use PMT\CoreBundle\Entity\Project\Project;
@@ -78,7 +77,7 @@ class LogRepository extends EntityRepository
                 $this->hydrateIssueReferenceObject($item, $object);
                 break;
             default:
-                var_dump($item);die;
+                // TODO log failed item.
 
         }
 

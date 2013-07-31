@@ -11,7 +11,6 @@
 namespace PMT\CoreBundle\Model;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use PMT\CoreBundle\Entity\Issue\Issue;
 use PMT\CoreBundle\Entity\Issue\Priority;
 use PMT\CoreBundle\Entity\Project\Project;
 use Symfony\Component\Config\Definition\Exception\Exception;

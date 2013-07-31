@@ -12,7 +12,6 @@ namespace PMT\CoreBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\EntityManager;
 use PMT\CoreBundle\Entity\Issue\Issue;
 use PMT\CoreBundle\Entity\Issue\Status;
 use PMT\CoreBundle\Entity\Workflow\Workflow;
