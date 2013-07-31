@@ -14,6 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use PMT\CoreBundle\Entity\Project\Project;
 use PMT\CoreBundle\Entity\User;
+use PMT\CoreBundle\Model\Activity\LoggableInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -22,7 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="PMT\CoreBundle\Entity\Issue\IssueRepository")
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class Issue
+class Issue implements LoggableInterface
 {
     /**
      * @ORM\Id

@@ -17,6 +17,8 @@ use PMT\CoreBundle\Entity\Activity\Event;
 use PMT\CoreBundle\Entity\Activity\Log;
 use PMT\CoreBundle\Entity\Activity\Type;
 use PMT\CoreBundle\Entity\Project\Project;
+use PMT\CoreBundle\Entity\User;
+use PMT\CoreBundle\Model\Activity\LoggableInterface;
 
 class ActivityManager
 {
@@ -29,7 +31,7 @@ class ActivityManager
         $this->user = $user;
     }
 
-    public function log(UserInterface $user, $event, $source, $target = null)
+    public function log(User $user, $event, LoggableInterface $source, LoggableInterface $target = null)
     {
         $typeRepo = $this->em->getRepository('PMT\CoreBundle\Entity\Activity\Type');
         $eventRepo = $this->em->getRepository('PMT\CoreBundle\Entity\Activity\Event');
