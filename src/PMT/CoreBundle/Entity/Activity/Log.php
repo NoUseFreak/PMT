@@ -12,7 +12,6 @@ namespace PMT\CoreBundle\Entity\Activity;
 
 use Doctrine\ORM\Mapping as ORM;
 use PMT\CoreBundle\Entity\User;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
