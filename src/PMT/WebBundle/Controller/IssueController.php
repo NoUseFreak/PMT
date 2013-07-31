@@ -140,15 +140,13 @@ class IssueController extends Controller
             $this->get('session')->getFlashBag()->add('alert', 'Issue status could not be updated.');
         }
 
-        return $this->redirect(
-            $this->generateUrl(
-                'pmtweb_issue_detail',
-                array(
-                    'projectCode' => $projectCode,
-                    'id' => $id,
-                )
+        return $this->redirect($this->generateUrl(
+            'pmtweb_issue_detail',
+            array(
+                'projectCode' => $projectCode,
+                'id' => $id,
             )
-        );
+        ));
     }
 
     /**

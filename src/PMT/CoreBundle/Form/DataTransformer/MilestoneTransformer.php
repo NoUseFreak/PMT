@@ -10,7 +10,6 @@
 
 namespace PMT\CoreBundle\Form\DataTransformer;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use PMT\CoreBundle\Entity\Project\Milestone;
 use Symfony\Component\Form\DataTransformerInterface;

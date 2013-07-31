@@ -1,4 +1,5 @@
 {
+    "name": "pmt/pmt",
     "description": "Simple project management tool",
     "license": "MIT",
     "type": "library",
@@ -23,7 +24,7 @@
         "jms/di-extra-bundle": "1.4.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "friendsofsymfony/comment-bundle": "2.0.*@dev",
-        "ornicar/gravatar-bundle": "dev-master"
+        "ornicar/gravatar-bundle": "1.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.21"
