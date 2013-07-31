@@ -11,7 +11,8 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
 
     {% stylesheets
-        'bundles/pmtweb/css/bootstrap.min.css'
+        'bundles/pmtweb/vendor/bootstrap/css/bootstrap.min.css'
+        'bundles/pmtweb/vendor/bootstrap/css/bootstrap-glyphicons.css'
         'bundles/pmtweb/vendor/select2/select2.css'
         'bundles/pmtweb/css/select2-bootstrap.css'
         'bundles/pmtweb/css/main.css'
@@ -48,14 +49,14 @@
 {% block region_menu %}
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="brand" href="{{ path('pmtweb_dashboard') }}">PMT</a>
             </div>
         </div>
     </div>
 {% endblock %}
 
-<div class="container-fluid">
+<div class="container">
 
     {% block region_header %}{% endblock %}
 
@@ -72,7 +73,7 @@
 
 </div>
 
-<script src="{{ asset('bundles/pmtweb/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('bundles/pmtweb/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 {% block body_scripts %}{% endblock %}
 </body>
 </html>

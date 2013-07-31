@@ -17,8 +17,10 @@
 {% endif %}
 
 {% block fos_comment_comment_form_holder %}
-    <div class="row-fluid">
-        <a href="#" class="pull-right" onclick="$('.fos_comment_comment_form_holder').toggle();return false;">Add comment</a>
+    <div class="row">
+        <div class="col-lg-12">
+            <a href="#" class="pull-right" onclick="$('.fos_comment_comment_form_holder').toggle();return false;">Add comment</a>
+        </div>
     </div>
     <div class="fos_comment_comment_form_holder hide">
         {% block fos_comment_comment_new_form %}
@@ -28,7 +30,7 @@
                     {{ form_errors(form) }}
                     {{ form_errors(form.body) }}
                     </div>
-                    {{ form_widget(form.body, {'attr': {'class': 'span12'}}) }}
+                    {{ form_widget(form.body, {'attr': {'class': 'col-lg-12'}}) }}
 
                     {{ form_rest(form) }}
                 {% endblock %}

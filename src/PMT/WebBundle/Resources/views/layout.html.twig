@@ -4,15 +4,15 @@
 {% block region_header %}
     {% if is_granted('ROLE_USER') %}
         {% block content_header %}
-            <div class="row-fluid">
-                <div class="span8">
+            <div class="row">
+                <div class="col-lg-8">
                     <h1>{% block content_title %}{% endblock %}</h1>
                 </div>
-                <div class="span4">
+                <div class="col-lg-4">
                     {% block content_actions %}
                         <ul class="actions nav nav-pills pull-right">
                             <li class="active">
-                                <a href="{{ path('pmtweb_issue_form') }}"><i class="icon-edit icon-plus"></i> Create
+                                <a href="{{ path('pmtweb_issue_form') }}"><i class="glyphicon glyphicon-plus"></i> Create
                                     issue</a>
                             </li>
                         </ul>
@@ -26,10 +26,8 @@
 {% block region_menu %}
     {% if is_granted('ROLE_USER') %}
         <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container-fluid">
-                    {{ render(controller('PMTWebBundle:Menu:primary')) }}
-                </div>
+            <div class="container">
+                {{ render(controller('PMTWebBundle:Menu:primary')) }}
             </div>
         </div>
     {% endif %}

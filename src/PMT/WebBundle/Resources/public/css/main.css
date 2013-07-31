@@ -81,9 +81,9 @@ ul.activity-stream > li {
  * Fluid fixes
  */
 
-@media (max-width: 979px) {
-    .container-fluid {
-        width: 930px !important;
+@media (min-width: 992px) {
+    .container {
+        max-width: 95% !important;
     }
 }
 
@@ -108,6 +108,20 @@ time.moment:hover {
 /**
  * Issue lists
  */
+
+
+[class^="icon-"],
+[class*=" icon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    *margin-right: .3em;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
 
 [class^="icon-issue-"] {
     background-position: 0 0;
@@ -158,4 +172,10 @@ time.moment:hover {
 }
 .icon-issue-status-testing {
     background-image: url('../img/icons/issues/status-reopened.png');
+}
+
+.select2-container.form-control {
+    height: 29px;
+    padding: 0;
+    border: 0;
 }

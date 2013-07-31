@@ -10,14 +10,14 @@
 {% block content_actions %}
     <ul class="actions nav nav-pills pull-right">
         <li class="active">
-            <a href="{{ path('pmtweb_project_issue_form', {'projectCode': issue.project.code}) }}"><i class="icon-edit icon-plus"></i> {{ 'issue.link.create'|trans }}</a>
+            <a href="{{ path('pmtweb_project_issue_form', {'projectCode': issue.project.code}) }}"><i class="glyphicon glyphicon-edit glyphicon glyphicon-plus"></i> {{ 'issue.link.create'|trans }}</a>
         </li>
     </ul>
 {% endblock %}
 
 {% block content %}
-    <div class="row-fluid">
-        <div class="span8">
+    <div class="row">
+        <div class="col-lg-8">
             <div class="accordion">
                 <div class="accordion-group">
                     <div class="accordion-heading">
@@ -27,8 +27,8 @@
                     </div>
                     <div id="accordion_details" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                            <div class="row-fluid">
-                                <div class="span6">
+                            <div class="row">
+                                <div class="col-lg-6">
                                     <table class="issue-details">
                                         <tr>
                                             <td>{{ 'issue.type'|trans }}:</td>
@@ -62,7 +62,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="span6">
+                                <div class="col-lg-6">
                                     <table class="issue-details">
                                         <tr>
                                             <td>{{ 'issue.status'|trans }}:</td>
@@ -136,7 +136,7 @@
                 </div>
             </div>
         </div>
-        <div class="span4">
+        <div class="col-lg-4">
             <div class="accordion">
                 <div class="accordion-group">
                     <div class="accordion-heading">
@@ -244,7 +244,7 @@
                                     <td>4h</td>
                                     <td class="bar">
                                         <div class="progress progress-striped">
-                                            <div class="bar" style="width: 100%;"></div>
+                                            <div class="progress-bar" style="width: 100%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -253,7 +253,7 @@
                                     <td>3h</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="bar" style="width:75%;"></div>
+                                            <div class="progress-bar" style="width:75%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -266,7 +266,7 @@
                                     <td>4h</td>
                                     <td class="bar">
                                         <div class="progress progress-striped">
-                                            <div class="bar bar-danger" style="width: 100%;"></div>
+                                            <div class="progress-bar progress-bar-danger" style="width: 100%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -276,7 +276,7 @@
                                     <td>
                                         <div class="progress">
                                             <div class="bar" style="width:80%;"></div>
-                                            <div class="bar bar-danger" style="width:20%;"></div>
+                                            <div class="progress-bar progress-bar-danger" style="width:20%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -289,7 +289,7 @@
                                     <td>4h</td>
                                     <td class="bar">
                                         <div class="progress">
-                                            <div class="bar" style="width: 100%;"></div>
+                                            <div class="progress-bar" style="width: 100%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -298,7 +298,7 @@
                                     <td>3h</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="bar bar-success" style="width:100%;"></div>
+                                            <div class="progress-bar progress-bar-success" style="width:100%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -311,7 +311,7 @@
                                     <td>4h</td>
                                     <td class="bar">
                                         <div class="progress">
-                                            <div class="bar bar-success" style="width: 100%;"></div>
+                                            <div class="progress-bar progress-bar-success" style="width: 100%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -320,8 +320,8 @@
                                     <td>3h</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="bar bar-success" style="width:75%;"></div>
-                                            <div class="bar" style="width:25%;"></div>
+                                            <div class="progress-bar progress-bar-success" style="width:75%;"></div>
+                                            <div class="progress-bar" style="width:25%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -334,7 +334,7 @@
                                     <td>4h</td>
                                     <td class="bar">
                                         <div class="progress">
-                                            <div class="bar bar-danger" style="width: 100%;"></div>
+                                            <div class="progress-bar progress-bar-danger" style="width: 100%;"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -343,8 +343,8 @@
                                     <td>5h</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="bar" style="width: 80%;"></div>
-                                            <div class="bar bar-danger" style="width: 20%;"></div>
+                                            <div class="progress-bar" style="width: 80%;"></div>
+                                            <div class="progress-bar progress-bar-danger" style="width: 20%;"></div>
                                         </div>
                                     </td>
                                 </tr>

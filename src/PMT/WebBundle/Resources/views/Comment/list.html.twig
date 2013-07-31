@@ -3,16 +3,16 @@
 {% endblock %}
 
 {% if view == 'advanced' %}
-    <ul class="activity-stream advanced">
+    <ul class="activity-stream advanced list-unstyled">
         <li class="media">
             <a class="pull-left" href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">
                 <img class="media-object avatar avatar-medium" src="{{ gravatar('dries@nousefreak.be') }}" alt="{{ "username" }}" />
             </a>
             <div class="media-body">
-                <ul>
+                <ul class="list-unstyled">
                     <li>
                         <p>
-                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> <i class="glyphicon glyphicon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                         </p>
                         <p>
                             What to do?
@@ -20,7 +20,7 @@
                     </li>
                     <li>
                         <p>
-                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> <i class="glyphicon glyphicon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                         </p>
                         <p>
                             I have no clue!
@@ -34,10 +34,10 @@
                 <img class="media-object avatar avatar-medium" src="{{ gravatar('dries2@nousefreak.be') }}" alt="{{ "username" }}" />
             </a>
             <div class="media-body">
-                <ul>
+                <ul class="list-unstyled">
                     <li>
                         <p>
-                            <a href="{{ path('pmtweb_user_profile', {'username': 'denhul'}) }}">Dennis Hulsmans</a> <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'denhul'}) }}">Dennis Hulsmans</a> <i class="glyphicon glyphicon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                         </p>
                         <p>
                             Ask <a href="{{ path('pmtweb_user_profile', {'username': 'Ozmodiar'}) }}">Joeri van Dooren</a>
@@ -51,10 +51,10 @@
                 <img class="media-object avatar avatar-medium" src="{{ gravatar('dries2@nousefreak.be') }}" alt="{{ "username" }}" />
             </a>
             <div class="media-body">
-                <ul>
+                <ul class="list-unstyled">
                     <li>
                         <p>
-                            <a href="{{ path('pmtweb_user_profile', {'username': 'Ozmodiar'}) }}"> Joeri van Dooren</a> <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
+                            <a href="{{ path('pmtweb_user_profile', {'username': 'Ozmodiar'}) }}"> Joeri van Dooren</a> <i class="glyphicon glyphicon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
                         </p>
                         <p>
                             How should I know?
@@ -66,24 +66,23 @@
     </ul>
 {% else %}
     <ul class="activity-stream simple">
-        <ul>
-            <li>
-                <p>
-                    <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
-                </p>
-                <p>
-                    <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
-                </p>
-            </li>
-            <li>
-                <p>
-                    <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
-                </p>
-                <p>
-                    <i class="icon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
-                </p>
-            </li>
-        </ul>
+        <li>
+            <p>
+                <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
+            </p>
+            <p>
+                <i class="glyphicon glyphicon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a href="{{ path('pmtweb_user_profile', {'username': 'NoUseFreak'}) }}">Dries De Peuter</a> updated <a href="#">NOTIFIER-2 - Some issue summary</a>
+            </p>
+            <p>
+                <i class="glyphicon glyphicon-time"></i> <time datetime="{{ 'now'|date('Y-m-d\\TH:i:sP') }}"></time>
+            </p>
+        </li>
+    </ul>
 {% endif %}
 
 {% block body_scripts %}
