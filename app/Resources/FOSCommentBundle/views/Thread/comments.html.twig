@@ -26,7 +26,7 @@
     {% endif %}
 {% endif %}
 
-<ul class="activity-stream advanced fos_comment_comment_show">
+<ul class="activity-stream advanced fos_comment_comment_show list-unstyled">
 {% for commentinfo in comments %}
     {% include "FOSCommentBundle:Thread:comment.html.twig" with { "children": commentinfo.children, "comment": commentinfo.comment, "depth": depth, "view": view } %}
 {% endfor %}

@@ -15,11 +15,11 @@
             <img class="media-object avatar avatar-medium" src="{{ gravatar(comment.author.email) }}" alt="{{ comment.author.username }}" />
         </a>
         <div class="media-body">
-            <ul>
+            <ul class="list-unstyled">
                 <li>
                     <p>
                         <a href="{{ path('pmtweb_user_profile', {'username': comment.author.username}) }}">{{ comment.author.username }}</a>
-                        <i class="icon-time"></i> <time class="moment" datetime="{{ comment.createdAt|date('Y-m-d\\TH:i:sP') }}"></time>
+                        <i class="glyphicon glyphicon-time"></i> <time class="moment" datetime="{{ comment.createdAt|date('Y-m-d\\TH:i:sP') }}"></time>
                     </p>
                     <div>
                         {% block fos_comment_comment_body %}

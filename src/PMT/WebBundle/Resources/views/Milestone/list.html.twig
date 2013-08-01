@@ -1,9 +1,9 @@
 {% if view == 'advanced' %}
     {% if milestones|length %}
-        <ul class="advanced unstyled container-fluid">
+        <ul class="advanced list-unstyled container">
         {% for milestone in milestones %}
             <li class="row">
-                <div class="span6">
+                <div class="col-lg-6">
                     <div><a href="#">{{ milestone.name }}</a></div>
                     {% if milestone.dueDate > date() %}
                         <div>Due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\\TH:i:sP') }}"></time></div>
@@ -11,12 +11,12 @@
                         <div>Past due <time class="moment" datetime="{{ milestone.dueDate|date('Y-m-d\\TH:i:sP') }}"></time></div>
                     {% endif %}
                 </div>
-                <div class="span6">
+                <div class="col-lg-6">
                     <div>
                         12 closed - 6 open
                     </div>
                     <div class="progress">
-                        <div class="bar" style="width: 60%;"><span class="pull-left">&nbsp;60%</span></div>
+                        <div class="progress-bar" style="width: 60%;"><span class="pull-left">&nbsp;60%</span></div>
                     </div>
                 </div>
             </li>
@@ -24,28 +24,28 @@
 
         </ul>
     {% else %}
-        <div class="advanced unstyled">
+        <div class="advanced list-unstyled">
             {{ 'milestone.list.noresult'|trans }}
         </div>
     {% endif %}
 {% else %}
     {% if milestones|length %}
-        <ul class="simple unstyled container-fluid">
+        <ul class="simple list-unstyled container">
             {% for milestone in milestones %}
                 <li class="row">
-                    <div class="span6">
+                    <div class="col-lg-6">
                         {{ milestone.name }}
                     </div>
-                    <div class="span6">
+                    <div class="col-lg-6">
                         <div class="progress">
-                            <div class="bar" style="width: 60%;"><span class="pull-left">&nbsp;60%</span></div>
+                            <div class="progress-bar" style="width: 60%;"><span class="pull-left">&nbsp;60%</span></div>
                         </div>
                     </div>
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        <div class="simple unstyled">
+        <div class="simple list-unstyled">
             {{ 'milestone.list.noresult'|trans }}
         </div>
     {% endif %}

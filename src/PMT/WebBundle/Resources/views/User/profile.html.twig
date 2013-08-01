@@ -6,21 +6,21 @@
 {% block content_actions %}
 <ul class="actions nav nav-pills pull-right">
     <li class="active">
-        <a href="{{ path('pmtweb_issue_form') }}"><i class="icon-edit icon-plus"></i> Create
+        <a href="{{ path('pmtweb_issue_form') }}"><i class="glyphicon glyphicon-plus"></i> Create
             issue</a>
     </li>
 </ul>
 {% endblock %}
 
 {% block content %}
-    <div class="row-fluid">
-        <div class="span8">
+    <div class="row">
+        <div class="col-lg-8">
             <h1></h1>
         </div>
     </div>
 
-    <div class="row-fluid">
-        <div class="span6">
+    <div class="row">
+        <div class="col-lg-6">
             <div class="accordion">
                 <div class="accordion-group">
                     <div class="accordion-heading">
@@ -31,7 +31,7 @@
                     <div id="accordion_details" class="accordion-body collapse in">
                         <div class="accordion-inner">
                             <div class="media">
-                                <div class="pull-left span4">
+                                <div class="pull-left col-lg-4">
                                     {% if gravatar_exists(user.email) %}
                                         <img class="media-object avatar avatar-medium" src="{{ gravatar(user.email, 120) }}" alt="Avatar">
                                     {% else %}
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <div class="span6">
+        <div class="col-lg-6">
             <div class="accordion">
                 <div class="accordion-group">
                     <div class="accordion-heading">

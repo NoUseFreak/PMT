@@ -5,7 +5,7 @@
 
 {% block content %}
     <form action="" class="issue-nagivator row">
-        <div class="span3">
+        <div class="col-lg-3">
             <div class="accordion">
                 <div class="accordion-group">
                     <div class="accordion-heading">
@@ -19,8 +19,8 @@
                                 <div class="control-label hide">
                                     {{ 'issue.navigator.search'|trans }}
                                 </div>
-                                <div class="controls row-fluid">
-                                    <input type="text" class="span12"/>
+                                <div class="controls row">
+                                    <input type="text" class="col-lg-12"/>
                                 </div>
                             </div>
                         </div>
@@ -40,8 +40,8 @@
                                 <div class="control-label hide">
                                     {{ 'issue.project'|trans }}
                                 </div>
-                                <div class="controls row-fluid">
-                                    <select class="span12" name="project" id="">
+                                <div class="controls row">
+                                    <select class="col-lg-12" name="project" id="">
                                         <option>All projects</option>
                                         <option value="">Notifier</option>
                                         <option value="">PMT</option>
@@ -52,8 +52,8 @@
                                 <div class="control-label hide">
                                     {{ 'issue.milestone'|trans }}
                                 </div>
-                                <div class="controls row-fluid">
-                                    <select class="span12" name="milestone" id="">
+                                <div class="controls row">
+                                    <select class="col-lg-12" name="milestone" id="">
                                         <option>All milestones</option>
                                         <option value="">Notifier</option>
                                         <option value="">PMT</option>
@@ -75,17 +75,17 @@
                     <div id="accordion_owner" class="accordion-body collapse in">
                         <div class="accordion-inner">
 
-                            <ul data-toggle="buttons-radio" class="row-fluid filter-owner">
+                            <ul data-toggle="buttons-radio" class="row filter-owner">
                                 <li>
-                                    <button type="button" class="span12 btn btn-primary active">Everyone's issues</button>
+                                    <button type="button" class="col-lg-12 btn btn-primary active">Everyone's issues</button>
                                     <input type="radio" name="owner" value="all" class="hide" checked="checked"/>
                                 </li>
                                 <li>
-                                    <button type="button" class="span12 btn btn-primary">Assigned to you</button>
+                                    <button type="button" class="col-lg-12 btn btn-primary">Assigned to you</button>
                                     <input type="radio" name="owner" value="assigned" class="hide"/>
                                 </li>
                                 <li>
-                                    <button type="button" class="span12 btn btn-primary">Created by you</button>
+                                    <button type="button" class="col-lg-12 btn btn-primary">Created by you</button>
                                     <input type="radio" name="owner" value="created" class="hide"/>
                                 </li>
                             </ul>
@@ -108,8 +108,8 @@
                                 <div class="control-label hide">
                                     {{ 'issue.status'|trans }}
                                 </div>
-                                <div class="controls row-fluid">
-                                    <select class="span12" name="status" id="">
+                                <div class="controls row">
+                                    <select class="col-lg-12" name="status" id="">
                                         <option>All statuses</option>
                                         <option value="">Notifier</option>
                                         <option value="">PMT</option>
@@ -120,8 +120,8 @@
                                 <div class="control-label hide">
                                     {{ 'issue.priorities'|trans }}
                                 </div>
-                                <div class="controls row-fluid">
-                                    <select class="span12" name="priority" id="">
+                                <div class="controls row">
+                                    <select class="col-lg-12" name="priority" id="">
                                         <option>All priorities</option>
                                         <option value="">Notifier</option>
                                         <option value="">PMT</option>
@@ -133,11 +133,11 @@
                 </div>
             </div>
 
-            <div class="row-fluid">
+            <div class="row">
                 <input type="submit" class="hide"/>
             </div>
         </div>
-        <div class="span9">
+        <div class="col-lg-9">
             <div class="accordion">
                 <div class="accordion-group">
                     <div class="accordion-heading">

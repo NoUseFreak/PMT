@@ -7,21 +7,21 @@
     <ul class="actions nav nav-pills pull-right">
         <li class="active">
             <a href="{{ path('pmtweb_project_issue_form', {'projectCode': project.code}) }}">
-                <i class="icon-edit icon-plus"></i> {{ 'issue.link.create'|trans }}
+                <i class="glyphicon glyphicon-plus"></i> {{ 'issue.link.create'|trans }}
             </a>
         </li>
         <li>
             <a href="{{ path('pmtweb_project_edit', {'projectCode': project.code}) }}">
-                <i class="icon-wrench"></i> Settings
+                <i class="glyphicon glyphicon-wrench"></i> Settings
             </a>
         </li>
     </ul>
 {% endblock %}
 
 {% block content %}
-    <div class="row-fluid">
-        <div class="tabbable tabs-left">
-            <ul class="nav nav-tabs span2">
+    <div class="row">
+        <div class="col-lg-2">
+            <ul class="nav nav-pills nav-stacked">
                 <li{% if app.request.attributes.get('_route') == 'pmtweb_project_summary' %} class="active"{% endif %}>
                     <a href="{{ path('pmtweb_project_summary', {'code': project.code}) }}">{{ 'project.summary'|trans }}</a>
                 </li>
@@ -68,7 +68,9 @@
                     <a href="#test">Test</a>
                 </li>
             </ul>
-            <div class="tabs-container span10">
+        </div>
+        <div class="col-lg-10">
+            <div class="tabs-container">
                 <div class="tab-content">
                     {% block tabContent %}{% endblock %}
                 </div>
