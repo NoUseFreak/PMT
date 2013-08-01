@@ -1,0 +1,17 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}{{ 'issue.dates'|trans }}{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>{{ 'issue.created'|trans }}:</td>
+            <td><time class="moment" datetime="{{ issue.created|date('Y-m-d\\TH:i:sP') }}"></time></td>
+        </tr>
+        <tr>
+            <td>{{ 'issue.updated'|trans }}:</td>
+            <td><time class="moment" datetime="{{ issue.lastUpdated|date('Y-m-d\\TH:i:sP') }}"></time></td>
+        </tr>
+    </table>
+{% endblock %}

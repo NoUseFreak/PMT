@@ -1,0 +1,11 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}{{ 'issue.people'|trans }}{% endblock %}
+
+{% block content %}
+    <div class="form-group">
+        {{ form_label(form.creator) }}
+        {{ form_widget(form.creator, {'attr': {'class': 'form-control' }}) }}
+    </div>
+{% endblock %}

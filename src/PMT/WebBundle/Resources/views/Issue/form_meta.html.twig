@@ -1,0 +1,23 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}{{ 'issue.meta'|trans }}{% endblock %}
+
+{% block content %}
+    <div class="form-group">
+        {{ form_label(form.project) }}
+        {{ form_widget(form.project, {'attr': {'class': 'form-control' }}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.milestone) }}
+        {{ form_widget(form.milestone, {'attr': {'class': 'form-control' }}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.type) }}
+        {{ form_widget(form.type, {'attr': {'class': 'form-control' }}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.priority) }}
+        {{ form_widget(form.priority, {'attr': {'class': 'form-control' }}) }}
+    </div>
+{% endblock %}

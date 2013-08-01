@@ -1,0 +1,32 @@
+{% trans_default_domain 'PMTWebBundle' %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="accordion">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" href="#">
+                        Milestones
+                    </a>
+                </div>
+                <div class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                        <ul class="list-unstyled milestones">
+                            {% for milestone in form.milestones %}
+                                <li class="row">
+                                    <div class="col-lg-5">
+                                        {{ form_row(milestone.name) }}
+                                    </div>
+                                    <div class="col-lg-5">
+                                        {{ form_row(milestone.dueDate) }}
+                                    </div>
+                                    <div class="col-lg-2 actions"></div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

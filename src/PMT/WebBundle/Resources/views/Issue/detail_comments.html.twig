@@ -1,0 +1,8 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}{{ 'issue.comments'|trans }}{% endblock %}
+
+{% block content %}
+    {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'issue:'~issue.project.id~":"~issue.id} %}
+{% endblock %}

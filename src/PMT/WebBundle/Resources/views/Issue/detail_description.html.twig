@@ -1,0 +1,8 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}{{ 'issue.description'|trans }}{% endblock %}
+
+{% block content %}
+    {{ issue.description }}
+{% endblock %}

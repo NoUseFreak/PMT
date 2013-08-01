@@ -1,0 +1,119 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}{{ 'issue.timetracking'|trans }}{% endblock %}
+
+{% block content %}
+    running on time
+    <table class="time_tracking">
+        <tr>
+            <td>Estimated:</td>
+            <td>4h</td>
+            <td class="bar">
+                <div class="progress progress-striped">
+                    <div class="progress-bar" style="width: 100%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Logged:</td>
+            <td>3h</td>
+            <td>
+                <div class="progress">
+                    <div class="progress-bar" style="width:75%;"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    running over time
+    <table class="time_tracking">
+        <tr>
+            <td>Estimated:</td>
+            <td>4h</td>
+            <td class="bar">
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-danger" style="width: 100%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Logged:</td>
+            <td>5h</td>
+            <td>
+                <div class="progress">
+                    <div class="bar" style="width:80%;"></div>
+                    <div class="progress-bar progress-bar-danger" style="width:20%;"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    finished on time
+    <table class="time_tracking">
+        <tr>
+            <td>Estimated:</td>
+            <td>4h</td>
+            <td class="bar">
+                <div class="progress">
+                    <div class="progress-bar" style="width: 100%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Logged:</td>
+            <td>3h</td>
+            <td>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width:100%;"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    finished over time
+    <table class="time_tracking">
+        <tr>
+            <td>Estimated:</td>
+            <td>4h</td>
+            <td class="bar">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width: 100%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Logged:</td>
+            <td>3h</td>
+            <td>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width:75%;"></div>
+                    <div class="progress-bar" style="width:25%;"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    finished over time
+    <table class="time_tracking">
+        <tr>
+            <td>Estimated:</td>
+            <td>4h</td>
+            <td class="bar">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger" style="width: 100%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Logged:</td>
+            <td>5h</td>
+            <td>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 80%;"></div>
+                    <div class="progress-bar progress-bar-danger" style="width: 20%;"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+{% endblock %}

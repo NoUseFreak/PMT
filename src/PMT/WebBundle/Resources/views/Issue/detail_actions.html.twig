@@ -1,0 +1,29 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}{{ 'issue.actions'|trans }}{% endblock %}
+
+{% block content %}
+    <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            {{ issue.status.name }}
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            {% for step in backSteps %}
+                <li><a href="{{ path('pmtweb_issue_new_step', {
+                    'projectCode': issue.project.code,
+                    'id': issue.id,
+                    'stepId': step.id
+                    }) }}">{{ step.status.name }}</a></li>
+            {% endfor %}
+            {% for step in nextSteps %}
+                <li><a href="{{ path('pmtweb_issue_new_step', {
+                    'projectCode': issue.project.code,
+                    'id': issue.id,
+                    'stepId': step.id
+                    }) }}">{{ step.status.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

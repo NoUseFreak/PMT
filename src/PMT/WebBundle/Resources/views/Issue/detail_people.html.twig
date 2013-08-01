@@ -1,0 +1,25 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}{{ 'issue.people'|trans }}{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>{{ 'issue.creator'|trans }}:</td>
+            <td>
+                <a href="{{ path('pmtweb_user_profile', {'username': issue.creator.username }) }}">{{ issue.creator.username }}</a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ 'issue.assignee'|trans }}:</td>
+            <td>
+                {% if issue.assignee %}
+                    <a href="{{ path('pmtweb_user_profile', {'username': issue.assignee.username }) }}">{{ issue.assignee.username }}</a>
+                {% else %}
+                    open
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+{% endblock %}

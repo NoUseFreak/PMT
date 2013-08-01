@@ -1,0 +1,8 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}{{ 'activity.activity_stream'|trans }}{% endblock %}
+
+{% block content %}
+    {% include 'PMTWebBundle:Activity:list.html.twig' with {'view': 'advanced', 'activity': []} %}
+{% endblock %}
