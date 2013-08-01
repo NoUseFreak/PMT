@@ -17,8 +17,16 @@ services:
         factory_method: getRepository
         arguments: ["PMT\\CoreBundle\\Entity\\Workflow\\WorkflowStep"]
 
-    kernel.listener.your_listener_name:
+    kernel.listener.comment_listener:
         class: PMT\CoreBundle\EventListener\CommentListener
         arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: kernel.event_listener, event: fos_comment.comment.post_persist, method: registerNewComment }
+
+    pmt_core.log_repository:
+        class: PMT\CoreBundle\Entity\Workflow\WorkflowStepRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: ["PMT\\CoreBundle\\Entity\\Workflow\\WorkflowStep"]
+        calls:
+            - ["setLogger", ["@logger"]]

@@ -14,25 +14,21 @@ use Doctrine\ORM\EntityRepository;
 use PMT\CoreBundle\Entity\Comment\Comment;
 use PMT\CoreBundle\Entity\Issue\Issue;
 use PMT\CoreBundle\Entity\Project\Project;
+use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class LogRepository extends EntityRepository implements ContainerAwareInterface
+class LogRepository extends EntityRepository
 {
     /**
-     * @var ContainerInterface
+     * @var Logger
      */
-    private $container;
+    private $logger;
 
-    /**
-     * @DI\InjectParams({
-     *     "generator" = @DI\Inject("logger")
-     * })
-     */
-    public function setContainer(ContainerInterface $container = null)
+    public function setLogger(Logger $logger)
     {
-        $this->container = $container;
+        $this->logger = $logger;
     }
 
     public function getProjectLog(Project $project, $limit = 10)
@@ -94,7 +90,7 @@ class LogRepository extends EntityRepository implements ContainerAwareInterface
                 $this->hydrateIssueReferenceObject($item, $object);
                 break;
             default:
-                $this->container->get('logger')->error('Could not log item');
+                $this->logger->error('Could not log item');
         }
 
         return $object;
