@@ -10,6 +10,7 @@ use PMT\WebBundle\Form\Type\ProjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
 class ProjectController extends Controller
@@ -29,6 +30,11 @@ class ProjectController extends Controller
             $project
         );
 
+        return $this->finalizeCreateForm($request, $form, $project);
+    }
+
+    public function finalizeCreateForm(Request $request, Form $form, Project $project)
+    {
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
@@ -42,7 +48,6 @@ class ProjectController extends Controller
                             'code' => $project->getCode(),
                         )
                     );
-
                     $this->get('session')->getFlashBag()->add('success', 'New project created!');
 
                     return $this->redirect($redirectUrl);
@@ -62,13 +67,7 @@ class ProjectController extends Controller
      */
     public function editFormAction($projectCode, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
         $project = $this->getProject($projectCode);
-
-        $originalMilestones = array();
-        foreach ($project->getMilestones() as $milestone) {
-            $originalMilestones[] = $milestone;
-        };
 
         $form = $this->createForm(
             new ProjectEditType($this->getDoctrine()->getManager(), array(
@@ -77,26 +76,16 @@ class ProjectController extends Controller
             $project
         );
 
+        return $this->finalizeEditForm($request, $form, $project);
+    }
+
+    public function finalizeEditForm(Request $request, Form $form, Project $project)
+    {
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-
-                foreach ($project->getMilestones() as $milestone) {
-                    foreach ($originalMilestones as $key => $toDel) {
-                        if ($toDel->getId() === $milestone->getId()) {
-                            unset($originalMilestones[$key]);
-                        }
-                    }
-                }
-                foreach ($originalMilestones as $milestone) {
-                    $project->getMilestones()->removeElement($milestone);
-                    $em->persist($milestone);
-                    $em->remove($milestone);
-                }
-
-                $em->persist($project);
-                $em->flush();
+                $this->saveMilestones($project);
 
                 $projectManager = new ProjectManager($this->getDoctrine()->getManager());
                 if ($projectManager->saveProject($project)) {
@@ -119,6 +108,30 @@ class ProjectController extends Controller
             'form' => $form->createView(),
             'project' => $project,
         );
+    }
+
+    private function saveMilestones(Project $project)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $originalMilestones = array();
+        foreach ($project->getMilestones() as $milestone) {
+            $originalMilestones[] = $milestone;
+        };
+        foreach ($project->getMilestones() as $milestone) {
+            foreach ($originalMilestones as $key => $toDel) {
+                if ($toDel->getId() === $milestone->getId()) {
+                    unset($originalMilestones[$key]);
+                }
+            }
+        }
+        foreach ($originalMilestones as $milestone) {
+            $project->getMilestones()->removeElement($milestone);
+            $em->persist($milestone);
+            $em->remove($milestone);
+        }
+
+        $em->persist($project);
+        $em->flush();
     }
 
     /**

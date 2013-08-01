@@ -10,6 +10,7 @@ use PMT\WebBundle\Form\Type\IssueType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
 class IssueController extends Controller
@@ -63,6 +64,11 @@ class IssueController extends Controller
                 )
             );
 
+        return $this->finalizeForm($request, $form, $issue);
+    }
+
+    private function finalizeForm(Request $request, Form $form, Issue $issue)
+    {
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
