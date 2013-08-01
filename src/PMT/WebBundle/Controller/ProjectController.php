@@ -33,7 +33,7 @@ class ProjectController extends Controller
         return $this->finalizeCreateForm($request, $form, $project);
     }
 
-    public function finalizeCreateForm(Request $request, Form $form, Project $project)
+    private function finalizeCreateForm(Request $request, Form $form, Project $project)
     {
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -79,7 +79,7 @@ class ProjectController extends Controller
         return $this->finalizeEditForm($request, $form, $project);
     }
 
-    public function finalizeEditForm(Request $request, Form $form, Project $project)
+    private function finalizeEditForm(Request $request, Form $form, Project $project)
     {
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
