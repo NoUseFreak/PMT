@@ -15,7 +15,6 @@ use PMT\CoreBundle\Entity\Comment\Comment;
 use PMT\CoreBundle\Entity\Issue\Issue;
 use PMT\CoreBundle\Entity\Project\Project;
 use Symfony\Bridge\Monolog\Logger;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
