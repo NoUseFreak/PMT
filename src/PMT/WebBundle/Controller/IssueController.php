@@ -3,6 +3,7 @@
 namespace PMT\WebBundle\Controller;
 
 use PMT\CoreBundle\Entity\Issue\Issue;
+use PMT\CoreBundle\Entity\Workflow\WorkflowStep;
 use PMT\CoreBundle\Model\IssueManager;
 use PMT\CoreBundle\Model\ProjectManager;
 use PMT\CoreBundle\Model\WorkflowManager;
@@ -135,16 +136,7 @@ class IssueController extends Controller
     public function newStepAction($projectCode, $id, $stepId)
     {
         $issue = $this->getIssue($id);
-        $step = $this->get('pmt_core.workflow_step_repository')->find($stepId);
-
-        $workflowManager = new WorkflowManager($this->getDoctrine()->getManager());
-        $workflowManager->setUser($this->get('security.context')->getToken()->getUser());
-        if ($workflowManager->setToStep($issue, $step)) {
-            $this->get('session')->getFlashBag()->add('success', 'Issue updated to ' . $step->getStatus()->getName());
-        }
-        else {
-            $this->get('session')->getFlashBag()->add('alert', 'Issue status could not be updated.');
-        }
+        $this->updateIssueStep($issue, $this->get('pmt_core.workflow_step_repository')->find($stepId));
 
         return $this->redirect($this->generateUrl(
             'pmtweb_issue_detail',
@@ -153,6 +145,18 @@ class IssueController extends Controller
                 'id' => $id,
             )
         ));
+    }
+
+    private function updateIssueStep(Issue $issue, WorkflowStep $step)
+    {
+        $workflowManager = new WorkflowManager($this->getDoctrine()->getManager());
+        $workflowManager->setUser($this->get('security.context')->getToken()->getUser());
+        if ($workflowManager->setToStep($issue, $step)) {
+            $this->get('session')->getFlashBag()->add('success', 'Issue updated to ' . $step->getStatus()->getName());
+        }
+        else {
+            $this->get('session')->getFlashBag()->add('alert', 'Issue status could not be updated.');
+        }
     }
 
     /**
