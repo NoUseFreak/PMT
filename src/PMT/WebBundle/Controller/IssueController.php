@@ -24,7 +24,6 @@ class IssueController extends Controller
     public function formAction($projectCode, Request $request)
     {
         $issue = new Issue();
-
         $form = $this->createForm(
             new IssueType($this->getDoctrine()->getManager(), array(
                 'activeUser' => $this->get('security.context')->getToken()->getUser(),
@@ -32,30 +31,11 @@ class IssueController extends Controller
             $issue
         );
 
-        if ($projectCode) {
-            $project = $this->get('pmt_core.project_repository')
-                ->findByCode($projectCode);
-            if ($project) {
-                $form->get('project')->setData($project);
-            } else {
-                return $this->redirect($this->generateUrl('pmtweb_issue_form'));
-            }
-
-            $projectManager = new ProjectManager($this->getDoctrine()->getManager());
-            $form->get('priority')->setData($projectManager->getDefaultPriority($project));
+        if ($response = $this->handleProjectForm($projectCode, $form)) {
+            return $response;
         }
 
         $form
-            ->add(
-                'rebuild',
-                'checkbox',
-                array(
-                    'label' => 'Create another',
-                    'required' => false,
-                    'mapped' => false,
-                    'data' => $this->getRequest()->query->has('rebuild'),
-                )
-            )
             ->add(
                 'currentPath',
                 'hidden',
@@ -68,6 +48,22 @@ class IssueController extends Controller
         return $this->finalizeForm($request, $form, $issue);
     }
 
+    private function handleProjectForm($projectCode, Form $form)
+    {
+        if ($projectCode) {
+            $project = $this->get('pmt_core.project_repository')
+                ->findByCode($projectCode);
+            if ($project) {
+                $form->get('project')->setData($project);
+            } else {
+                return $this->redirect($this->generateUrl('pmtweb_issue_form'));
+            }
+
+            $projectManager = new ProjectManager($this->getDoctrine()->getManager());
+            $form->get('priority')->setData($projectManager->getDefaultPriority($project));
+        }
+    }
+
     private function finalizeForm(Request $request, Form $form, Issue $issue)
     {
         if ($request->isMethod('POST')) {
@@ -76,10 +72,9 @@ class IssueController extends Controller
             if ($form->isValid()) {
                 // perform some action, such as saving the task to the database
                 $issueManager = new IssueManager($this->getDoctrine()->getManager());
-
                 $issueManager->saveIssue($issue);
 
-                if ($form->get('rebuild')->getData()) {
+                if ($request->request->has('_submit_rebuild')) {
                     $redirectUrl = $form->get('currentPath')->getData() . '?rebuild';
                 } else {
                     $redirectUrl = $this->generateUrl(

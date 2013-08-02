@@ -23,12 +23,9 @@
                 <div class="form-actions">
                     <div class="form-horizontal">
                         <div class="pull-right">
+                            <button type="submit" name="_submit_rebuild" class="btn btn-primary">{{ 'issue.form.create_another'|trans }}</button>
                             <button type="submit" name="_submit" class="btn btn-primary">{{ 'issue.form.create'|trans }}</button>
                             <button type="button" class="btn" onclick="window.history.back();">{{ 'issue.form.cancel'|trans }}</button>
-                        </div>
-                        <div class="form-group">
-                            {{ form_label(form.rebuild) }}
-                            {{ form_widget(form.rebuild) }}
                         </div>
                     </div>
                 </div>

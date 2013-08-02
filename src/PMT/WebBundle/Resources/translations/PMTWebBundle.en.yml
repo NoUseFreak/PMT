@@ -41,6 +41,7 @@ issue:
     issues_in_progress: In progress
     form:
         create: Create issue
+        create_another: Create another issue
         cancel: Cancel
         newissue: New issue
     navigator:
