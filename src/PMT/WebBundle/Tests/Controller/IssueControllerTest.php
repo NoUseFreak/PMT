@@ -8,8 +8,6 @@ class IssueControllerTest extends WebTestCase
 {
     protected $client;
 
-    private $issue;
-
     public function testForm()
     {
         $client = $this->getLoggedInClient();
