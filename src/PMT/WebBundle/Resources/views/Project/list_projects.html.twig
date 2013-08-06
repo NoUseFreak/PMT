@@ -1,0 +1,12 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for project in projects %}
+            <li><a href="{{ path('pmtweb_project_summary', {'code': project.code}) }}">{{ project.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

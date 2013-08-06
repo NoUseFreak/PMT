@@ -1,0 +1,13 @@
+{% extends "PMTWebBundle::block.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block title %}Stats{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <tr>
+            <td>Number of projects</td>
+            <td>{{ projects|length }}</td>
+        </tr>
+    </table>
+{% endblock %}

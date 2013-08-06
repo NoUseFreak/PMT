@@ -1,0 +1,18 @@
+{% extends "PMTWebBundle::layout.html.twig" %}
+{% trans_default_domain 'PMTWebBundle' %}
+
+{% block content_title %}Projects{% endblock %}
+
+{% block content_actions %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8">
+            {% include 'PMTWebBundle:Project:list_projects.html.twig' with {'projects': projects} %}
+        </div>
+        <div class="col-lg-4">
+            {% include 'PMTWebBundle:Project:list_stats.html.twig' with {'projects': projects} %}
+        </div>
+    </div>
+{% endblock %}

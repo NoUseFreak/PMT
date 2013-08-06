@@ -195,4 +195,17 @@ class ProjectController extends Controller
 
         return $project;
     }
+
+    /**
+     * @Template()
+     * @Route("/projects", name="pmtweb_project_list")
+     */
+    public function listAction()
+    {
+        $projects = $this->get('pmt_core.project_repository')->findAll();
+
+        return array(
+            'projects' => $projects,
+        );
+    }
 }
